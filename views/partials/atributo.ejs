@@ -1,0 +1,12 @@
+<div class="atributo">
+    <span><%= nome %></span>
+
+    <div class="stars">
+        <% for(let i = 1; i <= estrelas; i++){ %>
+            <img 
+                src="/img/estrela.png" 
+                class="<%= i > 5 ? 'star-overlimit' : '' %>"
+            >
+        <% } %>
+    </div>
+</div>

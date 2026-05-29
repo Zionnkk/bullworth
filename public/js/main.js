@@ -181,6 +181,46 @@ style.innerHTML = `
     background-image:url("https://media.tenor.com/ayT1t4X5o0kAAAAC/static.gif");
     mix-blend-mode:screen;
 }
+    const nivelamentoBtn =
+document.querySelector(".next-page");
+
+if(nivelamentoBtn){
+
+    nivelamentoBtn.addEventListener("click",(e)=>{
+
+        e.preventDefault();
+
+        const destino =
+        nivelamentoBtn.href;
+
+        document
+        .getElementById("report-transition")
+        .classList.add("active");
+
+        setTimeout(()=>{
+
+            window.location.href =
+            destino;
+
+        },1800);
+
+    });
+
+}
+    const reportLink = document.querySelector(".report-link");
+const reportTransition = document.getElementById("report-transition");
+
+if(reportLink && reportTransition){
+    reportLink.addEventListener("click", function(e){
+        e.preventDefault();
+
+        reportTransition.classList.add("active");
+
+        setTimeout(() => {
+            window.location.href = reportLink.href;
+        }, 1800);
+    });
+}
 `;
 
 document.head.appendChild(style);

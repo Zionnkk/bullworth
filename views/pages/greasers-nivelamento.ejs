@@ -1,0 +1,58 @@
+<%- include("../partials/header") %>
+<%- include("../partials/navbar") %>
+
+<main class="bully-status-page gang-greasers">
+
+    <section class="bully-status-box">
+
+        <h1>STATUS</h1>
+
+        <div class="report-title">
+            THE GREASERS MOB — REPORT CARD
+        </div>
+
+        <div class="status-grid">
+
+            <div class="grid-empty"></div>
+
+            <div class="year-title">PORTE FÍSICO</div>
+            <div class="year-title">AGILIDADE</div>
+            <div class="year-title">INTELIGÊNCIA</div>
+            <div class="year-title">STRIKING</div>
+            <div class="year-title">WRESTLING</div>
+
+            <div class="stat-name">FRESHMAN</div>
+            <%- include("../partials/stars",{ estrelas:2 }) %>
+            <%- include("../partials/stars",{ estrelas:1 }) %>
+            <%- include("../partials/stars",{ estrelas:1 }) %>
+            <%- include("../partials/stars",{ estrelas:2 }) %>
+            <%- include("../partials/stars",{ estrelas:1 }) %>
+
+            <div class="stat-name">SOPHOMORE</div>
+            <%- include("../partials/stars",{ estrelas:2 }) %>
+            <%- include("../partials/stars",{ estrelas:2 }) %>
+            <%- include("../partials/stars",{ estrelas:1 }) %>
+            <%- include("../partials/stars",{ estrelas:3 }) %>
+            <%- include("../partials/stars",{ estrelas:2 }) %>
+
+            <div class="stat-name">JUNIOR</div>
+            <%- include("../partials/stars",{ estrelas:3 }) %>
+            <%- include("../partials/stars",{ estrelas:3 }) %>
+            <%- include("../partials/stars",{ estrelas:2 }) %>
+            <%- include("../partials/stars",{ estrelas:4 }) %>
+            <%- include("../partials/stars",{ estrelas:2 }) %>
+
+            <div class="stat-name">SENIOR</div>
+            <%- include("../partials/stars",{ estrelas:4 }) %>
+            <%- include("../partials/stars",{ estrelas:3 }) %>
+            <%- include("../partials/stars",{ estrelas:3 }) %>
+            <%- include("../partials/stars",{ estrelas:5 }) %>
+            <%- include("../partials/stars",{ estrelas:3 }) %>
+
+        </div>
+
+    </section>
+
+</main>
+
+<%- include("../partials/footer") %>

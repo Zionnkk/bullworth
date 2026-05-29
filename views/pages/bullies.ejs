@@ -8,19 +8,55 @@
         <img src="/img/bullies-banner.png">
 
         <div class="gang-banner-overlay">
-
             <span>ARQUIVO DE CAMARILHA</span>
-
             <h1>BULLIES</h1>
-
         </div>
 
     </section>
 
     <section class="gang-detail-panel">
 
-        Em breve... Os valentões!
+    <div class="gang-detail-content">
 
-    </section>
+        <p class="gang-coming-soon">
+    Em breve... Os valentões!
+</p>
+    </div>
+
+    <div class="bullies-actions">
+
+        <a href="/camarilhas/bullies/nivelamento" class="next-page report-link">
+    NIVELAMENTO
+    <span>></span>
+</a>
+
+    </div>
+
+</section>
 
 </main>
+<div id="report-transition">
+    <div class="transition-content">
+        <div class="scan-line"></div>
+        <h2>ACESSANDO INFORMAÇÕES</h2>
+        <p>Enquanto isso, vá ler um livro!</p>
+    </div>
+</div>
+
+<script>
+    const reportLink = document.querySelector(".next-page");
+
+    if(reportLink){
+        reportLink.addEventListener("click", function(e){
+            e.preventDefault();
+
+            document.getElementById("report-transition").classList.add("active");
+
+            setTimeout(() => {
+                window.location.href = reportLink.href;
+            }, 1800);
+        });
+    }
+</script>
+
+<%- include("../partials/footer") %>
