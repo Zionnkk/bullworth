@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Bullworth RPG</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;700&family=Caveat:wght@400;700&display=swap" rel="stylesheet">
+
+  <style>
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+    }
+
+    body{
+      background:#07111d;
+      color:white;
+      font-family:'Oswald', sans-serif;
+      overflow-x:hidden;
+    }
+
+    /* FUNDO */
+
+    body::before{
+      content:"";
+      position:fixed;
+      inset:0;
+      background:
+      linear-gradient(rgba(0,0,0,.72),rgba(0,0,0,.82)),
+      url('https://images6.alphacoders.com/411/411197.jpg');
+      background-size:cover;
+      background-position:center;
+      z-index:-2;
+    }
+
+    body::after{
+      content:"";
+      position:fixed;
+      inset:0;
+      background:url('https://www.transparenttextures.com/patterns/asfalt-dark.png');
+      opacity:.2;
+      z-index:-1;
+      pointer-events:none;
+    }
+
+    /* NAVBAR */
+
+    .navbar{
+      width:100%;
+      height:90px;
+      border-bottom:1px solid rgba(255,191,0,.2);
+      background:rgba(4,12,20,.92);
+      backdrop-filter:blur(8px);
+
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+
+      padding:0 60px;
+
+      position:fixed;
+      top:0;
+      left:0;
+
+      z-index:999;
+    }
+
+    .left{
+      display:flex;
+      align-items:center;
+      gap:30px;
+    }
+
+    .crest{
+      width:70px;
+    }
+
+    .menu{
+      display:flex;
+      gap:40px;
+    }
+
+    .menu a{
+      color:#d8d8d8;
+      text-decoration:none;
+      text-transform:uppercase;
+      letter-spacing:2px;
+      font-size:15px;
+      transition:.3s;
+      position:relative;
+    }
+
+    .menu a:hover{
+      color:#d4a017;
+    }
+
+    .menu a::after{
+      content:"";
+      position:absolute;
+      left:0;
+      bottom:-10px;
+      width:0%;
+      height:2px;
+      background:#d4a017;
+      transition:.3s;
+    }
+
+    .menu a:hover::after{
+      width:100%;
+    }
+
+    .right{
+      display:flex;
+      align-items:center;
+      gap:20px;
+    }
+
+    .login{
+      color:#ddd;
+      text-decoration:none;
+      text-transform:uppercase;
+      letter-spacing:2px;
+    }
+
+    .register{
+      background:#d4a017;
+      color:black;
+      padding:12px 25px;
+      text-decoration:none;
+      text-transform:uppercase;
+      font-weight:bold;
+      letter-spacing:1px;
+      transition:.3s;
+    }
+
+    .register:hover{
+      background:#ffbf00;
+      transform:translateY(-2px);
+    }
+
+    /* HERO */
+
+    .hero{
+      width:100%;
+      min-height:100vh;
+
+      display:flex;
+      align-items:center;
+      padding:140px 80px 80px;
+    }
+
+    .hero-content{
+      max-width:700px;
+    }
+
+    .subtitle{
+      color:#d4a017;
+      letter-spacing:5px;
+      text-transform:uppercase;
+      margin-bottom:20px;
+      font-size:14px;
+    }
+
+    .title{
+      font-size:120px;
+      line-height:95%;
+      text-transform:uppercase;
+      color:#d4a017;
+      text-shadow:
+      0 0 10px rgba(212,160,23,.2),
+      0 0 30px rgba(212,160,23,.1);
+    }
+
+    .desc{
+      margin-top:30px;
+      font-size:22px;
+      color:#d2d2d2;
+      max-width:550px;
+      line-height:150%;
+    }
+
+    .hero-buttons{
+      margin-top:40px;
+      display:flex;
+      gap:20px;
+    }
+
+    .btn{
+      padding:16px 35px;
+      text-decoration:none;
+      text-transform:uppercase;
+      letter-spacing:2px;
+      transition:.3s;
+      border:1px solid #d4a017;
+    }
+
+    .btn-primary{
+      background:#d4a017;
+      color:black;
+      font-weight:bold;
+    }
+
+    .btn-primary:hover{
+      background:#ffbf00;
+      transform:translateY(-4px);
+    }
+
+    .btn-secondary{
+      color:#d4a017;
+    }
+
+    .btn-secondary:hover{
+      background:#d4a017;
+      color:black;
+    }
+
+    /* CARD */
+
+    .floating-card{
+      position:absolute;
+      right:80px;
+      bottom:100px;
+
+      width:340px;
+
+      background:#ece2c4;
+      color:black;
+
+      padding:15px;
+
+      transform:rotate(3deg);
+
+      box-shadow:
+      0 10px 40px rgba(0,0,0,.5);
+    }
+
+    .floating-card img{
+      width:100%;
+      display:block;
+    }
+
+    .floating-card p{
+      margin-top:10px;
+      font-family:'Caveat', cursive;
+      font-size:30px;
+      text-align:center;
+    }
+
+    /* GLITCH */
+
+    .glitch{
+      position:relative;
+      animation:glitch 2s infinite;
+    }
+
+    @keyframes glitch{
+
+      0%{
+        transform:translate(0);
+      }
+
+      20%{
+        transform:translate(-2px,2px);
+      }
+
+      40%{
+        transform:translate(-2px,-2px);
+      }
+
+      60%{
+        transform:translate(2px,2px);
+      }
+
+      80%{
+        transform:translate(2px,-2px);
+      }
+
+      100%{
+        transform:translate(0);
+      }
+
+    }
+
+    /* RESPONSIVO */
+
+    @media(max-width:1100px){
+
+      .title{
+        font-size:80px;
+      }
+
+      .floating-card{
+        display:none;
+      }
+
+    }
+
+    @media(max-width:800px){
+
+      .navbar{
+        padding:0 20px;
+      }
+
+      .menu{
+        display:none;
+      }
+
+      .title{
+        font-size:60px;
+      }
+
+      .hero{
+        padding:140px 30px 60px;
+      }
+
+      .desc{
+        font-size:18px;
+      }
+
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <!-- NAVBAR -->
+
+  <nav class="navbar">
+
+    <div class="left">
+
+      <img class="crest" src="https://upload.wikimedia.org/wikipedia/en/0/00/Bully_Canis_Canem_Edit_logo.png">
+
+      <div class="menu">
+        <a href="#">Início</a>
+        <a href="#">Perfil</a>
+        <a href="#">Comunidades</a>
+        <a href="#">Fórum</a>
+        <a href="#">Eventos</a>
+        <a href="#">Regras</a>
+      </div>
+
+    </div>
+
+    <div class="right">
+      <a class="login" href="#">Entrar</a>
+      <a class="register" href="#">Cadastrar-se</a>
+    </div>
+
+  </nav>
+
+  <!-- HERO -->
+
+  <section class="hero">
+
+    <div class="hero-content">
+
+      <p class="subtitle">
+        Roleplay • Community • Story
+      </p>
+
+      <h1 class="title glitch">
+        Bullworth<br>RPG
+      </h1>
+
+      <p class="desc">
+        Crie sua história dentro da Bullworth Academy.
+        Faça aliados, inimigos, participe de eventos
+        e sobreviva à escola mais caótica dos games.
+      </p>
+
+      <div class="hero-buttons">
+
+        <a href="#" class="btn btn-primary">
+          Jogar Agora
+        </a>
+
+        <a href="#" class="btn btn-secondary">
+          Ver Facções
+        </a>
+
+      </div>
+
+    </div>
+
+    <!-- CARD -->
+
+    <div class="floating-card">
+
+      <img src="https://i.imgur.com/JXxV6YQ.jpeg">
+
+      <p>
+        “Bullworth nunca esquece.”
+      </p>
+
+    </div>
+
+  </section>
+
+</body>
+</html>

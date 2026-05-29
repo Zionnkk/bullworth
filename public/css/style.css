@@ -1,0 +1,960 @@
+/* ================================= */
+/* RESET */
+/* ================================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+/* ================================= */
+/* BODY / FUNDO BULLWORTH */
+/* ================================= */
+
+body{
+    font-family:'Montserrat', Arial, sans-serif;
+    overflow-x:hidden;
+    color:#d4a017;
+    min-height:100vh;
+
+    background:
+        radial-gradient(circle at center, rgba(163,115,32,.14) 0%, rgba(7,17,29,0) 42%),
+        linear-gradient(180deg, #091522 0%, #07111d 38%, #0b1c2f 72%, #050b14 100%);
+}
+
+body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    background:url("https://www.transparenttextures.com/patterns/asfalt-dark.png");
+    opacity:.07;
+    pointer-events:none;
+    z-index:-1;
+}
+
+body::after{
+    content:"";
+    position:fixed;
+    inset:0;
+    background:radial-gradient(circle at center, transparent 45%, rgba(0,0,0,.82) 100%);
+    pointer-events:none;
+    z-index:-1;
+}
+
+/* ================================= */
+/* NAVBAR */
+/* ================================= */
+
+.navbar{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:90px;
+
+    padding:0 60px;
+
+    display:flex;
+    align-items:center;
+
+    background:rgba(5,10,18,.92);
+    border-bottom:1px solid rgba(212,160,23,.28);
+    backdrop-filter:blur(5px);
+
+    z-index:999;
+}
+
+.nav-left{
+    display:flex;
+    align-items:center;
+    gap:50px;
+}
+
+.crest{
+    width:68px;
+    opacity:.92;
+    filter:drop-shadow(0 0 10px rgba(212,160,23,.15));
+}
+
+.nav-links{
+    display:flex;
+    gap:38px;
+}
+
+.nav-links a{
+    color:#d7d7d7;
+    text-decoration:none;
+
+    font-size:14px;
+    letter-spacing:4px;
+
+    position:relative;
+    transition:.3s ease;
+}
+
+.nav-links a:hover{
+    color:#d4a017;
+}
+
+.nav-links a::after{
+    content:"";
+    position:absolute;
+    left:0;
+    bottom:-10px;
+
+    width:0;
+    height:1px;
+
+    background:#d4a017;
+    box-shadow:0 0 10px rgba(212,160,23,.65);
+
+    transition:.3s ease;
+}
+
+.nav-links a:hover::after{
+    width:100%;
+}
+
+/* ================================= */
+/* HOME */
+/* ================================= */
+
+.home-screen{
+    min-height:100vh;
+
+    padding:120px 70px 50px 60px;
+
+    display:grid;
+    grid-template-columns:430px minmax(0, 1fr);
+    gap:110px;
+    align-items:center;
+}
+
+/* ================================= */
+/* PAINEL ESQUERDO */
+/* ================================= */
+
+.left-panel{
+    width:430px;
+}
+
+.panel-box{
+    width:430px;
+
+    padding:36px 34px;
+
+    position:relative;
+    overflow:hidden;
+
+    background:
+        linear-gradient(rgba(4,13,24,.92), rgba(2,8,15,.97)),
+        url("https://www.transparenttextures.com/patterns/asfalt-dark.png");
+
+    border:1px solid rgba(212,160,23,.45);
+
+    box-shadow:
+        inset 0 0 50px rgba(0,0,0,.6),
+        0 0 40px rgba(0,0,0,.4);
+
+    transition:
+        transform .35s ease,
+        box-shadow .35s ease,
+        border-color .35s ease;
+}
+
+.panel-box:hover{
+    transform:translateY(-6px);
+
+    border-color:rgba(212,160,23,.85);
+
+    box-shadow:
+        inset 0 0 55px rgba(0,0,0,.65),
+        0 0 35px rgba(212,160,23,.18),
+        0 0 80px rgba(212,160,23,.08);
+}
+
+.panel-box::before{
+    content:"";
+    position:absolute;
+    inset:8px;
+
+    border:1px solid rgba(212,160,23,.12);
+
+    pointer-events:none;
+}
+
+/* header do painel */
+
+.panel-header{
+    display:flex;
+    align-items:center;
+    gap:16px;
+
+    margin-bottom:36px;
+}
+
+.panel-header img{
+    width:46px;
+    opacity:.9;
+}
+
+.panel-header span{
+    display:block;
+
+    color:#d4a017;
+
+    font-size:12px;
+    letter-spacing:4px;
+}
+
+.panel-header small{
+    color:#9d8f6d;
+
+    font-size:11px;
+    letter-spacing:3px;
+}
+
+/* título do painel */
+
+.panel-box h2{
+    font-family:'Anton', sans-serif;
+
+    color:#d4a017;
+
+    font-size:48px;
+    line-height:.9;
+
+    text-transform:uppercase;
+}
+
+/* textos do painel */
+
+.panel-box p{
+    color:#d7d7d7;
+
+    font-size:15px;
+    line-height:180%;
+
+    margin-bottom:26px;
+}
+
+.panel-divider{
+    height:1px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(212,160,23,.65),
+            transparent
+        );
+
+    margin:30px 0;
+}
+
+/* links do painel */
+
+.panel-link{
+    display:grid;
+    grid-template-columns:56px 1fr;
+    gap:16px;
+    align-items:center;
+
+    margin-bottom:24px;
+
+    cursor:pointer;
+
+    transition:transform .3s ease;
+}
+
+.panel-link:hover{
+    transform:translateX(8px);
+}
+
+.panel-icon{
+    width:52px;
+    height:52px;
+
+    border:1px solid rgba(212,160,23,.55);
+    border-radius:50%;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(212,160,23,.08),
+            transparent 70%
+        );
+
+    transition:
+        transform .3s ease,
+        box-shadow .3s ease,
+        border-color .3s ease,
+        background .3s ease;
+}
+
+.panel-icon img{
+    width:24px;
+    height:24px;
+
+    object-fit:contain;
+
+    filter:
+        sepia(1)
+        saturate(1.8)
+        brightness(.92);
+
+    transition:filter .3s ease;
+}
+
+.panel-icon img.fist-icon{
+    width:32px;
+    height:32px;
+}
+
+.panel-link:hover .panel-icon{
+    transform:scale(1.16);
+
+    border-color:#d4a017;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(212,160,23,.25),
+            rgba(212,160,23,.04) 70%
+        );
+
+    box-shadow:
+        0 0 12px rgba(212,160,23,.55),
+        0 0 30px rgba(212,160,23,.22);
+}
+
+.panel-link:hover .panel-icon img{
+    filter:
+        sepia(1)
+        saturate(2.2)
+        brightness(1.25)
+        drop-shadow(0 0 8px rgba(212,160,23,.65));
+}
+
+.panel-link h3{
+    color:#d4a017;
+
+    font-size:18px;
+    letter-spacing:3px;
+
+    margin-bottom:5px;
+
+    transition:
+        color .3s ease,
+        text-shadow .3s ease;
+}
+
+.panel-link:hover h3{
+    color:#ffbf35;
+
+    text-shadow:
+        0 0 10px rgba(212,160,23,.65),
+        0 0 25px rgba(212,160,23,.25);
+}
+
+.panel-link span{
+    color:#d2d2d2;
+
+    font-size:14px;
+    line-height:150%;
+}
+
+/* ================================= */
+/* LADO DIREITO */
+/* ================================= */
+
+.right-panel{
+    width:100%;
+    min-width:0;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.hero-content{
+
+    width:100%;
+
+    max-width:820px;
+
+    display:block !important;
+
+    text-align:center;
+
+}
+.home-logo{
+    width:250px;
+
+    margin-bottom:20px;
+
+    opacity:.95;
+
+    filter:
+        drop-shadow(0 0 20px rgba(212,160,23,.16));
+}
+
+.home-subtitle{
+    color:#d4a017;
+
+    font-size:13px;
+    letter-spacing:7px;
+
+    margin-bottom:30px;
+}
+
+.home-title{
+    font-family:'Anton', sans-serif;
+
+    color:#d4a017;
+
+    font-size:112px;
+    line-height:.86;
+
+    text-transform:uppercase;
+    letter-spacing:2px;
+
+    text-shadow:
+        0 0 25px rgba(212,160,23,.08);
+}
+
+.home-description{
+
+    display:block;
+
+    width:100%;
+
+    max-width:650px;
+
+    margin-top:40px;
+
+    color:#dddddd;
+
+    font-size:22px;
+
+    line-height:170%;
+
+}
+
+/* ================================= */
+/* RESPONSIVO */
+/* ================================= */
+
+@media(max-width:1150px){
+    .home-screen{
+        grid-template-columns:1fr;
+        gap:50px;
+        justify-items:center;
+    }
+
+    .left-panel,
+    .panel-box{
+        width:100%;
+        max-width:430px;
+    }
+
+    .home-title{
+        font-size:82px;
+    }
+}
+
+@media(max-width:700px){
+    .navbar{
+        padding:0 22px;
+    }
+
+    .nav-links{
+        display:none;
+    }
+
+    .home-screen{
+        padding:120px 24px 40px;
+    }
+
+    .home-title{
+        font-size:58px;
+    }
+
+    .home-description{
+        font-size:17px;
+    }
+
+    .panel-box{
+        padding:30px 26px;
+    }
+}
+.panel-title{
+    margin-bottom:28px;
+}
+
+.panel-title h2{
+    margin-bottom:18px;
+}
+.panel-title{
+    margin-bottom:28px;
+}
+
+.panel-title h2{
+    margin-bottom:18px;
+}
+
+/* linha pequena do título */
+.panel-box .panel-line{
+    display:block;
+    width:180px;
+    height:4px;
+    margin:22px 0 32px 0;
+    position:relative;
+    overflow:hidden;
+    border-radius:999px;
+    background:rgba(212,160,23,.18);
+    box-shadow:0 0 10px rgba(212,160,23,.25);
+}
+
+.panel-box .panel-line::before{
+    content:"";
+    position:absolute;
+    top:0;
+    left:-100px;
+    width:100px;
+    height:100%;
+    background:linear-gradient(90deg, transparent, #ffcf45, #fff8c9, transparent);
+    box-shadow:0 0 14px rgba(255,191,0,.95);
+    animation:panelLineRun 1.3s linear infinite;
+}
+
+@keyframes panelLineRun{
+    from{ left:-100px; }
+    to{ left:240px; }
+}
+.panel-line{
+    display:block;
+
+    width:100%;
+    height:3px;
+
+    margin:22px 0 32px;
+
+    background:rgba(212,160,23,.22);
+
+    transition:
+        background .25s ease,
+        box-shadow .25s ease;
+
+    border-radius:0 !important;
+}
+
+.panel-box:hover .panel-line{
+
+    background:#ffcf45;
+
+    box-shadow:
+        0 0 4px rgba(255,191,0,.65),
+        0 0 10px rgba(255,191,0,.35);
+
+    border-radius:0 !important;
+}
+
+.panel-box:hover .panel-line{
+
+    background:#ffcf45;
+
+    box-shadow:
+        0 0 3px rgba(255,191,0,.45);
+
+}
+
+.panel-line::before{
+    content:"" !important;
+
+    position:absolute !important;
+    top:0 !important;
+    left:-35% !important;
+
+    width:35% !important;
+    height:100% !important;
+
+    background:linear-gradient(
+        90deg,
+        transparent,
+        #ffcf45,
+        #fff8c9,
+        #ffcf45,
+        transparent
+    ) !important;
+
+    box-shadow:
+        0 0 10px rgba(255,191,0,.9),
+        0 0 22px rgba(255,191,0,.55) !important;
+
+    opacity:0 !important;
+}
+
+.panel-box:hover .panel-line::before{
+    opacity:1 !important;
+    animation:panelLineRun 1.2s ease-out forwards !important;
+}
+
+@keyframes panelLineRun{
+    from{
+        left:-35%;
+    }
+
+    to{
+        left:100%;
+    }
+}
+.gangs-page{
+
+    padding:150px 80px 80px;
+
+}
+
+.gangs-header{
+
+    margin-bottom:60px;
+
+}
+
+.gangs-header h1{
+
+    font-family:'Anton',sans-serif;
+
+    font-size:90px;
+
+    color:#d4a017;
+
+}
+
+.gang-grid{
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(3, 1fr);
+
+    gap:30px;
+
+}
+
+.gang-card{
+
+    height:220px;
+
+    border:1px solid rgba(212,160,23,.25);
+
+    background:
+    rgba(5,12,20,.85);
+
+    text-decoration:none;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    transition:.3s ease;
+
+    position:relative;
+
+    overflow:hidden;
+
+}
+
+.gang-card:hover{
+
+    transform:translateY(-8px);
+
+    border-color:#d4a017;
+
+}
+.camarilhas-page{
+    min-height:100vh;
+    padding:150px 80px 80px;
+}
+
+.camarilhas-header span{
+    color:#d4a017;
+    letter-spacing:7px;
+    font-size:13px;
+}
+
+.camarilhas-header h1{
+    font-family:'Anton', sans-serif;
+    color:#d4a017;
+    font-size:90px;
+    line-height:.9;
+    margin-top:18px;
+}
+
+.camarilhas-header p{
+    color:#d7d7d7;
+    font-size:20px;
+    margin-top:18px;
+}
+
+.camarilhas-grid{
+    margin-top:55px;
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:26px;
+}
+
+.camarilha-card{
+    height:210px;
+    position:relative;
+    overflow:hidden;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    text-decoration:none;
+
+    background:
+        linear-gradient(rgba(4,13,24,.88), rgba(2,8,15,.96)),
+        url("https://www.transparenttextures.com/patterns/asfalt-dark.png");
+
+    border:1px solid rgba(212,160,23,.35);
+
+    box-shadow:
+        inset 0 0 45px rgba(0,0,0,.55),
+        0 0 30px rgba(0,0,0,.35);
+
+    transition:.35s ease;
+}
+
+.camarilha-card::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:radial-gradient(circle at center, var(--gang-color), transparent 70%);
+    opacity:.18;
+    transition:.35s ease;
+}
+
+.camarilha-card h2{
+    position:relative;
+    z-index:2;
+
+    font-family:'Anton', sans-serif;
+    color:#d4a017;
+    font-size:46px;
+    letter-spacing:3px;
+}
+
+.camarilha-card:hover{
+    transform:translateY(-8px);
+    border-color:#d4a017;
+
+    box-shadow:
+        inset 0 0 50px rgba(0,0,0,.6),
+        0 0 35px rgba(212,160,23,.18);
+}
+
+.camarilha-card:hover::before{
+    opacity:.4;
+}
+
+.bullies{ --gang-color:#e6e6e6; }
+.preppies{ --gang-color:#658fce; }
+.greasers{ --gang-color:#131313; }
+.jocks{ --gang-color:#235596; }
+.nerds{ --gang-color:#24833c; }
+.cheers{ --gang-color:#c65a9b; }
+/* ================================= */
+/* PÁGINA DETALHE DAS CAMARILHAS */
+/* ================================= */
+
+.gang-detail-page{
+    min-height:100vh;
+    padding:150px 80px 80px;
+}
+
+.gang-detail-header span{
+    color:#d4a017;
+    letter-spacing:7px;
+    font-size:13px;
+}
+
+.gang-detail-header h1{
+    font-family:'Anton', sans-serif;
+    color:#d4a017;
+    font-size:110px;
+    line-height:.9;
+    margin-top:14px;
+}
+
+.gang-detail-header p{
+    color:#d7d7d7;
+    font-size:20px;
+    margin-top:18px;
+    max-width:620px;
+    line-height:160%;
+}
+
+.gang-detail-panel{
+    margin-top:55px;
+    min-height:500px;
+
+    background:
+        linear-gradient(rgba(4,13,24,.9), rgba(2,8,15,.97)),
+        url("https://www.transparenttextures.com/patterns/asfalt-dark.png");
+
+    border:1px solid rgba(212,160,23,.38);
+
+    box-shadow:
+        inset 0 0 65px rgba(0,0,0,.65),
+        0 0 35px rgba(0,0,0,.4);
+
+    position:relative;
+    overflow:hidden;
+}
+
+.gang-detail-panel::before{
+    content:"";
+    position:absolute;
+    inset:0;
+
+    background:
+        radial-gradient(circle at 20% 20%, var(--gang-color), transparent 35%),
+        radial-gradient(circle at 90% 80%, var(--gang-color), transparent 35%);
+
+    opacity:.13;
+    pointer-events:none;
+}
+
+.gang-detail-panel-header{
+    position:relative;
+    z-index:2;
+
+    padding:28px 34px;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    border-bottom:1px solid rgba(212,160,23,.18);
+}
+
+.gang-detail-panel-header span{
+    color:rgba(212,160,23,.72);
+    font-size:12px;
+    letter-spacing:5px;
+}
+
+.gang-detail-panel-header h2{
+    font-family:'Anton', sans-serif;
+    color:#d4a017;
+    font-size:42px;
+    margin-top:8px;
+}
+
+.gang-detail-panel-header strong{
+    color:#d4a017;
+    font-size:13px;
+    letter-spacing:3px;
+    opacity:.75;
+}
+
+.gang-detail-content{
+    position:relative;
+    z-index:2;
+
+    min-height:420px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.gang-detail-content p{
+    font-family:'Anton', sans-serif;
+    font-size:58px;
+    letter-spacing:3px;
+    color:rgba(212,160,23,.45);
+}
+
+/* cor específica dos Bullies */
+
+.gang-bullies{
+    --gang-color:#b8932f;
+}
+.gang-banner{
+
+    position:relative;
+
+    height:320px;
+
+    overflow:hidden;
+
+    border:1px solid rgba(212,160,23,.25);
+
+    margin-top:120px;
+
+}
+
+.gang-banner img{
+
+    width:100%;
+    height:100%;
+
+    object-fit:cover;
+
+    filter:
+        brightness(.55)
+        contrast(1.1);
+
+}
+
+.gang-banner-overlay{
+
+    position:absolute;
+
+    left:50px;
+    bottom:40px;
+
+}
+
+.gang-banner-overlay span{
+
+    color:#d4a017;
+
+    letter-spacing:6px;
+
+    font-size:12px;
+
+}
+
+.gang-banner-overlay h1{
+
+    font-family:'Anton',sans-serif;
+
+    font-size:90px;
+
+    color:#d4a017;
+
+    margin-top:12px;
+
+}
+.gang-bullies{ --gang-color:#e6e6e6; }
+.gang-preppies{ --gang-color:#658fce; }
+.gang-greasers{ --gang-color:#131313; }
+.gang-jocks{ --gang-color:#235596; }
+.gang-nerds{ --gang-color:#24833c; }
+.gang-cheers{ --gang-color:#c65a9b; }
+.site-logo{
+    width:42px;
+    height:42px;
+    object-fit:contain;
+}
