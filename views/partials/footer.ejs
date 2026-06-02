@@ -2,15 +2,6 @@
 <script src="/js/main.js"></script>
 <div id="report-transition">
 
-    <div class="transition-content">
-
-        <div class="scan-line"></div>
-
-        <h2>ACCESSING REPORT CARD</h2>
-
-        <p>Reading student records...</p>
-
-    </div>
     <audio id="global-menu-click" preload="auto">
     <source src="/audio/menu-click.mp3" type="audio/mpeg">
 </audio>
@@ -22,12 +13,23 @@
         globalClickSound.volume = 0.55;
 
         document.querySelectorAll("a, button").forEach(item => {
-            item.addEventListener("click", () => {
+            item.addEventListener("click", (e) => {
+                const href = item.getAttribute("href");
+
                 globalClickSound.currentTime = 0;
                 globalClickSound.play().catch(() => {});
+
+                if(item.tagName === "A" && href && href !== "#" && !href.startsWith("#")){
+                    e.preventDefault();
+
+                    setTimeout(() => {
+                        window.location.href = href;
+                    }, 650);
+                }
             });
         });
     }
+</script>
 </script>
 
 </div>
