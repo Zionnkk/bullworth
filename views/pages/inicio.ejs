@@ -1,99 +1,100 @@
 <%- include("../partials/header") %>
-<%- include("../partials/navbar") %>
 
-<main class="home-screen">
+<main class="pause-home">
 
-    <section class="left-panel">
+    <section class="pause-menu">
 
-        <div class="panel-box">
+        <img src="/img/bullworthacademy.png" class="pause-title-img" alt="BULLWORTH ACADEMY">
 
-            <div class="panel-header">
-                <img src="/img/brasao.png">
+<img src="/img/gamepaused.png" class="pause-subtitle-img" alt="GAME PAUSED">
 
-                <div>
-                    <span>BULLWORTH ACADEMY</span>
-                    <small>EST. 2006</small>
-                </div>
-            </div>
+        <nav class="pause-options">
 
-            <div class="panel-title">
-                <h2>SOBRE BULLWORTH</h2>
-                <div class="panel-line"></div>
-            </div>
+    <a href="/sistemas">SISTEMAS</a>
 
-            <p>
-                Bem vindo (a) à indisciplinada Bullworth Academy, onde a sua vida escolar depende nada mais, nada menos, do que do seu corpo (ou da sua conta bancária).
-            </p>
+    <a href="/camarilhas">CAMARILHAS</a>
 
-            <p>
-                Entre corredores, banheiros, salas de aulas, garagens e até mesmo o seu dormitório, você vai dar de um cara com um mané de quinta, então, tome cuidado.
-            </p>
+    <a href="/privilegios">PRIVILÉGIOS</a>
 
-            <p>
-                Aqui, sobreviver é mais importante do que ganhar uma briga.
-            </p>
+    <a href="#" class="disabled-menu">LOAD</a>
 
-            <div class="panel-divider"></div>
+    <a href="#" class="disabled-menu">RESTART</a>
 
-            <div class="panel-link">
-                <div class="panel-icon">
-                    <img class="fist-icon" src="/img/fist.png">
-                </div>
+    <a href="#" class="disabled-menu">QUIT TO MAIN MENU</a>
 
-                <div>
-                    <h3>CAMARILHAS</h3>
-                    <span>Conheça os grupos que dominam a escola.</span>
-                </div>
-            </div>
+</nav>
 
-            <div class="panel-link">
-                <div class="panel-icon">
-                    <img src="/img/skull.png">
-                </div>
+               <div class="bully-music-display">
 
-                <div>
-                    <h3>COMBATE</h3>
-                    <span>Lute, defenda seu território, conquiste respeito.</span>
-                </div>
-            </div>
+            <button type="button" id="music-toggle">
+                ▶
+            </button>
 
-            <div class="panel-link">
-                <div class="panel-icon">
-                    <img src="/img/book.png">
-                </div>
-
-                <div>
-                    <h3>PRIVILÉGIOS</h3>
-                    <span>Seja você um gigante, um cabeça-de-ferro ou um ratinho, lidere Bullworth.</span>
-                </div>
+            <div>
+                <strong>MAIN THEME : PAUSED</strong>
+                <span>1985, New England</span>
             </div>
 
         </div>
 
     </section>
 
-    <section class="right-panel">
-
-    <div class="hero-content">
-
-        <img src="/img/Bully-Logo.png" class="home-logo">
-
-        <p class="home-subtitle">
-            BULLWORTH ACADEMY • EST. 2006
-        </p>
-
-        <h1 class="home-title">
-            INFORMAÇÕES<br>
-            ESCOLARES
-        </h1>
-
-        <p class="home-description">
-            Bullworth te observa, garoto. Mas você pode observá-la também.
-
-    </div>
-
-</section>
-
 </main>
+
+<audio id="menu-click" preload="auto">
+    <source src="/audio/menu-click.mp3" type="audio/mpeg">
+</audio>
+
+<audio id="main-theme" loop preload="auto">
+    <source src="/audio/bully-main-theme.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+    const clickSound = document.getElementById("menu-click");
+    const musicToggle = document.getElementById("music-toggle");
+    const musicText = document.querySelector(".bully-music-display strong");
+    const audio = document.getElementById("main-theme");
+
+    clickSound.volume = 0.2;
+    audio.volume = 0.25;
+
+    document.querySelectorAll(".pause-options a").forEach(link => {
+        link.addEventListener("click", async (e) => {
+            e.preventDefault();
+
+            clickSound.currentTime = 0;
+
+            try{
+                await clickSound.play();
+            }catch(error){
+                console.log("Som bloqueado ou arquivo não encontrado.");
+            }
+
+            const href = link.getAttribute("href");
+
+            if(href && href !== "#"){
+                setTimeout(() => {
+    window.location.href = href;
+}, 700);
+            }
+        });
+    });
+
+    let playing = false;
+
+    musicToggle.addEventListener("click", () => {
+        if(!playing){
+            audio.play();
+            musicText.textContent = "MAIN THEME : PLAYING";
+            musicToggle.textContent = "❚❚";
+            playing = true;
+        }else{
+            audio.pause();
+            musicText.textContent = "MAIN THEME : PAUSED";
+            musicToggle.textContent = "▶";
+            playing = false;
+        }
+    });
+</script>
 
 <%- include("../partials/footer") %>

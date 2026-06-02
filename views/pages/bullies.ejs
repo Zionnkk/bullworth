@@ -1,62 +1,164 @@
 <%- include("../partials/header") %>
-<%- include("../partials/navbar") %>
 
-<main class="gang-detail-page">
+<main class="gang-menu-page gang-bullies">
 
-    <section class="gang-banner">
+    <section class="gang-menu-box">
 
-        <img src="/img/bullies-banner.png">
+        <section class="gang-banner bully-menu-banner">
 
-        <div class="gang-banner-overlay">
-            <span>ARQUIVO DE CAMARILHA</span>
-            <h1>BULLIES</h1>
+            <img src="/img/bullies-banner.png" alt="Bullies Banner">
+
+            <div class="gang-banner-overlay">
+                <span>ARQUIVO DE CAMARILHA</span>
+                <h1>BULLIES</h1>
+            </div>
+
+        </section>
+
+        <div class="bully-music-display gang-music-display">
+
+            <button type="button" id="gang-music-toggle">
+                ▶
+            </button>
+
+            <div>
+                <strong>VENDETTA : PAUSED</strong>
+                <span>GOLIAS' FRIENDS THEME</span>
+            </div>
+
+        </div>
+
+        <nav class="gang-file-nav">
+            <a href="/">HOME</a>
+            <span>:</span>
+            <a href="#ambientacao" class="active">AMBIENTAÇÃO</a>
+            <span>:</span>
+            <a href="#balanceamento">BALANCEAMENTO ATRIBUTIVO</a>
+        </nav>
+
+        <div class="camarilhas-bully-line"></div>
+
+        <section id="ambientacao" class="gang-section gang-text-section">
+
+            <h2>AMBIENTAÇÃO</h2>
+
+            <p>
+                Em breve... Os valentões!
+            </p>
+
+        </section>
+
+        <section id="balanceamento" class="gang-section gang-balance-section">
+
+            <h2>BALANCEAMENTO ATRIBUTIVO</h2>
+
+            <div class="report-title">
+                GOLIAS' FRIENDS — REPORT CARD
+            </div>
+
+            <div class="status-grid">
+
+                <div class="grid-empty"></div>
+
+                <div class="year-title">PORTE<br>FÍSICO</div>
+                <div class="year-title">AGILIDADE</div>
+                <div class="year-title">INTELIGÊNCIA</div>
+                <div class="year-title">STRIKING</div>
+                <div class="year-title">GRAPPLING</div>
+
+                <div class="stat-name">FRESHMAN</div>
+                <%- include("../partials/stars",{ estrelas:1 }) %>
+                <%- include("../partials/stars",{ estrelas:2 }) %>
+                <%- include("../partials/stars",{ estrelas:1 }) %>
+                <%- include("../partials/stars",{ estrelas:1 }) %>
+                <%- include("../partials/stars",{ estrelas:1 }) %>
+
+                <div class="stat-name">SOPHOMORE</div>
+                <%- include("../partials/stars",{ estrelas:2 }) %>
+                <%- include("../partials/stars",{ estrelas:2 }) %>
+                <%- include("../partials/stars",{ estrelas:1 }) %>
+                <%- include("../partials/stars",{ estrelas:2 }) %>
+                <%- include("../partials/stars",{ estrelas:1 }) %>
+
+                <div class="stat-name">JUNIOR</div>
+                <%- include("../partials/stars",{ estrelas:3 }) %>
+                <%- include("../partials/stars",{ estrelas:3 }) %>
+                <%- include("../partials/stars",{ estrelas:2 }) %>
+                <%- include("../partials/stars",{ estrelas:3 }) %>
+                <%- include("../partials/stars",{ estrelas:1 }) %>
+
+                <div class="stat-name">SENIOR</div>
+                <%- include("../partials/stars",{ estrelas:6 }) %>
+                <%- include("../partials/stars",{ estrelas:2 }) %>
+                <%- include("../partials/stars",{ estrelas:1 }) %>
+                <%- include("../partials/stars",{ estrelas:3 }) %>
+                <%- include("../partials/stars",{ estrelas:3 }) %>
+
+            </div>
+
+        </section>
+
+        <div class="gang-return">
+            <a href="/camarilhas">VOLTAR PARA CAMARILHAS</a>
         </div>
 
     </section>
 
-    <section class="gang-detail-panel">
-
-    <div class="gang-detail-content">
-
-        <p class="gang-coming-soon">
-    Em breve... Os valentões!
-</p>
-    </div>
-
-    <div class="bullies-actions">
-
-        <a href="/camarilhas/bullies/nivelamento" class="next-page report-link">
-    NIVELAMENTO
-    <span>></span>
-</a>
-
-    </div>
-
-</section>
-
 </main>
-<div id="report-transition">
-    <div class="transition-content">
-        <div class="scan-line"></div>
-        <h2>ACESSANDO INFORMAÇÕES</h2>
-        <p>Enquanto isso, vá ler um livro!</p>
-    </div>
-</div>
+
+<audio id="gang-theme" loop preload="auto">
+    <source src="/audio/bullies-theme.mp3" type="audio/mpeg">
+</audio>
 
 <script>
-    const reportLink = document.querySelector(".next-page");
+    const navLinks = document.querySelectorAll(".gang-file-nav a[href^='#']");
+    const sections = document.querySelectorAll(".gang-section");
 
-    if(reportLink){
-        reportLink.addEventListener("click", function(e){
-            e.preventDefault();
+    window.addEventListener("scroll", () => {
+        let current = "";
 
-            document.getElementById("report-transition").classList.add("active");
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop - 180;
 
-            setTimeout(() => {
-                window.location.href = reportLink.href;
-            }, 1800);
+            if(window.scrollY >= sectionTop){
+                current = section.getAttribute("id");
+            }
         });
-    }
+
+        navLinks.forEach(link => {
+            link.classList.remove("active");
+
+            if(link.getAttribute("href") === "#" + current){
+                link.classList.add("active");
+            }
+        });
+    });
+
+    const gangToggle = document.getElementById("gang-music-toggle");
+    const gangText = document.querySelector(".gang-music-display strong");
+    const gangAudio = document.getElementById("gang-theme");
+
+    gangAudio.volume = 0.25;
+
+    let gangPlaying = false;
+
+    gangToggle.addEventListener("click", () => {
+        if(!gangPlaying){
+            gangAudio.play();
+
+            gangText.textContent = "VENDETTA : PLAYING";
+            gangToggle.textContent = "❚❚";
+
+            gangPlaying = true;
+        }else{
+            gangAudio.pause();
+
+            gangText.textContent = "VENDETTA : PAUSED";
+            gangToggle.textContent = "▶";
+
+            gangPlaying = false;
+        }
+    });
 </script>
 
 <%- include("../partials/footer") %>

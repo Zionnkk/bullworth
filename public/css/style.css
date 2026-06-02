@@ -575,9 +575,10 @@ body::after{
 }
 
 .gang-banner img{
-    width:100%;
+     width:100%;
     height:100%;
     object-fit:cover;
+    object-position:center top;
     filter:
         brightness(.55)
         contrast(1.1);
@@ -590,7 +591,7 @@ body::after{
 }
 
 .gang-banner-overlay span{
-    color:#d4a017;
+    color:#e8e8e8;
     letter-spacing:6px;
     font-size:12px;
 }
@@ -1091,4 +1092,928 @@ body::after{
 .bully-status-box{
     position:relative;
     z-index:2;
+}
+.pause-home{
+    min-height:100vh;
+    padding:80px 20px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    position:relative;
+    overflow:hidden;
+    background:
+        linear-gradient(rgba(35,75,78,.70), rgba(28,62,66,.82)),
+        url("/img/backgroundstatus.png") center center / cover no-repeat;
+}
+
+.pause-home::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:rgba(8,25,29,.28);
+    pointer-events:none;
+}
+
+.pause-menu{
+    position:relative;
+    z-index:2;
+    width:100%;
+    max-width:900px;
+    text-align:center;
+    font-family:"EB Garamond", Georgia, serif;
+    transform:none;
+    transform-origin:center center;
+}
+
+.pause-title-img{
+    width:650px;
+    max-width:90vw;
+    display:block;
+    margin:0 auto 12px;
+    filter:
+        invert(70%)
+        sepia(74%)
+        saturate(850%)
+        hue-rotate(355deg)
+        brightness(95%)
+        contrast(95%)
+        drop-shadow(2px 2px 0 #102b35)
+        drop-shadow(0 0 10px rgba(255,191,0,.45));
+    user-select:none;
+    -webkit-user-drag:none;
+}
+
+.pause-subtitle-img{
+    width:280px;
+    max-width:80%;
+    display:block;
+    margin:0 auto 64px;
+    filter:
+        invert(100%)
+        brightness(95%)
+        drop-shadow(2px 2px 0 rgba(0,0,0,.65));
+    user-select:none;
+    -webkit-user-drag:none;
+}
+
+.pause-options{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:18px;
+}
+
+.pause-options a{
+    font-family:"EB Garamond", Georgia, serif;
+
+    font-size:34px;
+
+    font-weight:700;
+
+    line-height:0.9;
+
+    text-transform:uppercase;
+
+    text-decoration:none;
+
+    color:#ececec;
+
+    text-shadow:
+        2px 2px 0 rgba(0,0,0,.65);
+
+    transition:.22s ease;
+}
+
+.pause-options a:hover{
+    color:#d4a017;
+
+    transform:scale(1.06);
+
+    text-shadow:
+        0 0 10px rgba(255,191,0,.8),
+        0 0 20px rgba(255,191,0,.5),
+        2px 2px 0 rgba(0,0,0,.7);
+}
+
+.pause-options .disabled-menu{
+    cursor:default;
+}
+
+.pause-options .disabled-menu:hover{
+    transform:scale(1.05);
+}
+
+.bully-music-display{
+    margin:78px auto 0;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:10px;
+    color:#e6e6e6;
+    font-family:"EB Garamond", Georgia, serif;
+    font-style:italic;
+    text-shadow:2px 2px 0 rgba(0,0,0,.55);
+}
+
+.bully-music-display button{
+    width:24px;
+    height:22px;
+    border:1px solid rgba(230,230,230,.65);
+    background:rgba(255,255,255,.12);
+    color:#e6e6e6;
+    font-size:12px;
+    cursor:pointer;
+    transition:.22s ease;
+}
+
+.bully-music-display button:hover{
+    color:#d4a017;
+    border-color:#d4a017;
+    box-shadow:0 0 10px rgba(255,191,0,.35);
+}
+
+.bully-music-display div{
+    display:flex;
+    flex-direction:column;
+    align-items:flex-start;
+}
+
+.bully-music-display strong{
+    font-size:20px;
+    line-height:1;
+}
+
+.bully-music-display span{
+    font-size:16px;
+    margin-top:4px;
+}
+
+@media(max-width:900px){
+
+    .pause-title-img{
+        width:480px;
+    }
+
+    .pause-subtitle-img{
+        width:310px;
+        margin-bottom:46px;
+    }
+
+    .pause-options a,
+    .pause-options button{
+        font-size:34px;
+    }
+}
+
+@media(max-width:520px){
+    .pause-home{
+        padding:60px 18px;
+    }
+
+    .pause-title-img{
+        width:360px;
+    }
+
+    .pause-subtitle-img{
+        width:250px;
+    }
+
+    .pause-options{
+        gap:14px;
+    }
+
+    .pause-options a,
+    .pause-options button{
+        font-size:28px;
+    }
+
+    .bully-music-display{
+        margin-top:52px;
+    }
+}
+.camarilhas-menu-page{
+    min-height:100vh;
+    padding:130px 70px 70px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    position:relative;
+    overflow:hidden;
+}
+
+.camarilhas-menu-page::before{
+    content:"";
+    position:absolute;
+    inset:0;
+
+    background:
+        linear-gradient(rgba(2,8,15,.78), rgba(2,8,15,.86)),
+        url("/img/backgroundcamarilhas.png") center center / cover no-repeat;
+
+    filter:blur(1px);
+    opacity:.75;
+
+    pointer-events:none;
+}
+
+.camarilhas-menu-box{
+    position:relative;
+    z-index:2;
+}
+
+.camarilhas-menu-list{
+    margin:55px auto 0;
+
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:38px 70px;
+
+    max-width:900px;
+}
+
+.camarilhas-menu-list a{
+    color:#f2f2f2;
+
+    font-family:"EB Garamond", Georgia, serif;
+    font-size:38px;
+    font-weight:700;
+
+    text-align:center;
+    text-decoration:none;
+    text-transform:uppercase;
+
+    text-shadow:2px 2px 0 rgba(0,0,0,.65);
+
+    transition:.22s ease;
+}
+
+.camarilhas-menu-list a:hover{
+    color:#d4a017;
+
+    transform:scale(1.08);
+
+    text-shadow:
+        0 0 10px rgba(255,191,0,.8),
+        0 0 22px rgba(255,191,0,.45),
+        2px 2px 0 rgba(0,0,0,.7);
+}
+.camarilhas-bully-page{
+    min-height:100vh;
+    padding:90px 20px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    position:relative;
+    overflow:hidden;
+
+    background:
+        linear-gradient(rgba(35,75,78,.72), rgba(28,62,66,.86)),
+        url("/img/backgroundcamarilhas.png") center center / cover no-repeat;
+}
+
+.camarilhas-bully-page::before{
+    content:"";
+    position:absolute;
+    inset:0;
+
+    background:rgba(5,18,22,.28);
+
+    pointer-events:none;
+}
+
+.camarilhas-bully-box{
+    position:relative;
+    z-index:2;
+
+    width:100%;
+    max-width:980px;
+
+    text-align:center;
+
+    font-family:"EB Garamond", Georgia, serif;
+}
+
+.camarilhas-title-img{
+    width:430px;
+    max-width:90%;
+    display:block;
+    margin:0 auto 10px;
+
+    filter:
+        invert(70%)
+        sepia(74%)
+        saturate(850%)
+        hue-rotate(355deg)
+        brightness(95%)
+        contrast(95%)
+        drop-shadow(2px 2px 0 #102b35)
+        drop-shadow(0 0 10px rgba(255,191,0,.45));
+
+    user-select:none;
+    -webkit-user-drag:none;
+}
+
+.bully-breadcrumb{
+    color:#e8e8e8;
+
+    font-size:23px;
+    font-weight:700;
+    font-style:italic;
+
+    text-shadow:2px 2px 0 rgba(0,0,0,.55);
+
+    margin-bottom:16px;
+}
+
+.camarilhas-bully-line{
+    width:78%;
+    height:2px;
+
+    margin:0 auto 38px;
+
+    background:rgba(230,230,230,.68);
+
+    box-shadow:0 0 8px rgba(255,255,255,.16);
+}
+
+.camarilhas-bully-list{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+
+    gap:20px 58px;
+
+    max-width:800px;
+    margin:0 auto 45px;
+}
+
+.camarilhas-bully-list a{
+    color:#f0f0f0;
+
+    font-size:34px;
+    font-weight:800;
+
+    text-transform:uppercase;
+    text-decoration:none;
+
+    line-height:1;
+
+    text-shadow:
+        2px 2px 0 rgba(0,0,0,.65);
+
+    transition:.22s ease;
+}
+
+.camarilhas-bully-list a:hover{
+    color:#d4a017;
+
+    transform:scale(1.08);
+
+    text-shadow:
+        0 0 10px rgba(255,191,0,.8),
+        0 0 22px rgba(255,191,0,.45),
+        2px 2px 0 rgba(0,0,0,.7);
+}
+
+.camarilhas-info{
+    width:70%;
+    margin:0 auto;
+
+    padding-top:18px;
+
+    border-top:2px solid rgba(230,230,230,.55);
+
+    text-align:left;
+}
+
+.camarilhas-info h2{
+    color:#d4a017;
+
+    font-size:31px;
+    font-weight:800;
+
+    text-shadow:
+        2px 2px 0 rgba(0,0,0,.65),
+        0 0 10px rgba(255,191,0,.35);
+
+    margin-bottom:8px;
+}
+
+.camarilhas-info p{
+    color:#f0f0f0;
+
+    font-size:22px;
+    font-weight:700;
+
+    line-height:1.25;
+
+    text-shadow:2px 2px 0 rgba(0,0,0,.55);
+}
+.camarilhas-bully-page{
+    min-height:100vh;
+    padding:130px 70px 70px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    position:relative;
+    overflow:hidden;
+}
+
+.camarilhas-bully-page::before{
+    content:"";
+    position:absolute;
+    inset:0;
+
+    background:
+        linear-gradient(rgba(2,8,15,.78), rgba(2,8,15,.86)),
+        url("/img/backgroundcamarilhas.png") center center / cover no-repeat;
+
+    filter:blur(1px);
+    opacity:.85;
+
+    pointer-events:none;
+}
+
+.camarilhas-bully-box{
+    position:relative;
+    z-index:2;
+
+    width:100%;
+    max-width:1180px;
+    min-height:520px;
+
+    padding:36px 58px;
+
+    background:
+        linear-gradient(rgba(35,70,75,.78), rgba(20,45,52,.88)),
+        url("https://www.transparenttextures.com/patterns/asfalt-dark.png");
+
+    border:2px solid rgba(12,30,35,.85);
+
+    box-shadow:
+        inset 0 0 80px rgba(0,0,0,.45),
+        0 0 45px rgba(0,0,0,.45);
+}
+
+.camarilhas-bully-box::before{
+    content:"";
+    position:absolute;
+    inset:20px;
+
+    border:2px solid rgba(5,20,25,.55);
+
+    pointer-events:none;
+}
+
+.camarilhas-title-img{
+    width:430px;
+    max-width:90%;
+
+    display:block;
+
+    margin:0 auto 8px;
+
+    filter:
+        invert(70%)
+        sepia(74%)
+        saturate(850%)
+        hue-rotate(355deg)
+        brightness(95%)
+        contrast(95%)
+        drop-shadow(2px 2px 0 #102b35)
+        drop-shadow(0 0 10px rgba(255,191,0,.45));
+
+    user-select:none;
+    -webkit-user-drag:none;
+}
+
+.bully-breadcrumb{
+    color:#e8e8e8;
+
+    font-family:"EB Garamond", Georgia, serif;
+    font-size:22px;
+    font-weight:700;
+    font-style:italic;
+
+    text-align:center;
+
+    text-shadow:2px 2px 0 rgba(0,0,0,.55);
+
+    margin-bottom:22px;
+}
+
+.camarilhas-bully-line{
+    width:82%;
+    height:2px;
+
+    margin:0 auto 42px;
+
+    background:rgba(230,230,230,.65);
+
+    box-shadow:0 0 8px rgba(255,255,255,.16);
+}
+
+.camarilhas-bully-list{
+    position:relative;
+    z-index:2;
+
+    width:76%;
+
+    margin:0 auto 42px;
+
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+
+    row-gap:35px;
+    column-gap:90px;
+}
+
+.camarilhas-bully-list a{
+    color:#f0f0f0;
+
+    font-family:"EB Garamond", Georgia, serif;
+    font-size:34px;
+    font-weight:800;
+
+    text-align:center;
+    text-decoration:none;
+    text-transform:uppercase;
+
+    line-height:1;
+
+    text-shadow:2px 2px 0 rgba(0,0,0,.65);
+
+    transition:.22s ease;
+}
+
+.camarilhas-bully-list a:hover{
+    color:#d4a017;
+
+    transform:scale(1.08);
+
+    text-shadow:
+        0 0 10px rgba(255,191,0,.8),
+        0 0 22px rgba(255,191,0,.45),
+        2px 2px 0 rgba(0,0,0,.7);
+}
+
+.camarilhas-return{
+    position:relative;
+    z-index:2;
+
+    width:82%;
+
+    margin:0 auto;
+    padding-top:22px;
+
+    border-top:2px solid rgba(230,230,230,.55);
+
+    text-align:center;
+}
+
+.camarilhas-return a{
+    color:#f0f0f0;
+
+    font-family:"EB Garamond", Georgia, serif;
+    font-size:26px;
+    font-weight:800;
+    font-style:italic;
+
+    text-decoration:none;
+    text-transform:uppercase;
+
+    text-shadow:2px 2px 0 rgba(0,0,0,.65);
+
+    transition:.22s ease;
+}
+
+.camarilhas-return a:hover{
+    color:#d4a017;
+
+    transform:scale(1.06);
+
+    text-shadow:
+        0 0 10px rgba(255,191,0,.8),
+        0 0 22px rgba(255,191,0,.45),
+        2px 2px 0 rgba(0,0,0,.7);
+}
+.gang-file-nav{
+    margin:10px auto 35px;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:10px;
+
+    font-family:"EB Garamond", Georgia, serif;
+    font-size:22px;
+    font-weight:800;
+    font-style:italic;
+
+    text-shadow:2px 2px 0 rgba(0,0,0,.55);
+}
+
+.gang-file-nav a{
+    color:#f0f0f0;
+    text-decoration:none;
+    text-transform:uppercase;
+
+    transition:.22s ease;
+}
+
+.gang-file-nav span{
+    color:#f0f0f0;
+}
+
+.gang-file-nav a:hover,
+.gang-file-nav a.active{
+    color:#d4a017;
+
+    transform:scale(1.05);
+
+    text-shadow:
+        0 0 10px rgba(255,191,0,.8),
+        0 0 22px rgba(255,191,0,.45),
+        2px 2px 0 rgba(0,0,0,.7);
+}
+
+.gang-section{
+    scroll-margin-top:120px;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+.gang-return{
+    margin:35px auto 0;
+    text-align:center;
+}
+
+.gang-return a{
+    color:#f0f0f0;
+    font-family:"EB Garamond", Georgia, serif;
+    font-size:24px;
+    font-weight:800;
+    font-style:italic;
+    text-decoration:none;
+    text-transform:uppercase;
+    text-shadow:2px 2px 0 rgba(0,0,0,.65);
+    transition:.22s ease;
+}
+
+.gang-return a:hover{
+    color:#d4a017;
+    transform:scale(1.06);
+    text-shadow:
+        0 0 10px rgba(255,191,0,.8),
+        0 0 22px rgba(255,191,0,.45),
+        2px 2px 0 rgba(0,0,0,.7);
+}
+
+.gang-detail-panel .bully-status-box{
+    margin-top:55px;
+}
+.gang-menu-page{
+    min-height:100vh;
+    padding:90px 20px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    position:relative;
+    overflow:hidden;
+
+    background:
+        linear-gradient(rgba(35,75,78,.72), rgba(28,62,66,.86)),
+        url("/img/backgroundstatus.png") center center / cover no-repeat;
+}
+
+.gang-menu-page::before{
+    content:"";
+    position:absolute;
+    inset:0;
+
+    background:rgba(5,18,22,.28);
+
+    pointer-events:none;
+}
+
+.gang-menu-box{
+    position:relative;
+    z-index:2;
+
+    width:100%;
+    max-width:1180px;
+
+    padding:36px 58px;
+
+    background:
+        linear-gradient(rgba(35,70,75,.78), rgba(20,45,52,.88)),
+        url("https://www.transparenttextures.com/patterns/asfalt-dark.png");
+
+    border:2px solid rgba(12,30,35,.85);
+
+    box-shadow:
+        inset 0 0 80px rgba(0,0,0,.45),
+        0 0 45px rgba(0,0,0,.45);
+
+    text-align:center;
+}
+
+.gang-menu-box::before{
+    content:"";
+    position:absolute;
+    inset:20px;
+
+    border:2px solid rgba(5,20,25,.55);
+
+    pointer-events:none;
+}
+
+.bully-menu-banner{
+    margin:0 auto 24px;
+    height:380px;
+    border:2px solid rgba(5,20,25,.55);
+}
+
+.bully-menu-banner img{
+    filter:
+        brightness(.55)
+        contrast(1.12)
+        saturate(.9);
+}
+
+.gang-file-nav{
+    position:relative;
+    z-index:2;
+
+    margin:0 auto 22px;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:10px;
+
+    font-family:"EB Garamond", Georgia, serif;
+    font-size:22px;
+    font-weight:800;
+    font-style:italic;
+
+    text-shadow:2px 2px 0 rgba(0,0,0,.55);
+}
+
+.gang-file-nav a{
+    color:#f0f0f0;
+
+    text-decoration:none;
+    text-transform:uppercase;
+
+    transition:.22s ease;
+}
+
+.gang-file-nav span{
+    color:#f0f0f0;
+}
+
+.gang-file-nav a:hover,
+.gang-file-nav a.active{
+    color:#d4a017;
+
+    transform:scale(1.05);
+
+    text-shadow:
+        0 0 10px rgba(255,191,0,.8),
+        0 0 22px rgba(255,191,0,.45),
+        2px 2px 0 rgba(0,0,0,.7);
+}
+
+.gang-section{
+    position:relative;
+    z-index:2;
+
+    scroll-margin-top:120px;
+}
+
+.gang-text-section{
+    width:82%;
+
+    margin:0 auto 55px;
+
+    text-align:left;
+}
+
+.gang-text-section h2,
+.gang-balance-section h2{
+    color:#d4a017;
+
+    font-family:"EB Garamond", Georgia, serif;
+    font-size:32px;
+    font-weight:800;
+    font-style:italic;
+
+    text-transform:uppercase;
+
+    text-shadow:
+        2px 2px 0 rgba(0,0,0,.65),
+        0 0 10px rgba(255,191,0,.35);
+
+    margin-bottom:16px;
+}
+
+.gang-text-section p{
+    color:#f0f0f0;
+
+    font-family:"EB Garamond", Georgia, serif;
+    font-size:23px;
+    font-weight:700;
+
+    line-height:1.35;
+
+    text-shadow:2px 2px 0 rgba(0,0,0,.55);
+}
+
+.gang-balance-section{
+    width:100%;
+
+    margin:0 auto;
+
+    padding-top:30px;
+
+    border-top:2px solid rgba(230,230,230,.55);
+}
+
+.gang-balance-section .report-title{
+    position:relative;
+    z-index:2;
+
+    width:82%;
+
+    margin:0 auto 28px;
+}
+
+.gang-balance-section .status-grid{
+    position:relative;
+    z-index:2;
+
+    margin-top:30px;
+}
+
+.gang-return{
+    position:relative;
+    z-index:2;
+
+    width:82%;
+
+    margin:45px auto 0;
+    padding-top:22px;
+
+    border-top:2px solid rgba(230,230,230,.55);
+
+    text-align:center;
+}
+
+.gang-return a{
+    color:#f0f0f0;
+
+    font-family:"EB Garamond", Georgia, serif;
+    font-size:26px;
+    font-weight:800;
+    font-style:italic;
+
+    text-decoration:none;
+    text-transform:uppercase;
+
+    text-shadow:2px 2px 0 rgba(0,0,0,.65);
+
+    transition:.22s ease;
+}
+
+.gang-return a:hover{
+    color:#d4a017;
+
+    transform:scale(1.06);
+
+    text-shadow:
+        0 0 10px rgba(255,191,0,.8),
+        0 0 22px rgba(255,191,0,.45),
+        2px 2px 0 rgba(0,0,0,.7);
+}
+
+html{
+    scroll-behavior:smooth;
+}
+.gang-music-display{
+    width:fit-content;
+    margin:18px auto 25px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:14px;
 }
