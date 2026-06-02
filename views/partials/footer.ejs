@@ -11,6 +11,24 @@
         <p>Reading student records...</p>
 
     </div>
+    <audio id="global-menu-click" preload="auto">
+    <source src="/audio/menu-click.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+    const globalClickSound = document.getElementById("global-menu-click");
+
+    if(globalClickSound){
+        globalClickSound.volume = 0.55;
+
+        document.querySelectorAll("a, button").forEach(item => {
+            item.addEventListener("click", () => {
+                globalClickSound.currentTime = 0;
+                globalClickSound.play().catch(() => {});
+            });
+        });
+    }
+</script>
 
 </div>
 </body>
