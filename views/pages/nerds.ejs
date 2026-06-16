@@ -8,21 +8,18 @@
 
             <img src="/img/nerds-banner.webp" alt="Nerds Banner">
 
-            <div class="gang-banner-overlay">
-                <span>ARQUIVO DE CAMARILHA</span>
-                <h1>NERDS</h1>
-            </div>
+            <div class="gang-banner-overlay"></div>
 
         </section>
 
         <div class="bully-music-display gang-music-display">
 
             <button type="button" id="gang-music-toggle">
-                ▶
+                >
             </button>
 
             <div>
-                <strong>NERDS THEME : PAUSED</strong>
+                <strong>NERDS THEME</strong>
                 <span>GROTTOS & GREMLINS CLUB</span>
             </div>
 
@@ -43,7 +40,19 @@
             <h2>AMBIENTAÇÃO</h2>
 
             <p>
-                Em breve... Os cabeções!
+                Caso você decida perguntar o que é Grutas & Gremlins a um nerd, ouvirá uma monografia oral de sete minutos referenciando Tolkien, Gygax e mais três autores que você certamente nunca ouviu falar. O problema é que ninguém decidiu perguntar, mas eles insistiram em responder mesmo assim.
+            </p>
+
+            <p>
+                Em um limiar entre o ridículo e o brilhante, eles preferem cálculo avançado, jogos de tabuleiro e simuladores de foguete à vida atlética. Costumam apanhar diariamente, esperneiam feio como um bebê, mas acham crível comprar briga com um atleta de trocentos quilos para defender a estatueta de ação de edição limitada do Super Cérebro.
+            </p>
+
+            <p>
+                Vestem-se como se estivessem presos na década de oitenta: suéteres de lã verde-cálido — cor do Clube de Astronomia que tanto se orgulham — óculos engarrafados, band-aids no nariz, postura de camarão e cheiro de livros mofados. Em resumo, um pacote completo com voz fanhosa, frases ensaiadas (“Nunca me machucará, estou usando o Amuleto da Proteção!”) e o dilema de correr o quanto antes de uma luta.
+            </p>
+
+            <p>
+                Ainda que o observatório seja sua fortaleza, a biblioteca é onde de fato vivem. Lá é que debatem quem venceria entre o Lobo Binário e a Deusa Estelar, isso quando não estão fortemente armados com bombinhas ou réguas metálicas expulsando um valentão que ousou invadir seu território inusitadamente. “O cérebro NÃO é um músculo”... pelo menos é o que dizem.
             </p>
 
         </section>
@@ -110,9 +119,7 @@
 
 </main>
 
-<audio id="gang-theme" loop preload="auto">
-    <source src="/audio/nerds-theme.mp3" type="audio/mpeg">
-</audio>
+<audio id="gang-music" src="/audio/nerds-theme.mp3" loop></audio>
 
 <script>
     const navLinks = document.querySelectorAll(".gang-file-nav a[href^='#']");
@@ -139,28 +146,19 @@
     });
 
     const gangToggle = document.getElementById("gang-music-toggle");
-    const gangText = document.querySelector(".gang-music-display strong");
-    const gangAudio = document.getElementById("gang-theme");
+    const gangAudio = document.getElementById("gang-music");
 
     gangAudio.volume = 0.25;
 
-    let gangPlaying = false;
+    window.addEventListener("load", () => {
+        gangAudio.play().catch(() => {});
+    });
 
     gangToggle.addEventListener("click", () => {
-        if(!gangPlaying){
+        if(gangAudio.paused){
             gangAudio.play();
-
-            gangText.textContent = "NERDS THEME : PLAYING";
-            gangToggle.textContent = "❚❚";
-
-            gangPlaying = true;
         }else{
             gangAudio.pause();
-
-            gangText.textContent = "NERDS THEME : PAUSED";
-            gangToggle.textContent = "▶";
-
-            gangPlaying = false;
         }
     });
 </script>

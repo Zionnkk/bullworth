@@ -8,22 +8,19 @@
 
             <img src="/img/bullies-banner.png" alt="Bullies Banner">
 
-            <div class="gang-banner-overlay">
-                <span>ARQUIVO DE CAMARILHA</span>
-                <h1>BULLIES</h1>
-            </div>
+            <div class="gang-banner-overlay"></div>
 
         </section>
 
         <div class="bully-music-display gang-music-display">
 
             <button type="button" id="gang-music-toggle">
-                ▶
+                >
             </button>
 
             <div>
-                <strong>VENDETTA : PAUSED</strong>
-                <span>GOLIAS' FRIENDS THEME</span>
+                <strong>BULLIES THEME</strong>
+                <span>GOLIAS' FRIENDS</span>
             </div>
 
         </div>
@@ -43,7 +40,19 @@
             <h2>AMBIENTAÇÃO</h2>
 
             <p>
-                Em breve... Os valentões!
+                Considerando que devemos manter nossos inimigos sob nosso alcance, saiba que é bem fácil reconhecer um valentão. Na dúvida, procure pelo sujeito mais desleixado do pátio — camisa branca por fora das calças jeans encardidas, tênis estourados, olhar bovino e a postura de quem procura encrenca.
+            </p>
+
+            <p>
+                Perambulam pelo estacionamento, sempre amolando estilingues como se em algum universo fossem armas de guerra. Quase nunca cabem dentro da sala de aula, seja por falta de cérebro, ou excesso de suspensões. Eles preferem ficar vagando pelos corredores, caçando nerds ou qualquer um que dê a pinta de indefeso — alimentam-se da insegurança alheia e da covardia em bando.
+            </p>
+
+            <p>
+                Não são líderes e muito menos estrategistas. São os lacaios ideais — não questionam, apenas espancam. Como hienas, sempre estão em grupo: o primeiro puxa o colarinho, o outro segura as pernas, e o terceiro mete um soco no estômago. Se um cai, vem outro, e mais outro... e mais outro — sozinhos são patéticos, mas, juntos, viram alcateia. O líder deles é um caso à parte. Tão enorme, tão brutal, que é temido até pelos monitores; é aquele típico aluno que constrói uma família antes que consiga sair do ensino médio.
+            </p>
+
+            <p>
+                Não possuem nenhuma disciplina esportiva, estilo de luta ou plano de batalha: lutam do mesmo jeito que vivem, de forma desordenada, barulhenta e sem ética. Existe um ditado bem impopular em Bullworth: “Um valentão sozinho até que é perigoso, um bando deles é quase suicídio. Mas um bando de valentões perto do Golias... é apocalipse”.
             </p>
 
         </section>
@@ -99,16 +108,14 @@
         </section>
 
         <div class="gang-return">
-            <a href="/camarilhas">VOLTAR PARA CAMARILHAS</a>
+            <a href="/camarilhas">RETURN TO CAMARILHAS</a>
         </div>
 
     </section>
 
 </main>
 
-<audio id="gang-theme" loop preload="auto">
-    <source src="/audio/bullies-theme.mp3" type="audio/mpeg">
-</audio>
+<audio id="gang-music" src="/audio/bullies-theme.mp3" loop></audio>
 
 <script>
     const navLinks = document.querySelectorAll(".gang-file-nav a[href^='#']");
@@ -135,28 +142,19 @@
     });
 
     const gangToggle = document.getElementById("gang-music-toggle");
-    const gangText = document.querySelector(".gang-music-display strong");
-    const gangAudio = document.getElementById("gang-theme");
+    const gangAudio = document.getElementById("gang-music");
 
     gangAudio.volume = 0.25;
 
-    let gangPlaying = false;
+    window.addEventListener("load", () => {
+        gangAudio.play().catch(() => {});
+    });
 
     gangToggle.addEventListener("click", () => {
-        if(!gangPlaying){
+        if(gangAudio.paused){
             gangAudio.play();
-
-            gangText.textContent = "VENDETTA : PLAYING";
-            gangToggle.textContent = "❚❚";
-
-            gangPlaying = true;
         }else{
             gangAudio.pause();
-
-            gangText.textContent = "VENDETTA : PAUSED";
-            gangToggle.textContent = "▶";
-
-            gangPlaying = false;
         }
     });
 </script>

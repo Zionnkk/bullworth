@@ -8,21 +8,18 @@
 
             <img src="/img/greasers-banner.jpg" alt="Greasers Banner">
 
-            <div class="gang-banner-overlay">
-                <span>ARQUIVO DE CAMARILHA</span>
-                <h1>GREASERS</h1>
-            </div>
+            <div class="gang-banner-overlay"></div>
 
         </section>
 
         <div class="bully-music-display gang-music-display">
 
             <button type="button" id="gang-music-toggle">
-                ▶
+                >
             </button>
 
             <div>
-                <strong>GREASERS THEME : PAUSED</strong>
+                <strong>GREASERS THEME</strong>
                 <span>THE GREASERS MOB</span>
             </div>
 
@@ -43,7 +40,19 @@
             <h2>AMBIENTAÇÃO</h2>
 
             <p>
-                Em breve... Os engraxados!
+                Os descolados não sorriem com frequência. Não por desdém e tampouco arrogância, eles apenas não têm tempo. Estão sempre com as mãos sujas de graxa e o pensamento a oitenta quilômetros em uma estrada reta, mais preocupados com o próximo racha do que com qualquer problema acadêmico. São a camarilha que mais vive à margem, tudo por opção.
+            </p>
+
+            <p>
+                Visualmente, trazem aquele retrato fiel da rebeldia: topetes escovados com brilhantina, jaquetas de couro com cheiro de oficina e calças jeans. Fedem à nicotina e suam óleo, mas não se importam, o estilo deles é sujo mesmo — mas não desleixado. Por mais que vivam entre graxa e fumaça, continuam sendo os únicos que parecem pertencer mais ao mundo real do que ao teatro das outras camarilhas.
+            </p>
+
+            <p>
+                Não seguem horários, raramente frequentam as aulas e, se forem pegos, dificilmente correrão. Encaram o monitor com as mãos nos bolsos e os ombros para frente, esperando o sermão terminar para voltarem ao que importa: apertar parafusos, abastecer a moto e fazer o motor roncar. São filhos de uma classe trabalhadora esquecida, e talvez por isso odeiem com tanto pudor os mauricinhos. Lutam sujo, mas lutam bem. “Um chute bem dado com a sola de borracha é mais eficiente do que qualquer técnica de boxe”, segundo eles. Seu estilo é inerente ao que aprenderam assistindo filmes de caratê em VHSs roubados em New Coventry.
+            </p>
+
+            <p>
+                Eles vivem entre a oficina e becos do internato, ficam somente por ali e não querem incomodar ninguém. Honestamente, talvez eles não queiram dominar Bullworth como todos os outros, somente que ninguém os atrapalhe.
             </p>
 
         </section>
@@ -106,9 +115,7 @@
 
 </main>
 
-<audio id="gang-theme" loop preload="auto">
-    <source src="/audio/greasers-theme.mp3" type="audio/mpeg">
-</audio>
+<audio id="gang-music" src="/audio/greasers-theme.mp3" loop></audio>
 
 <script>
     const navLinks = document.querySelectorAll(".gang-file-nav a[href^='#']");
@@ -135,28 +142,19 @@
     });
 
     const gangToggle = document.getElementById("gang-music-toggle");
-    const gangText = document.querySelector(".gang-music-display strong");
-    const gangAudio = document.getElementById("gang-theme");
+    const gangAudio = document.getElementById("gang-music");
 
     gangAudio.volume = 0.25;
 
-    let gangPlaying = false;
+    window.addEventListener("load", () => {
+        gangAudio.play().catch(() => {});
+    });
 
     gangToggle.addEventListener("click", () => {
-        if(!gangPlaying){
+        if(gangAudio.paused){
             gangAudio.play();
-
-            gangText.textContent = "GREASERS THEME : PLAYING";
-            gangToggle.textContent = "❚❚";
-
-            gangPlaying = true;
         }else{
             gangAudio.pause();
-
-            gangText.textContent = "GREASERS THEME : PAUSED";
-            gangToggle.textContent = "▶";
-
-            gangPlaying = false;
         }
     });
 </script>

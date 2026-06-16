@@ -8,22 +8,19 @@
 
             <img src="/img/jocks-gang.png" alt="Jocks Banner">
 
-            <div class="gang-banner-overlay">
-                <span>ARQUIVO DE CAMARILHA</span>
-                <h1>JOCKS</h1>
-            </div>
+            <div class="gang-banner-overlay"></div>
 
         </section>
 
         <div class="bully-music-display gang-music-display">
 
             <button type="button" id="gang-music-toggle">
-                ▶
+                >
             </button>
 
             <div>
-                <strong>JOCKS THEME : PAUSED</strong>
-                <span>BULLWORTH ATHLETICS</span>
+                <strong>JOCKS THEME</strong>
+                <span>BULLHORNS TEAM</span>
             </div>
 
         </div>
@@ -43,7 +40,15 @@
             <h2>AMBIENTAÇÃO</h2>
 
             <p>
-                Em breve... Os atletas!
+                Não é oficial, mas todo mundo já se perguntou se há algo além de creatina na vitamina desses caras. Os atletas são o núcleo esportivo e oxigenado do colégio, são o time Bullhorns — e tenha a audácia (ou burrice) de falar mal desse time para ver o que acontece. Desinteressa se é futebol americano, basquete, altinha ou até queimada, se tiver bola ou contato físico, eles dominam.
+            </p>
+
+            <p>
+                São um espetáculo de massa e músculo, a estrutura dos atletas é a mais avantajada entre todas as camarilhas. Os melhores têm a honra de poder vestir a jaqueta desportiva do time, símbolo de status e respeito. Se você vir um desses caras andando sem a jaqueta, ele provavelmente ainda está tentando conquistá-la ou a perdeu num jogo e está prestes a cometer um homicídio por isso.
+            </p>
+
+            <p>
+                O campo de futebol americano — situado na parte mais afastada do colégio — é considerado seu território sagrado. Embora nem sempre sejam vistos como os vilões do internato, quem quer viver em paz evita cruzar o caminho de um atleta irritado ou, pior, ferido no orgulho atlético. Costumam falar alto, bem alto, empurram-se em jeito de cumprimento e comem cada lanche como se fosse o último antes de uma final.
             </p>
 
         </section>
@@ -106,9 +111,7 @@
 
 </main>
 
-<audio id="gang-theme" loop preload="auto">
-    <source src="/audio/jocks-theme.mp3" type="audio/mpeg">
-</audio>
+<audio id="gang-music" src="/audio/jocks-theme.mp3" loop></audio>
 
 <script>
     const navLinks = document.querySelectorAll(".gang-file-nav a[href^='#']");
@@ -135,28 +138,19 @@
     });
 
     const gangToggle = document.getElementById("gang-music-toggle");
-    const gangText = document.querySelector(".gang-music-display strong");
-    const gangAudio = document.getElementById("gang-theme");
+    const gangAudio = document.getElementById("gang-music");
 
     gangAudio.volume = 0.25;
 
-    let gangPlaying = false;
+    window.addEventListener("load", () => {
+        gangAudio.play().catch(() => {});
+    });
 
     gangToggle.addEventListener("click", () => {
-        if(!gangPlaying){
+        if(gangAudio.paused){
             gangAudio.play();
-
-            gangText.textContent = "JOCKS THEME : PLAYING";
-            gangToggle.textContent = "❚❚";
-
-            gangPlaying = true;
         }else{
             gangAudio.pause();
-
-            gangText.textContent = "JOCKS THEME : PAUSED";
-            gangToggle.textContent = "▶";
-
-            gangPlaying = false;
         }
     });
 </script>

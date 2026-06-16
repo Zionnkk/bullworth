@@ -4,10 +4,23 @@
     box-sizing:border-box;
 }
 
+:root{
+    --bully-gold:#d4a017;
+    --bully-gold-light:#ffcf45;
+    --bully-orange:#ff9a2f;
+    --bully-dark:#050b14;
+    --gang-color:#12313a;
+    --gang-rgb:18,49,58;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
 body{
     font-family:'Montserrat', Arial, sans-serif;
     overflow-x:hidden;
-    color:#d4a017;
+    color:var(--bully-gold);
     min-height:100vh;
     background:
         radial-gradient(circle at center, rgba(163,115,32,.14) 0%, rgba(7,17,29,0) 42%),
@@ -33,6 +46,7 @@ body::after{
     z-index:-1;
 }
 
+/* ================= NAVBAR ================= */
 .navbar{
     position:fixed;
     top:0;
@@ -66,6 +80,15 @@ body::after{
     object-fit:contain;
 }
 
+.brand-name,
+.site-name,
+.nav-brand{
+    color:var(--bully-gold);
+    text-transform:uppercase;
+    letter-spacing:4px;
+    text-decoration:none;
+}
+
 .nav-links{
     display:flex;
     gap:38px;
@@ -81,7 +104,7 @@ body::after{
 }
 
 .nav-links a:hover{
-    color:#d4a017;
+    color:var(--bully-gold);
 }
 
 .nav-links a::after{
@@ -91,7 +114,7 @@ body::after{
     bottom:-10px;
     width:0;
     height:1px;
-    background:#d4a017;
+    background:var(--bully-gold);
     box-shadow:0 0 10px rgba(212,160,23,.65);
     transition:.3s ease;
 }
@@ -100,6 +123,7 @@ body::after{
     width:100%;
 }
 
+/* ================= HOME ================= */
 .home-screen{
     min-height:100vh;
     padding:120px 70px 50px 60px;
@@ -115,10 +139,11 @@ body::after{
     content:"";
     position:absolute;
     inset:0;
-    background:url("/img/backgroundinicio.png") center center no-repeat;
-    background-size:cover;
-    opacity:.10;
-    filter:blur(2px);
+    background:
+        linear-gradient(rgba(20,10,4,.52), rgba(9,15,22,.75)),
+        url("/img/backgroundinicio.png") center center / cover no-repeat;
+    opacity:.96;
+    filter:blur(1px) saturate(1.08);
     pointer-events:none;
     z-index:0;
 }
@@ -128,8 +153,8 @@ body::after{
     position:absolute;
     inset:0;
     background:
-        radial-gradient(circle at center, rgba(9,21,34,.15), rgba(5,11,20,.72)),
-        linear-gradient(90deg, rgba(5,11,20,.85), rgba(5,11,20,.35), rgba(5,11,20,.78));
+        radial-gradient(circle at 50% 35%, rgba(201,106,29,.24), rgba(5,11,20,.70) 58%),
+        linear-gradient(90deg, rgba(7,10,16,.88), rgba(76,33,7,.35), rgba(5,11,20,.82));
     pointer-events:none;
     z-index:0;
 }
@@ -139,7 +164,7 @@ body::after{
 .panel-box,
 .hero-content{
     position:relative;
-    z-index:1;
+    z-index:2;
 }
 
 .left-panel{
@@ -158,10 +183,7 @@ body::after{
     box-shadow:
         inset 0 0 50px rgba(0,0,0,.6),
         0 0 40px rgba(0,0,0,.4);
-    transition:
-        transform .35s ease,
-        box-shadow .35s ease,
-        border-color .35s ease;
+    transition:.35s ease;
 }
 
 .panel-box:hover{
@@ -195,7 +217,7 @@ body::after{
 
 .panel-header span{
     display:block;
-    color:#d4a017;
+    color:var(--bully-gold);
     font-size:12px;
     letter-spacing:4px;
 }
@@ -210,13 +232,9 @@ body::after{
     margin-bottom:28px;
 }
 
-.panel-title h2{
-    margin-bottom:18px;
-}
-
 .panel-box h2{
     font-family:'Anton', sans-serif;
-    color:#d4a017;
+    color:var(--bully-gold);
     font-size:48px;
     line-height:.9;
     text-transform:uppercase;
@@ -228,9 +246,6 @@ body::after{
     height:3px;
     margin:22px 0 32px;
     background:rgba(212,160,23,.22);
-    transition:
-        background .25s ease,
-        box-shadow .25s ease;
     border-radius:0;
     position:relative;
     overflow:hidden;
@@ -244,9 +259,7 @@ body::after{
     width:35%;
     height:100%;
     background:linear-gradient(90deg, transparent, #ffcf45, #fff8c9, #ffcf45, transparent);
-    box-shadow:
-        0 0 10px rgba(255,191,0,.9),
-        0 0 22px rgba(255,191,0,.55);
+    box-shadow:0 0 10px rgba(255,191,0,.9), 0 0 22px rgba(255,191,0,.55);
     opacity:0;
 }
 
@@ -261,12 +274,8 @@ body::after{
 }
 
 @keyframes panelLineRun{
-    from{
-        left:-35%;
-    }
-    to{
-        left:100%;
-    }
+    from{ left:-35%; }
+    to{ left:100%; }
 }
 
 .panel-box p{
@@ -289,7 +298,7 @@ body::after{
     align-items:center;
     margin-bottom:24px;
     cursor:pointer;
-    transition:transform .3s ease;
+    transition:.3s ease;
 }
 
 .panel-link:hover{
@@ -305,22 +314,15 @@ body::after{
     align-items:center;
     justify-content:center;
     background:radial-gradient(circle, rgba(212,160,23,.08), transparent 70%);
-    transition:
-        transform .3s ease,
-        box-shadow .3s ease,
-        border-color .3s ease,
-        background .3s ease;
+    transition:.3s ease;
 }
 
 .panel-icon img{
     width:24px;
     height:24px;
     object-fit:contain;
-    filter:
-        sepia(1)
-        saturate(1.8)
-        brightness(.92);
-    transition:filter .3s ease;
+    filter:sepia(1) saturate(1.8) brightness(.92);
+    transition:.3s ease;
 }
 
 .panel-icon img.fist-icon{
@@ -330,36 +332,26 @@ body::after{
 
 .panel-link:hover .panel-icon{
     transform:scale(1.16);
-    border-color:#d4a017;
+    border-color:var(--bully-gold);
     background:radial-gradient(circle, rgba(212,160,23,.25), rgba(212,160,23,.04) 70%);
-    box-shadow:
-        0 0 12px rgba(212,160,23,.55),
-        0 0 30px rgba(212,160,23,.22);
+    box-shadow:0 0 12px rgba(212,160,23,.55), 0 0 30px rgba(212,160,23,.22);
 }
 
 .panel-link:hover .panel-icon img{
-    filter:
-        sepia(1)
-        saturate(2.2)
-        brightness(1.25)
-        drop-shadow(0 0 8px rgba(212,160,23,.65));
+    filter:sepia(1) saturate(2.2) brightness(1.25) drop-shadow(0 0 8px rgba(212,160,23,.65));
 }
 
 .panel-link h3{
-    color:#d4a017;
+    color:var(--bully-gold);
     font-size:18px;
     letter-spacing:3px;
     margin-bottom:5px;
-    transition:
-        color .3s ease,
-        text-shadow .3s ease;
+    transition:.3s ease;
 }
 
 .panel-link:hover h3{
-    color:#ffbf35;
-    text-shadow:
-        0 0 10px rgba(212,160,23,.65),
-        0 0 25px rgba(212,160,23,.25);
+    color:var(--bully-gold-light);
+    text-shadow:0 0 10px rgba(212,160,23,.65), 0 0 25px rgba(212,160,23,.25);
 }
 
 .panel-link span{
@@ -391,7 +383,7 @@ body::after{
 }
 
 .home-subtitle{
-    color:#d4a017;
+    color:var(--bully-gold);
     font-size:13px;
     letter-spacing:7px;
     margin-bottom:30px;
@@ -399,7 +391,7 @@ body::after{
 
 .home-title{
     font-family:'Anton', sans-serif;
-    color:#d4a017;
+    color:var(--bully-gold);
     font-size:112px;
     line-height:.86;
     text-transform:uppercase;
@@ -417,20 +409,94 @@ body::after{
     line-height:170%;
 }
 
-.camarilhas-page{
+/* ================= CORES DAS CAMARILHAS ================= */
+.bullhorns,
+.gang-bullhorns,
+.bullies,
+.gang-bullies{
+    --gang-color:#eeeeee;
+    --gang-rgb:238,238,238
+}
+
+.cheerleading,
+.gang-cheerleading,
+.cheers,
+.gang-cheers{
+    --gang-color:#ff7ebd;
+    --gang-rgb:255,126,189;
+}
+
+.aquaberry,
+.gang-aquaberry,
+.preppies,
+.gang-preppies{
+    --gang-color:#9edcff;
+    --gang-rgb:158,220,255;
+}
+
+.greasers,
+.gang-greasers{
+    --gang-color:#b6b6b6;
+    --gang-rgb:26,29,34;
+}
+
+.golias,
+.gang-golias,
+.jocks,
+.gang-jocks{
+    --gang-color:#071a33;
+    --gang-rgb:7,26,51;
+}
+
+.grottos,
+.gang-grottos,
+.nerds,
+.gang-nerds{
+    --gang-color:#0b7a2a;
+    --gang-rgb:11,122,42;
+}
+
+/* ================= MENU / LISTA DE CAMARILHAS ================= */
+.camarilhas-page,
+.camarilhas-menu-page,
+.camarilhas-bully-page{
     min-height:100vh;
-    padding:150px 80px 80px;
+    padding:130px 70px 70px;
+    position:relative;
+    overflow:hidden;
+}
+
+.camarilhas-page::before,
+.camarilhas-menu-page::before,
+.camarilhas-bully-page::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:
+        linear-gradient(rgba(2,8,15,.78), rgba(2,8,15,.86)),
+        url("/img/backgroundcamarilhas.png") center center / cover no-repeat;
+    filter:blur(1px);
+    opacity:.85;
+    pointer-events:none;
+    z-index:0;
+}
+
+.camarilhas-page > *,
+.camarilhas-menu-page > *,
+.camarilhas-bully-page > *{
+    position:relative;
+    z-index:2;
 }
 
 .camarilhas-header span{
-    color:#d4a017;
+    color:var(--bully-gold);
     letter-spacing:7px;
     font-size:13px;
 }
 
 .camarilhas-header h1{
     font-family:'Anton', sans-serif;
-    color:#d4a017;
+    color:var(--bully-gold);
     font-size:90px;
     line-height:.9;
     margin-top:18px;
@@ -458,12 +524,10 @@ body::after{
     justify-content:center;
     text-decoration:none;
     background:
-        linear-gradient(rgba(4,13,24,.88), rgba(2,8,15,.96)),
+        linear-gradient(rgba(4,13,24,.76), rgba(2,8,15,.94)),
         url("https://www.transparenttextures.com/patterns/asfalt-dark.png");
-    border:1px solid rgba(212,160,23,.35);
-    box-shadow:
-        inset 0 0 45px rgba(0,0,0,.55),
-        0 0 30px rgba(0,0,0,.35);
+    border:none;
+    box-shadow:inset 0 0 45px rgba(0,0,0,.55), 0 0 30px rgba(0,0,0,.35);
     transition:.35s ease;
 }
 
@@ -471,8 +535,8 @@ body::after{
     content:"";
     position:absolute;
     inset:0;
-    background:radial-gradient(circle at center, var(--gang-color), transparent 70%);
-    opacity:.18;
+    background:var(--gang-color);
+    opacity:.24;
     transition:.35s ease;
 }
 
@@ -480,75 +544,202 @@ body::after{
     position:relative;
     z-index:2;
     font-family:'Anton', sans-serif;
-    color:#d4a017;
+    color:var(--bully-gold);
     font-size:46px;
     letter-spacing:3px;
 }
 
 .camarilha-card:hover{
     transform:translateY(-8px);
-    border-color:#d4a017;
-    box-shadow:
-        inset 0 0 50px rgba(0,0,0,.6),
-        0 0 35px rgba(212,160,23,.18);
+    box-shadow:inset 0 0 50px rgba(0,0,0,.6), 0 0 35px rgba(212,160,23,.18);
 }
 
 .camarilha-card:hover::before{
-    opacity:.4;
+    opacity:.36;
 }
 
-.bullies{
-    --gang-color:#e6e6e6;
+.camarilhas-bully-box,
+.camarilhas-menu-box{
+    position:relative;
+    z-index:2;
+    width:100%;
+    max-width:1180px;
+    min-height:520px;
+    padding:36px 58px;
+    margin:0 auto;
+    text-align:center;
+    font-family:"EB Garamond", Georgia, serif;
+    background:rgba(12,31,36,.70);
+    box-shadow:inset 0 0 80px rgba(0,0,0,.45), 0 0 45px rgba(0,0,0,.45);
+    border:none;
 }
 
-.preppies{
-    --gang-color:#658fce;
+.camarilhas-title-img{
+    width:430px;
+    max-width:90%;
+    display:block;
+    margin:0 auto 8px;
+    filter:invert(70%) sepia(74%) saturate(850%) hue-rotate(355deg) brightness(95%) contrast(95%) drop-shadow(2px 2px 0 #102b35) drop-shadow(0 0 10px rgba(255,191,0,.45));
+    user-select:none;
+    -webkit-user-drag:none;
 }
 
-.greasers{
-    --gang-color:#131313;
+.bully-breadcrumb{
+    color:#e8e8e8;
+    font-family:"EB Garamond", Georgia, serif;
+    font-size:22px;
+    font-weight:700;
+    font-style:italic;
+    text-align:center;
+    text-shadow:2px 2px 0 rgba(0,0,0,.55);
+    margin-bottom:22px;
 }
 
-.jocks{
-    --gang-color:#235596;
+.camarilhas-bully-line{
+    width:82%;
+    height:2px;
+    margin:0 auto 42px;
+    background:rgba(230,230,230,.65);
+    box-shadow:0 0 8px rgba(255,255,255,.16);
 }
 
-.nerds{
-    --gang-color:#24833c;
+.camarilhas-bully-list,
+.camarilhas-menu-list{
+    position:relative;
+    z-index:2;
+    width:76%;
+    margin:0 auto 42px;
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    row-gap:35px;
+    column-gap:90px;
 }
 
-.cheers{
-    --gang-color:#c65a9b;
+.camarilhas-bully-list a,
+.camarilhas-menu-list a{
+    color:#f0f0f0;
+    font-family:"EB Garamond", Georgia, serif;
+    font-size:34px;
+    font-weight:800;
+    text-align:center;
+    text-decoration:none;
+    text-transform:uppercase;
+    line-height:1;
+    text-shadow:2px 2px 0 rgba(0,0,0,.65);
+    transition:.22s ease;
 }
 
-.gang-detail-page{
+.camarilhas-bully-list a:hover,
+.camarilhas-menu-list a:hover{
+    color:var(--bully-gold);
+    transform:scale(1.08);
+    text-shadow:0 0 10px rgba(255,191,0,.8), 0 0 22px rgba(255,191,0,.45), 2px 2px 0 rgba(0,0,0,.7);
+}
+
+.camarilhas-info,
+.camarilhas-return{
+    position:relative;
+    z-index:2;
+    width:82%;
+    margin:0 auto;
+    padding-top:22px;
+    border-top:2px solid rgba(230,230,230,.22);
+    text-align:center;
+}
+
+.camarilhas-info h2{
+    color:var(--bully-gold);
+    font-size:31px;
+    font-weight:800;
+    text-shadow:2px 2px 0 rgba(0,0,0,.65), 0 0 10px rgba(255,191,0,.35);
+    margin-bottom:8px;
+}
+
+.camarilhas-info p{
+    color:#f0f0f0;
+    font-size:22px;
+    font-weight:700;
+    line-height:1.25;
+    text-shadow:2px 2px 0 rgba(0,0,0,.55);
+}
+
+/* ================= PÁGINAS DE CAMARILHA / STATUS ================= */
+.gang-detail-page,
+.gang-menu-page,
+.bully-status-page{
     min-height:100vh;
-    padding:150px 80px 80px;
+    padding:130px 70px 70px;
+    position:relative;
+    overflow:hidden;
+    background:#07111d;
+}
+
+.gang-detail-page::before,
+.gang-menu-page::before,
+.bully-status-page::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:
+        linear-gradient(rgba(var(--gang-rgb), .42), rgba(var(--gang-rgb), .42)),
+        url("/img/backgroundstatus.png") center center / cover no-repeat;
+    opacity:.80;
+    filter:blur(2px);
+    transform:scale(1.03);
+    pointer-events:none;
+    z-index:0;
+}
+
+.gang-detail-page::after,
+.gang-menu-page::after,
+.bully-status-page::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:rgba(0,0,0,.16);
+    pointer-events:none;
+    z-index:1;
+}
+
+.gang-detail-page > *,
+.gang-menu-page > *,
+.bully-status-page > *{
+    position:relative;
+    z-index:2;
+}
+
+.gang-menu-box,
+.gang-detail-panel,
+.bully-status-box{
+    width:100%;
+    max-width:1280px;
+    min-height:620px;
+    padding:35px 55px;
+    margin:0 auto;
+    position:relative;
+    overflow:hidden;
+    background:
+        linear-gradient(rgba(var(--gang-rgb), .32), rgba(var(--gang-rgb), .48)),
+        url("https://www.transparenttextures.com/patterns/asfalt-dark.png");
+    border:none;
+    box-shadow:inset 0 0 85px rgba(0,0,0,.42), 0 0 45px rgba(0,0,0,.38);
 }
 
 .gang-detail-panel{
     margin-top:55px;
     min-height:500px;
-    background:
-        linear-gradient(rgba(4,13,24,.9), rgba(2,8,15,.97)),
-        url("https://www.transparenttextures.com/patterns/asfalt-dark.png");
-    border:1px solid rgba(212,160,23,.38);
-    box-shadow:
-        inset 0 0 65px rgba(0,0,0,.65),
-        0 0 35px rgba(0,0,0,.4);
-    position:relative;
-    overflow:hidden;
 }
 
-.gang-detail-panel::before{
-    content:"";
-    position:absolute;
-    inset:0;
-    background:
-        radial-gradient(circle at 20% 20%, var(--gang-color), transparent 35%),
-        radial-gradient(circle at 90% 80%, var(--gang-color), transparent 35%);
-    opacity:.13;
-    pointer-events:none;
+.gang-menu-box::before,
+.gang-menu-box::after,
+.gang-detail-panel::before,
+.gang-detail-panel::after,
+.bully-status-box::before,
+.bully-status-box::after,
+.camarilhas-bully-box::before,
+.camarilhas-bully-box::after{
+    display:none;
+    content:none;
 }
 
 .gang-detail-content{
@@ -566,28 +757,47 @@ body::after{
     margin:0;
 }
 
-.gang-banner{
+/* banner SEM filtro da camarilha */
+.gang-banner,
+.bully-menu-banner{
     position:relative;
-    height:320px;
     overflow:hidden;
-    border:1px solid rgba(212,160,23,.25);
+    border:none;
+}
+
+.gang-banner{
+    height:320px;
     margin-top:120px;
 }
 
-.gang-banner img{
-     width:100%;
+.bully-menu-banner{
+    height:380px;
+    margin:0 auto 24px;
+}
+
+.gang-banner::before,
+.gang-banner::after,
+.bully-menu-banner::before,
+.bully-menu-banner::after{
+    display:none;
+    content:none;
+}
+
+.gang-banner img,
+.bully-menu-banner img{
+    display:block;
+    width:100%;
     height:100%;
     object-fit:cover;
     object-position:center top;
-    filter:
-        brightness(.55)
-        contrast(1.1);
+    filter:brightness(.55) contrast(1.1);
 }
 
 .gang-banner-overlay{
     position:absolute;
     left:50px;
     bottom:40px;
+    z-index:2;
 }
 
 .gang-banner-overlay span{
@@ -599,32 +809,128 @@ body::after{
 .gang-banner-overlay h1{
     font-family:'Anton', sans-serif;
     font-size:90px;
-    color:#d4a017;
+    color:var(--bully-gold);
     margin-top:12px;
 }
 
-.gang-bullies{
-    --gang-color:#e6e6e6;
+.gang-file-nav{
+    position:relative;
+    z-index:2;
+    margin:10px auto 35px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:10px;
+    font-family:"EB Garamond", Georgia, serif;
+    font-size:22px;
+    font-weight:800;
+    font-style:italic;
+    text-shadow:2px 2px 0 rgba(0,0,0,.55);
 }
 
-.gang-preppies{
-    --gang-color:#658fce;
+.gang-file-nav a,
+.gang-file-nav span{
+    color:#f0f0f0;
+    text-decoration:none;
+    text-transform:uppercase;
+    transition:.22s ease;
 }
 
-.gang-greasers{
-    --gang-color:#131313;
+.gang-file-nav a:hover,
+.gang-file-nav a.active{
+    color:var(--bully-gold);
+    transform:scale(1.05);
+    text-shadow:0 0 10px rgba(255,191,0,.8), 0 0 22px rgba(255,191,0,.45), 2px 2px 0 rgba(0,0,0,.7);
 }
 
-.gang-jocks{
-    --gang-color:#235596;
+.gang-section{
+    position:relative;
+    z-index:2;
+    scroll-margin-top:120px;
 }
 
-.gang-nerds{
-    --gang-color:#24833c;
+.gang-text-section,
+.gang-description,
+.camarilha-description{
+    width:82%;
+    margin:0 auto 55px;
+    text-align:left;
 }
 
-.gang-cheers{
-    --gang-color:#c65a9b;
+.gang-text-section h2,
+.gang-balance-section h2{
+    color:var(--bully-gold);
+    font-family:"EB Garamond", Georgia, serif;
+    font-size:32px;
+    font-weight:800;
+    font-style:italic;
+    text-transform:uppercase;
+    text-shadow:2px 2px 0 rgba(0,0,0,.65), 0 0 10px rgba(255,191,0,.35);
+    margin-bottom:16px;
+}
+
+.gang-text-section p,
+.gang-description,
+.camarilha-description{
+    color:#f0f0f0;
+    font-family:"EB Garamond", Georgia, serif;
+    font-size:23px;
+    font-weight:700;
+    line-height:1.35;
+    text-shadow:2px 2px 0 rgba(0,0,0,.55);
+}
+
+.gang-balance-section{
+    width:100%;
+    margin:0 auto;
+    padding-top:30px;
+    border-top:2px solid rgba(230,230,230,.22);
+}
+
+.gang-balance-section .report-title{
+    position:relative;
+    z-index:2;
+    width:82%;
+    margin:0 auto 28px;
+}
+
+.gang-balance-section .status-grid{
+    position:relative;
+    z-index:2;
+    margin-top:30px;
+}
+
+.gang-return,
+.camarilhas-return{
+    position:relative;
+    z-index:2;
+    width:82%;
+    margin:45px auto 0;
+    padding-top:22px;
+    border-top:2px solid rgba(230,230,230,.22);
+    text-align:center;
+}
+
+.gang-return a,
+.camarilhas-return a,
+.next-page{
+    color:var(--bully-gold);
+    font-family:"EB Garamond", Georgia, serif;
+    font-size:26px;
+    font-weight:800;
+    font-style:italic;
+    text-decoration:none;
+    text-transform:uppercase;
+    text-shadow:2px 2px 0 rgba(0,0,0,.65);
+    transition:.22s ease;
+}
+
+.gang-return a:hover,
+.camarilhas-return a:hover,
+.next-page:hover{
+    color:var(--bully-gold-light);
+    transform:scale(1.06);
+    text-shadow:0 0 10px rgba(255,191,0,.8), 0 0 22px rgba(255,191,0,.45), 2px 2px 0 rgba(0,0,0,.7);
 }
 
 .bullies-actions{
@@ -638,11 +944,8 @@ body::after{
     display:inline-flex;
     align-items:center;
     gap:12px;
-    color:#d4a017;
-    text-decoration:none;
     letter-spacing:3px;
     font-size:14px;
-    transition:.25s ease;
 }
 
 .next-page span{
@@ -650,64 +953,17 @@ body::after{
     transition:.25s ease;
 }
 
-.next-page:hover{
-    color:#ffcf45;
-    text-shadow:0 0 10px rgba(255,191,0,.5);
-}
-
 .next-page:hover span{
     transform:translateX(8px);
-    text-shadow:0 0 12px rgba(255,191,0,.8);
 }
 
-.bully-status-page{
-    min-height:100vh;
-    padding:130px 70px 70px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-}
-
-.bully-status-box{
-    width:100%;
-    max-width:1280px;
-    min-height:620px;
-    padding:35px 55px;
-    background:
-        linear-gradient(rgba(35,70,75,.82), rgba(20,45,52,.9)),
-        url("https://www.transparenttextures.com/patterns/asfalt-dark.png");
-    border:2px solid rgba(12,30,35,.8);
-    box-shadow:
-        inset 0 0 80px rgba(0,0,0,.45),
-        0 0 45px rgba(0,0,0,.45);
-    position:relative;
-}
-
-.bully-status-box::before{
-    content:"";
-    position:absolute;
-    inset:20px;
-    border:2px solid rgba(5,20,25,.55);
-    pointer-events:none;
-}
-
-.bully-status-box::after{
-    content:"";
-    display:block;
-    width:100%;
-    height:2px;
-    margin-top:30px;
-    background:linear-gradient(90deg, transparent, rgba(220,230,220,.7), transparent);
-}
-
+/* ================= STATUS ================= */
 .bully-status-box h1{
     font-family:Georgia, serif;
     text-align:center;
-    color:#d4a017;
+    color:var(--bully-gold);
     font-size:54px;
-    text-shadow:
-        2px 2px 0 #102b35,
-        0 0 12px rgba(255,191,0,.35);
+    text-shadow:2px 2px 0 #102b35, 0 0 12px rgba(255,191,0,.35);
 }
 
 .report-title{
@@ -716,26 +972,20 @@ body::after{
     font-family:Georgia, serif;
     font-size:28px;
     margin:18px 0 28px;
-    border-top:2px solid rgba(220,230,220,.55);
-    border-bottom:2px solid rgba(220,230,220,.55);
+    border:none;
     padding:8px 0;
 }
 
 .status-grid{
     display:grid;
-    grid-template-columns:
-        190px
-        125px
-        125px
-        150px
-        125px
-        125px;
+    grid-template-columns:190px 125px 125px 150px 125px 125px;
     column-gap:28px;
     row-gap:34px;
     align-items:center;
     width:100%;
     max-width:980px;
     margin:0 auto;
+    border:none;
 }
 
 .year-title{
@@ -744,69 +994,47 @@ body::after{
     text-align:center;
     letter-spacing:3px;
     padding:0;
-    transition:
-        transform .25s ease,
-        text-shadow .25s ease;
+    transition:.25s ease;
 }
 
 .year-title:hover{
     transform:scale(1.08);
-    text-shadow:
-        0 0 10px rgba(255,255,255,.65),
-        0 0 20px rgba(255,255,255,.35);
+    text-shadow:0 0 10px rgba(255,255,255,.65), 0 0 20px rgba(255,255,255,.35);
 }
 
 .stat-name{
-    color:#d4a017;
+    color:var(--bully-gold);
     font-family:Georgia, serif;
     font-size:22px;
     font-weight:bold;
     letter-spacing:2px;
     padding-right:20px;
-    text-shadow:
-        2px 2px 0 rgba(0,0,0,.6),
-        0 0 8px rgba(255,191,0,.25);
+    text-shadow:2px 2px 0 rgba(0,0,0,.6), 0 0 8px rgba(255,191,0,.25);
     transition:.25s ease;
 }
 
 .stat-name:hover{
     transform:scale(1.05);
-    color:#ffcf45;
-    text-shadow:
-        0 0 10px rgba(255,191,0,.8),
-        0 0 20px rgba(255,191,0,.4);
+    color:var(--bully-gold-light);
+    text-shadow:0 0 10px rgba(255,191,0,.8), 0 0 20px rgba(255,191,0,.4);
 }
 
 .stars{
     display:flex;
     align-items:center;
-    gap:8px;
-}
-
-.stars img{
-    width:28px;
-    height:28px;
-    object-fit:contain;
-    filter:
-        drop-shadow(0 0 6px rgba(255,191,0,.7))
-        drop-shadow(0 0 14px rgba(255,191,0,.35));
-}
-
-.status-grid .stars{
     justify-content:center;
+    gap:8px;
     flex-wrap:nowrap;
-    transition:
-        transform .25s ease,
-        filter .25s ease,
-        color .25s ease;
+    transition:.25s ease;
 }
 
+.stars img,
 .status-grid .stars img{
     width:22px;
     height:22px;
-    transition:
-        transform .2s ease,
-        filter .2s ease;
+    object-fit:contain;
+    filter:drop-shadow(0 0 6px rgba(255,191,0,.7)) drop-shadow(0 0 14px rgba(255,191,0,.35));
+    transition:.2s ease;
 }
 
 .status-grid .stars:hover{
@@ -815,284 +1043,15 @@ body::after{
 
 .status-grid .stars:hover img{
     transform:translateY(-2px);
-    filter:
-        drop-shadow(0 0 8px rgba(255,191,0,.95))
-        drop-shadow(0 0 18px rgba(255,191,0,.55));
+    filter:drop-shadow(0 0 8px rgba(255,191,0,.95)) drop-shadow(0 0 18px rgba(255,191,0,.55));
 }
 
 .star-overlimit{
     transform:scale(1.18);
-    filter:
-        drop-shadow(0 0 10px rgba(255,191,0,.95))
-        drop-shadow(0 0 25px rgba(255,191,0,.65)) !important;
+    filter:drop-shadow(0 0 10px rgba(255,191,0,.95)) drop-shadow(0 0 25px rgba(255,191,0,.65)) !important;
 }
 
-#report-transition{
-    position:fixed;
-    inset:0;
-    background:#07111d;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    opacity:0;
-    visibility:hidden;
-    z-index:99999;
-    transition:.35s;
-}
-
-#report-transition.active{
-    opacity:1;
-    visibility:visible;
-}
-
-.transition-content{
-    text-align:center;
-    color:#d4a017;
-    font-family:'Anton', sans-serif;
-}
-
-.transition-content h2{
-    font-size:42px;
-    letter-spacing:4px;
-    margin-bottom:15px;
-}
-
-.transition-content p{
-    font-size:16px;
-    color:#cfcfcf;
-    letter-spacing:2px;
-}
-
-.scan-line{
-    width:420px;
-    height:3px;
-    margin:0 auto 35px;
-    background:#d4a017;
-    box-shadow:
-        0 0 15px #d4a017,
-        0 0 35px #d4a017;
-    animation:scan 1s infinite;
-}
-
-@keyframes scan{
-    0%{
-        transform:translateY(-15px);
-        opacity:.3;
-    }
-    50%{
-        transform:translateY(15px);
-        opacity:1;
-    }
-    100%{
-        transform:translateY(-15px);
-        opacity:.3;
-    }
-}
-
-@media(max-width:1150px){
-    .home-screen{
-        grid-template-columns:1fr;
-        gap:50px;
-        justify-items:center;
-    }
-
-    .left-panel,
-    .panel-box{
-        width:100%;
-        max-width:430px;
-    }
-
-    .home-title{
-        font-size:82px;
-    }
-
-    .camarilhas-grid{
-        grid-template-columns:repeat(2, 1fr);
-    }
-
-    .status-grid{
-        grid-template-columns:160px repeat(5, 1fr);
-        column-gap:16px;
-    }
-}
-
-@media(max-width:700px){
-    .navbar{
-        padding:0 22px;
-    }
-
-    .nav-links{
-        display:none;
-    }
-
-    .home-screen{
-        padding:120px 24px 40px;
-    }
-
-    .home-title{
-        font-size:58px;
-    }
-
-    .home-description{
-        font-size:17px;
-    }
-
-    .panel-box{
-        padding:30px 26px;
-    }
-
-    .camarilhas-page,
-    .gang-detail-page,
-    .bully-status-page{
-        padding:120px 24px 40px;
-    }
-
-    .camarilhas-grid{
-        grid-template-columns:1fr;
-    }
-
-    .gang-banner-overlay h1{
-        font-size:58px;
-    }
-
-    .bully-status-box{
-        padding:28px 22px;
-        overflow-x:auto;
-    }
-
-    .status-grid{
-        min-width:900px;
-    }
-}
-.home-screen{
-    position:relative;
-    overflow:hidden;
-}
-
-.home-screen::before{
-    content:"";
-    position:absolute;
-    inset:0;
-
-    background:
-        linear-gradient(rgba(5,12,20,.72), rgba(5,12,20,.78)),
-        url("/img/backgroundinicio.png") center center / cover no-repeat;
-
-    opacity:.95;
-    filter:blur(1px);
-
-    z-index:0;
-    pointer-events:none;
-}
-
-.left-panel,
-.right-panel{
-    position:relative;
-    z-index:2;
-}
-.camarilhas-page{
-    position:relative;
-    overflow:hidden;
-}
-.camarilhas-page::before{
-
-    content:"";
-
-    position:absolute;
-    inset:0;
-
-    background:
-        linear-gradient(
-            rgba(3,8,15,.82),
-            rgba(3,8,15,.82)
-        ),
-        url("/img/backgroundcamarilhas.png");
-
-    background-size:cover;
-    background-position:center;
-
-    opacity:.18;
-
-    filter:blur(1px);
-
-    pointer-events:none;
-
-    z-index:0;
-}
-.camarilhas-page > *{
-    position:relative;
-    z-index:2;
-}
-.gang-detail-page{
-    position:relative;
-    overflow:hidden;
-}
-
-.gang-detail-page::before{
-
-    content:"";
-
-    position:absolute;
-    inset:0;
-
-    background:
-        linear-gradient(
-            rgba(4,10,18,.75),
-            rgba(4,10,18,.80)
-        ),
-        url("/img/backgroundstatus.png");
-
-    background-size:cover;
-    background-position:center;
-
-    opacity:.38;
-
-    filter:blur(1px);
-
-    z-index:0;
-
-    pointer-events:none;
-}
-
-.gang-detail-page > *{
-    position:relative;
-    z-index:2;
-}
-.bully-status-page{
-    position:relative;
-    overflow:hidden;
-}
-
-.bully-status-page::before{
-
-    content:"";
-
-    position:absolute;
-    inset:0;
-
-    background:
-        linear-gradient(
-            rgba(2,8,15,.88),
-            rgba(2,8,15,.88)
-        ),
-        url("/img/backgroundstatus.png");
-
-    background-size:cover;
-    background-position:center;
-
-    opacity:.58;
-
-    filter:blur(2px);
-
-    z-index:0;
-
-    pointer-events:none;
-}
-
-.bully-status-box{
-    position:relative;
-    z-index:2;
-}
+/* ================= PAUSE / MÚSICA ================= */
 .pause-home{
     min-height:100vh;
     padding:80px 20px;
@@ -1121,8 +1080,6 @@ body::after{
     max-width:900px;
     text-align:center;
     font-family:"EB Garamond", Georgia, serif;
-    transform:none;
-    transform-origin:center center;
 }
 
 .pause-title-img{
@@ -1130,15 +1087,7 @@ body::after{
     max-width:90vw;
     display:block;
     margin:0 auto 12px;
-    filter:
-        invert(70%)
-        sepia(74%)
-        saturate(850%)
-        hue-rotate(355deg)
-        brightness(95%)
-        contrast(95%)
-        drop-shadow(2px 2px 0 #102b35)
-        drop-shadow(0 0 10px rgba(255,191,0,.45));
+    filter:invert(70%) sepia(74%) saturate(850%) hue-rotate(355deg) brightness(95%) contrast(95%) drop-shadow(2px 2px 0 #102b35) drop-shadow(0 0 10px rgba(255,191,0,.45));
     user-select:none;
     -webkit-user-drag:none;
 }
@@ -1148,10 +1097,7 @@ body::after{
     max-width:80%;
     display:block;
     margin:0 auto 64px;
-    filter:
-        invert(100%)
-        brightness(95%)
-        drop-shadow(2px 2px 0 rgba(0,0,0,.65));
+    filter:invert(100%) brightness(95%) drop-shadow(2px 2px 0 rgba(0,0,0,.65));
     user-select:none;
     -webkit-user-drag:none;
 }
@@ -1163,73 +1109,43 @@ body::after{
     gap:18px;
 }
 
-.pause-options a{
+.pause-options a,
+.pause-options button{
     font-family:"EB Garamond", Georgia, serif;
-
     font-size:34px;
-
     font-weight:700;
-
-    line-height:0.9;
-
+    line-height:.9;
     text-transform:uppercase;
-
     text-decoration:none;
-
     color:#ececec;
-
-    text-shadow:
-        2px 2px 0 rgba(0,0,0,.65);
-
+    text-shadow:2px 2px 0 rgba(0,0,0,.65);
     transition:.22s ease;
 }
 
-.pause-options a:hover{
-    color:#d4a017;
-
+.pause-options a:hover,
+.pause-options button:hover{
+    color:var(--bully-gold);
     transform:scale(1.06);
-
-    text-shadow:
-        0 0 10px rgba(255,191,0,.8),
-        0 0 20px rgba(255,191,0,.5),
-        2px 2px 0 rgba(0,0,0,.7);
+    text-shadow:0 0 10px rgba(255,191,0,.8), 0 0 20px rgba(255,191,0,.5), 2px 2px 0 rgba(0,0,0,.7);
 }
 
-.pause-options .disabled-menu{
-    cursor:default;
-}
-
-.pause-options .disabled-menu:hover{
-    transform:scale(1.05);
-}
-
-.bully-music-display{
-    margin:78px auto 0;
+.bully-music-display,
+.gang-music-display{
+    width:fit-content;
+    margin:18px auto 25px;
     display:flex;
     align-items:center;
     justify-content:center;
-    gap:10px;
+    gap:14px;
     color:#e6e6e6;
     font-family:"EB Garamond", Georgia, serif;
     font-style:italic;
     text-shadow:2px 2px 0 rgba(0,0,0,.55);
 }
 
-.bully-music-display button{
-    width:24px;
-    height:22px;
-    border:1px solid rgba(230,230,230,.65);
-    background:rgba(255,255,255,.12);
-    color:#e6e6e6;
-    font-size:12px;
-    cursor:pointer;
-    transition:.22s ease;
-}
-
-.bully-music-display button:hover{
-    color:#d4a017;
-    border-color:#d4a017;
-    box-shadow:0 0 10px rgba(255,191,0,.35);
+.bully-music-display button,
+.gang-music-display button{
+    display:none;
 }
 
 .bully-music-display div{
@@ -1238,36 +1154,160 @@ body::after{
     align-items:flex-start;
 }
 
-.bully-music-display strong{
+.bully-music-display strong,
+.gang-music-display strong{
     font-size:20px;
     line-height:1;
+    color:#f0f0f0;
 }
 
-.bully-music-display span{
+.bully-music-display span,
+.gang-music-display span{
     font-size:16px;
     margin-top:4px;
+    color:#d8d8d8;
 }
 
-@media(max-width:900px){
+/* ================= TRANSIÇÃO ================= */
+#report-transition{
+    position:fixed;
+    inset:0;
+    background:#07111d;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    opacity:0;
+    visibility:hidden;
+    z-index:99999;
+    transition:.35s;
+}
 
-    .pause-title-img{
-        width:480px;
+#report-transition.active{
+    opacity:1;
+    visibility:visible;
+}
+
+.transition-content{
+    text-align:center;
+    color:var(--bully-gold);
+    font-family:'Anton', sans-serif;
+}
+
+.transition-content h2{
+    font-size:42px;
+    letter-spacing:4px;
+    margin-bottom:15px;
+}
+
+.transition-content p{
+    font-size:16px;
+    color:#cfcfcf;
+    letter-spacing:2px;
+}
+
+.scan-line{
+    width:420px;
+    height:3px;
+    margin:0 auto 35px;
+    background:var(--bully-gold);
+    box-shadow:0 0 15px var(--bully-gold), 0 0 35px var(--bully-gold);
+    animation:scan 1s infinite;
+}
+
+@keyframes scan{
+    0%{ transform:translateY(-15px); opacity:.3; }
+    50%{ transform:translateY(15px); opacity:1; }
+    100%{ transform:translateY(-15px); opacity:.3; }
+}
+
+/* ================= RESPONSIVO ================= */
+@media(max-width:1150px){
+    .home-screen{
+        grid-template-columns:1fr;
+        gap:50px;
+        justify-items:center;
     }
 
-    .pause-subtitle-img{
-        width:310px;
-        margin-bottom:46px;
+    .left-panel,
+    .panel-box{
+        width:100%;
+        max-width:430px;
     }
 
-    .pause-options a,
-    .pause-options button{
-        font-size:34px;
+    .home-title{
+        font-size:82px;
+    }
+
+    .camarilhas-grid,
+    .camarilhas-bully-list,
+    .camarilhas-menu-list{
+        grid-template-columns:repeat(2, 1fr);
+        width:90%;
+        column-gap:34px;
+    }
+
+    .status-grid{
+        grid-template-columns:160px repeat(5, 1fr);
+        column-gap:16px;
     }
 }
 
-@media(max-width:520px){
-    .pause-home{
-        padding:60px 18px;
+@media(max-width:700px){
+    .navbar{
+        padding:0 22px;
+    }
+
+    .nav-links{
+        display:none;
+    }
+
+    .home-screen,
+    .camarilhas-page,
+    .camarilhas-menu-page,
+    .camarilhas-bully-page,
+    .gang-detail-page,
+    .gang-menu-page,
+    .bully-status-page{
+        padding:120px 24px 40px;
+    }
+
+    .home-title{
+        font-size:58px;
+    }
+
+    .home-description{
+        font-size:17px;
+    }
+
+    .panel-box{
+        padding:30px 26px;
+    }
+
+    .camarilhas-grid,
+    .camarilhas-bully-list,
+    .camarilhas-menu-list{
+        grid-template-columns:1fr;
+    }
+
+    .gang-banner-overlay{
+        left:28px;
+        bottom:30px;
+    }
+
+    .gang-banner-overlay h1{
+        font-size:58px;
+    }
+
+    .bully-status-box,
+    .gang-menu-box,
+    .gang-detail-panel,
+    .camarilhas-bully-box{
+        padding:28px 22px;
+        overflow-x:auto;
+    }
+
+    .status-grid{
+        min-width:900px;
     }
 
     .pause-title-img{
@@ -1286,734 +1326,20 @@ body::after{
     .pause-options button{
         font-size:28px;
     }
-
-    .bully-music-display{
-        margin-top:52px;
-    }
 }
-.camarilhas-menu-page{
-    min-height:100vh;
-    padding:130px 70px 70px;
-
-    display:flex;
-    align-items:center;
-    justify-content:center;
-
-    position:relative;
-    overflow:hidden;
+.gang-banner-overlay span,
+.gang-banner-overlay h1{
+    display:none;
 }
-
-.camarilhas-menu-page::before{
-    content:"";
-    position:absolute;
-    inset:0;
-
+.gang-greasers .gang-menu-box::before,
+.gang-greasers::before{
     background:
-        linear-gradient(rgba(2,8,15,.78), rgba(2,8,15,.86)),
-        url("/img/backgroundcamarilhas.png") center center / cover no-repeat;
-
-    filter:blur(1px);
-    opacity:.75;
-
-    pointer-events:none;
+    linear-gradient(
+        rgba(16,16,16,.95),
+        rgba(16,16,16,.95)
+    ),
+    url("/img/backgroundstatus.png");
 }
-
-.camarilhas-menu-box{
-    position:relative;
-    z-index:2;
-}
-
-.camarilhas-menu-list{
-    margin:55px auto 0;
-
-    display:grid;
-    grid-template-columns:repeat(3, 1fr);
-    gap:38px 70px;
-
-    max-width:900px;
-}
-
-.camarilhas-menu-list a{
-    color:#f2f2f2;
-
-    font-family:"EB Garamond", Georgia, serif;
-    font-size:38px;
-    font-weight:700;
-
-    text-align:center;
-    text-decoration:none;
-    text-transform:uppercase;
-
-    text-shadow:2px 2px 0 rgba(0,0,0,.65);
-
-    transition:.22s ease;
-}
-
-.camarilhas-menu-list a:hover{
-    color:#d4a017;
-
-    transform:scale(1.08);
-
-    text-shadow:
-        0 0 10px rgba(255,191,0,.8),
-        0 0 22px rgba(255,191,0,.45),
-        2px 2px 0 rgba(0,0,0,.7);
-}
-.camarilhas-bully-page{
-    min-height:100vh;
-    padding:90px 20px;
-
-    display:flex;
-    align-items:center;
-    justify-content:center;
-
-    position:relative;
-    overflow:hidden;
-
-    background:
-        linear-gradient(rgba(35,75,78,.72), rgba(28,62,66,.86)),
-        url("/img/backgroundcamarilhas.png") center center / cover no-repeat;
-}
-
-.camarilhas-bully-page::before{
-    content:"";
-    position:absolute;
-    inset:0;
-
-    background:rgba(5,18,22,.28);
-
-    pointer-events:none;
-}
-
-.camarilhas-bully-box{
-    position:relative;
-    z-index:2;
-
-    width:100%;
-    max-width:980px;
-
-    text-align:center;
-
-    font-family:"EB Garamond", Georgia, serif;
-}
-
-.camarilhas-title-img{
-    width:430px;
-    max-width:90%;
-    display:block;
-    margin:0 auto 10px;
-
-    filter:
-        invert(70%)
-        sepia(74%)
-        saturate(850%)
-        hue-rotate(355deg)
-        brightness(95%)
-        contrast(95%)
-        drop-shadow(2px 2px 0 #102b35)
-        drop-shadow(0 0 10px rgba(255,191,0,.45));
-
-    user-select:none;
-    -webkit-user-drag:none;
-}
-
-.bully-breadcrumb{
-    color:#e8e8e8;
-
-    font-size:23px;
-    font-weight:700;
-    font-style:italic;
-
-    text-shadow:2px 2px 0 rgba(0,0,0,.55);
-
-    margin-bottom:16px;
-}
-
-.camarilhas-bully-line{
-    width:78%;
-    height:2px;
-
-    margin:0 auto 38px;
-
-    background:rgba(230,230,230,.68);
-
-    box-shadow:0 0 8px rgba(255,255,255,.16);
-}
-
-.camarilhas-bully-list{
-    display:grid;
-    grid-template-columns:repeat(3, 1fr);
-
-    gap:20px 58px;
-
-    max-width:800px;
-    margin:0 auto 45px;
-}
-
-.camarilhas-bully-list a{
-    color:#f0f0f0;
-
-    font-size:34px;
-    font-weight:800;
-
-    text-transform:uppercase;
-    text-decoration:none;
-
-    line-height:1;
-
-    text-shadow:
-        2px 2px 0 rgba(0,0,0,.65);
-
-    transition:.22s ease;
-}
-
-.camarilhas-bully-list a:hover{
-    color:#d4a017;
-
-    transform:scale(1.08);
-
-    text-shadow:
-        0 0 10px rgba(255,191,0,.8),
-        0 0 22px rgba(255,191,0,.45),
-        2px 2px 0 rgba(0,0,0,.7);
-}
-
-.camarilhas-info{
-    width:70%;
-    margin:0 auto;
-
-    padding-top:18px;
-
-    border-top:2px solid rgba(230,230,230,.55);
-
-    text-align:left;
-}
-
-.camarilhas-info h2{
-    color:#d4a017;
-
-    font-size:31px;
-    font-weight:800;
-
-    text-shadow:
-        2px 2px 0 rgba(0,0,0,.65),
-        0 0 10px rgba(255,191,0,.35);
-
-    margin-bottom:8px;
-}
-
-.camarilhas-info p{
-    color:#f0f0f0;
-
-    font-size:22px;
-    font-weight:700;
-
-    line-height:1.25;
-
-    text-shadow:2px 2px 0 rgba(0,0,0,.55);
-}
-.camarilhas-bully-page{
-    min-height:100vh;
-    padding:130px 70px 70px;
-
-    display:flex;
-    align-items:center;
-    justify-content:center;
-
-    position:relative;
-    overflow:hidden;
-}
-
-.camarilhas-bully-page::before{
-    content:"";
-    position:absolute;
-    inset:0;
-
-    background:
-        linear-gradient(rgba(2,8,15,.78), rgba(2,8,15,.86)),
-        url("/img/backgroundcamarilhas.png") center center / cover no-repeat;
-
-    filter:blur(1px);
-    opacity:.85;
-
-    pointer-events:none;
-}
-
-.camarilhas-bully-box{
-    position:relative;
-    z-index:2;
-
-    width:100%;
-    max-width:1180px;
-    min-height:520px;
-
-    padding:36px 58px;
-
-    background:
-        linear-gradient(rgba(35,70,75,.78), rgba(20,45,52,.88)),
-        url("https://www.transparenttextures.com/patterns/asfalt-dark.png");
-
-    border:2px solid rgba(12,30,35,.85);
-
-    box-shadow:
-        inset 0 0 80px rgba(0,0,0,.45),
-        0 0 45px rgba(0,0,0,.45);
-}
-
-.camarilhas-bully-box::before{
-    content:"";
-    position:absolute;
-    inset:20px;
-
-    border:2px solid rgba(5,20,25,.55);
-
-    pointer-events:none;
-}
-
-.camarilhas-title-img{
-    width:430px;
-    max-width:90%;
-
-    display:block;
-
-    margin:0 auto 8px;
-
-    filter:
-        invert(70%)
-        sepia(74%)
-        saturate(850%)
-        hue-rotate(355deg)
-        brightness(95%)
-        contrast(95%)
-        drop-shadow(2px 2px 0 #102b35)
-        drop-shadow(0 0 10px rgba(255,191,0,.45));
-
-    user-select:none;
-    -webkit-user-drag:none;
-}
-
-.bully-breadcrumb{
-    color:#e8e8e8;
-
-    font-family:"EB Garamond", Georgia, serif;
-    font-size:22px;
-    font-weight:700;
-    font-style:italic;
-
-    text-align:center;
-
-    text-shadow:2px 2px 0 rgba(0,0,0,.55);
-
-    margin-bottom:22px;
-}
-
-.camarilhas-bully-line{
-    width:82%;
-    height:2px;
-
-    margin:0 auto 42px;
-
-    background:rgba(230,230,230,.65);
-
-    box-shadow:0 0 8px rgba(255,255,255,.16);
-}
-
-.camarilhas-bully-list{
-    position:relative;
-    z-index:2;
-
-    width:76%;
-
-    margin:0 auto 42px;
-
-    display:grid;
-    grid-template-columns:repeat(3, 1fr);
-
-    row-gap:35px;
-    column-gap:90px;
-}
-
-.camarilhas-bully-list a{
-    color:#f0f0f0;
-
-    font-family:"EB Garamond", Georgia, serif;
-    font-size:34px;
-    font-weight:800;
-
-    text-align:center;
-    text-decoration:none;
-    text-transform:uppercase;
-
-    line-height:1;
-
-    text-shadow:2px 2px 0 rgba(0,0,0,.65);
-
-    transition:.22s ease;
-}
-
-.camarilhas-bully-list a:hover{
-    color:#d4a017;
-
-    transform:scale(1.08);
-
-    text-shadow:
-        0 0 10px rgba(255,191,0,.8),
-        0 0 22px rgba(255,191,0,.45),
-        2px 2px 0 rgba(0,0,0,.7);
-}
-
-.camarilhas-return{
-    position:relative;
-    z-index:2;
-
-    width:82%;
-
-    margin:0 auto;
-    padding-top:22px;
-
-    border-top:2px solid rgba(230,230,230,.55);
-
-    text-align:center;
-}
-
-.camarilhas-return a{
-    color:#f0f0f0;
-
-    font-family:"EB Garamond", Georgia, serif;
-    font-size:26px;
-    font-weight:800;
-    font-style:italic;
-
-    text-decoration:none;
-    text-transform:uppercase;
-
-    text-shadow:2px 2px 0 rgba(0,0,0,.65);
-
-    transition:.22s ease;
-}
-
-.camarilhas-return a:hover{
-    color:#d4a017;
-
-    transform:scale(1.06);
-
-    text-shadow:
-        0 0 10px rgba(255,191,0,.8),
-        0 0 22px rgba(255,191,0,.45),
-        2px 2px 0 rgba(0,0,0,.7);
-}
-.gang-file-nav{
-    margin:10px auto 35px;
-
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    gap:10px;
-
-    font-family:"EB Garamond", Georgia, serif;
-    font-size:22px;
-    font-weight:800;
-    font-style:italic;
-
-    text-shadow:2px 2px 0 rgba(0,0,0,.55);
-}
-
-.gang-file-nav a{
-    color:#f0f0f0;
-    text-decoration:none;
-    text-transform:uppercase;
-
-    transition:.22s ease;
-}
-
-.gang-file-nav span{
-    color:#f0f0f0;
-}
-
-.gang-file-nav a:hover,
-.gang-file-nav a.active{
-    color:#d4a017;
-
-    transform:scale(1.05);
-
-    text-shadow:
-        0 0 10px rgba(255,191,0,.8),
-        0 0 22px rgba(255,191,0,.45),
-        2px 2px 0 rgba(0,0,0,.7);
-}
-
-.gang-section{
-    scroll-margin-top:120px;
-}
-
-html{
-    scroll-behavior:smooth;
-}
-.gang-return{
-    margin:35px auto 0;
-    text-align:center;
-}
-
-.gang-return a{
-    color:#f0f0f0;
-    font-family:"EB Garamond", Georgia, serif;
-    font-size:24px;
-    font-weight:800;
-    font-style:italic;
-    text-decoration:none;
-    text-transform:uppercase;
-    text-shadow:2px 2px 0 rgba(0,0,0,.65);
-    transition:.22s ease;
-}
-
-.gang-return a:hover{
-    color:#d4a017;
-    transform:scale(1.06);
-    text-shadow:
-        0 0 10px rgba(255,191,0,.8),
-        0 0 22px rgba(255,191,0,.45),
-        2px 2px 0 rgba(0,0,0,.7);
-}
-
-.gang-detail-panel .bully-status-box{
-    margin-top:55px;
-}
-.gang-menu-page{
-    min-height:100vh;
-    padding:90px 20px;
-
-    display:flex;
-    align-items:center;
-    justify-content:center;
-
-    position:relative;
-    overflow:hidden;
-
-    background:
-        linear-gradient(rgba(35,75,78,.72), rgba(28,62,66,.86)),
-        url("/img/backgroundstatus.png") center center / cover no-repeat;
-}
-
-.gang-menu-page::before{
-    content:"";
-    position:absolute;
-    inset:0;
-
-    background:rgba(5,18,22,.28);
-
-    pointer-events:none;
-}
-
-.gang-menu-box{
-    position:relative;
-    z-index:2;
-
-    width:100%;
-    max-width:1180px;
-
-    padding:36px 58px;
-
-    background:
-        linear-gradient(rgba(35,70,75,.78), rgba(20,45,52,.88)),
-        url("https://www.transparenttextures.com/patterns/asfalt-dark.png");
-
-    border:2px solid rgba(12,30,35,.85);
-
-    box-shadow:
-        inset 0 0 80px rgba(0,0,0,.45),
-        0 0 45px rgba(0,0,0,.45);
-
-    text-align:center;
-}
-
-.gang-menu-box::before{
-    content:"";
-    position:absolute;
-    inset:20px;
-
-    border:2px solid rgba(5,20,25,.55);
-
-    pointer-events:none;
-}
-
-.bully-menu-banner{
-    margin:0 auto 24px;
-    height:380px;
-    border:2px solid rgba(5,20,25,.55);
-}
-
-.bully-menu-banner img{
-    filter:
-        brightness(.55)
-        contrast(1.12)
-        saturate(.9);
-}
-
-.gang-file-nav{
-    position:relative;
-    z-index:2;
-
-    margin:0 auto 22px;
-
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    gap:10px;
-
-    font-family:"EB Garamond", Georgia, serif;
-    font-size:22px;
-    font-weight:800;
-    font-style:italic;
-
-    text-shadow:2px 2px 0 rgba(0,0,0,.55);
-}
-
-.gang-file-nav a{
-    color:#f0f0f0;
-
-    text-decoration:none;
-    text-transform:uppercase;
-
-    transition:.22s ease;
-}
-
-.gang-file-nav span{
-    color:#f0f0f0;
-}
-
-.gang-file-nav a:hover,
-.gang-file-nav a.active{
-    color:#d4a017;
-
-    transform:scale(1.05);
-
-    text-shadow:
-        0 0 10px rgba(255,191,0,.8),
-        0 0 22px rgba(255,191,0,.45),
-        2px 2px 0 rgba(0,0,0,.7);
-}
-
-.gang-section{
-    position:relative;
-    z-index:2;
-
-    scroll-margin-top:120px;
-}
-
-.gang-text-section{
-    width:82%;
-
-    margin:0 auto 55px;
-
-    text-align:left;
-}
-
-.gang-text-section h2,
-.gang-balance-section h2{
-    color:#d4a017;
-
-    font-family:"EB Garamond", Georgia, serif;
-    font-size:32px;
-    font-weight:800;
-    font-style:italic;
-
-    text-transform:uppercase;
-
-    text-shadow:
-        2px 2px 0 rgba(0,0,0,.65),
-        0 0 10px rgba(255,191,0,.35);
-
-    margin-bottom:16px;
-}
-
-.gang-text-section p{
-    color:#f0f0f0;
-
-    font-family:"EB Garamond", Georgia, serif;
-    font-size:23px;
-    font-weight:700;
-
-    line-height:1.35;
-
-    text-shadow:2px 2px 0 rgba(0,0,0,.55);
-}
-
-.gang-balance-section{
-    width:100%;
-
-    margin:0 auto;
-
-    padding-top:30px;
-
-    border-top:2px solid rgba(230,230,230,.55);
-}
-
-.gang-balance-section .report-title{
-    position:relative;
-    z-index:2;
-
-    width:82%;
-
-    margin:0 auto 28px;
-}
-
-.gang-balance-section .status-grid{
-    position:relative;
-    z-index:2;
-
-    margin-top:30px;
-}
-
-.gang-return{
-    position:relative;
-    z-index:2;
-
-    width:82%;
-
-    margin:45px auto 0;
-    padding-top:22px;
-
-    border-top:2px solid rgba(230,230,230,.55);
-
-    text-align:center;
-}
-
-.gang-return a{
-    color:#f0f0f0;
-
-    font-family:"EB Garamond", Georgia, serif;
-    font-size:26px;
-    font-weight:800;
-    font-style:italic;
-
-    text-decoration:none;
-    text-transform:uppercase;
-
-    text-shadow:2px 2px 0 rgba(0,0,0,.65);
-
-    transition:.22s ease;
-}
-
-.gang-return a:hover{
-    color:#d4a017;
-
-    transform:scale(1.06);
-
-    text-shadow:
-        0 0 10px rgba(255,191,0,.8),
-        0 0 22px rgba(255,191,0,.45),
-        2px 2px 0 rgba(0,0,0,.7);
-}
-
-html{
-    scroll-behavior:smooth;
-}
-.gang-music-display{
-    width:fit-content;
-    margin:18px auto 25px;
-
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    gap:14px;
+.bully-music-display:not(.gang-music-display){
+    display:none !important;
 }

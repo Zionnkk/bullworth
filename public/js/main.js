@@ -28,9 +28,7 @@ links.forEach(link => {
 // =========================
 
 const title = document.querySelector(".home-title");
-
 const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-
 let titleInterval = null;
 
 if (title) {
@@ -40,20 +38,14 @@ if (title) {
         clearInterval(titleInterval);
 
         const original = title.dataset.value || title.innerText;
-
         title.dataset.value = original;
 
         titleInterval = setInterval(() => {
             title.innerText = original
                 .split("")
                 .map((letter, index) => {
-                    if (letter === "\n" || letter === " ") {
-                        return letter;
-                    }
-
-                    if (index < iteration) {
-                        return original[index];
-                    }
+                    if (letter === "\n" || letter === " ") return letter;
+                    if (index < iteration) return original[index];
 
                     return letters[Math.floor(Math.random() * letters.length)];
                 })
@@ -82,7 +74,6 @@ const subtitles = [
 ];
 
 const subtitle = document.querySelector(".home-subtitle");
-
 let subtitleIndex = 0;
 
 if (subtitle) {
@@ -122,10 +113,94 @@ if (rightPanel) {
 // =========================
 
 const noise = document.createElement("div");
-
 noise.classList.add("noise-overlay");
-
 document.body.appendChild(noise);
+
+// =========================
+// REPORT TRANSITION
+// =========================
+
+const nivelamentoBtn = document.querySelector(".next-page");
+const reportLink = document.querySelector(".report-link");
+const reportTransition = document.getElementById("report-transition");
+
+if (nivelamentoBtn && reportTransition) {
+    nivelamentoBtn.addEventListener("click", e => {
+        e.preventDefault();
+
+        const destino = nivelamentoBtn.href;
+
+        reportTransition.classList.add("active");
+
+        setTimeout(() => {
+            window.location.href = destino;
+        }, 1800);
+    });
+}
+
+if (reportLink && reportTransition) {
+    reportLink.addEventListener("click", e => {
+        e.preventDefault();
+
+        reportTransition.classList.add("active");
+
+        setTimeout(() => {
+            window.location.href = reportLink.href;
+        }, 1800);
+    });
+}
+
+// =========================
+// GANG MUSIC
+// =========================
+
+document.addEventListener("DOMContentLoaded", () => {
+    const gangMusic = document.querySelector("#gang-music");
+
+    if (gangMusic) {
+        gangMusic.volume = 0.25;
+
+        gangMusic.play().catch(() => {
+            document.addEventListener("click", () => {
+                gangMusic.play();
+            }, { once: true });
+        });
+    }
+});
+
+// =========================
+// MAIN THEME
+// =========================
+
+const isGangPage = document.querySelector(".gang-menu-page");
+
+if (!isGangPage) {
+    const mainTheme = document.getElementById("main-theme");
+
+    if (mainTheme) {
+        mainTheme.volume = 0.25;
+
+        const savedTime = localStorage.getItem("mainThemeTime");
+
+        if (savedTime) {
+            mainTheme.currentTime = parseFloat(savedTime);
+        }
+
+        function playMainTheme() {
+            mainTheme.play().catch(() => {});
+        }
+
+        window.addEventListener("load", playMainTheme);
+
+        document.addEventListener("click", playMainTheme, {
+            once: true
+        });
+
+        setInterval(() => {
+            localStorage.setItem("mainThemeTime", mainTheme.currentTime);
+        }, 500);
+    }
+}
 
 // =========================
 // EXTRA CSS FROM JS
@@ -180,46 +255,6 @@ style.innerHTML = `
     z-index:99999;
     background-image:url("https://media.tenor.com/ayT1t4X5o0kAAAAC/static.gif");
     mix-blend-mode:screen;
-}
-    const nivelamentoBtn =
-document.querySelector(".next-page");
-
-if(nivelamentoBtn){
-
-    nivelamentoBtn.addEventListener("click",(e)=>{
-
-        e.preventDefault();
-
-        const destino =
-        nivelamentoBtn.href;
-
-        document
-        .getElementById("report-transition")
-        .classList.add("active");
-
-        setTimeout(()=>{
-
-            window.location.href =
-            destino;
-
-        },1800);
-
-    });
-
-}
-    const reportLink = document.querySelector(".report-link");
-const reportTransition = document.getElementById("report-transition");
-
-if(reportLink && reportTransition){
-    reportLink.addEventListener("click", function(e){
-        e.preventDefault();
-
-        reportTransition.classList.add("active");
-
-        setTimeout(() => {
-            window.location.href = reportLink.href;
-        }, 1800);
-    });
 }
 `;
 
