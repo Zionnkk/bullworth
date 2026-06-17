@@ -4,14 +4,6 @@
 
     <section class="gang-menu-box">
 
-        <section class="gang-banner bully-menu-banner">
-
-            <img src="/img/preppies-banner.png" alt="Preppies Banner">
-
-            <div class="gang-banner-overlay"></div>
-
-        </section>
-
         <div class="bully-music-display gang-music-display">
 
             <button type="button" id="gang-music-toggle">
@@ -20,9 +12,13 @@
 
             <div>
                 <strong>PREPPIES THEME</strong>
-                <span>AQUABERRY BOUTIQUE</span>
+                <p> AQUABERRY BOUTIQUE </p>
             </div>
 
+        </div>
+
+        <div class="gang-top-title">
+            <h1>PREPPIES</h1>
         </div>
 
         <nav class="gang-file-nav">
@@ -40,19 +36,16 @@
             <h2>AMBIENTAÇÃO</h2>
 
             <p>
-                Odiar pobre é o esporte favorito dos mauricinhos, o boxe só vem em segundo lugar. Filhinhos de papai, eles simples e literalmente compraram um território inteiro dentro do internato — a infame Mansão Harrington. Talvez seja o único lugar da escola onde um aluno pode ser espancado no gramado e o monitor apenas rirá enquanto limpa a viseira do tênis italiano que acabou de comprar com a propina.
-            </p>
+            Odiar pobre é o esporte favorito dos mauricinhos, o boxe só vem em segundo lugar. Filhinhos de papai, eles simples e literalmente compraram um território inteiro dentro do internato — a infame Mansão Harrington. Talvez seja o único lugar da escola onde um aluno pode ser espancado no gramado e o monitor apenas rirá enquanto limpa a viseira do tênis italiano que acabou de comprar com a propina.
+            <br> <br> 
 
-            <p>
-                Trajam suéteres azul-bebê da grife Aquaberry, uniforme mandatário da camarilha e símbolo do quanto se importam com a aparência — e o quanto desprezam quem não pode pagar por ela. Seus penteados são engomadinhos e seus dentes perfeitamente alinhados. Apesar de acharem tudo que respira inferior, armazenam um ódio especial pelos descolados — talvez pelo nojo de graxa ou pelo fato de não aguentarem ver jaquetas de couro barato andando por aí com mais confiança do que deviam, ninguém sabe.
-            </p>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Trajam suéteres azul-bebê da grife Aquaberry, uniforme mandatário da camarilha e símbolo do quanto se importam com a aparência — e o quanto desprezam quem não pode pagar por ela. Seus penteados são engomadinhos e seus dentes perfeitamente alinhados. Apesar de acharem tudo que respira inferior, armazenam um ódio especial pelos descolados — talvez pelo nojo de graxa ou pelo fato de não aguentarem ver jaquetas de couro barato andando por aí com mais confiança do que deviam, ninguém sabe.
+            <br> <br>
 
-            <p>
-                Eles não brigam por impulso, mas por esporte. Um mauricinho nunca partiria para cima por perder a paciência, mas porque você existiu no mesmo ambiente que ele. Se puder, fará isso usando luvas. Senão, improvisa com palavras venenosas, um sorriso cínico desenhado de canto a canto e um soco na barriga. Se você ousar revidar... boa sorte. Não só porque são bem treinados, mas porque o diretor provavelmente te suspenderá no dia seguinte por comportamento hostil.
-            </p>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Eles não brigam por impulso, mas por esporte. Um mauricinho nunca partiria para cima por perder a paciência, mas porque você existiu no mesmo ambiente que ele. Se puder, fará isso usando luvas. Senão, improvisa com palavras venenosas, um sorriso cínico desenhado de canto a canto e um soco na barriga. Se você ousar revidar... boa sorte. Não só porque são bem treinados, mas porque o diretor provavelmente te suspenderá no dia seguinte por comportamento hostil.
+            <br> <br>
 
-            <p>
-                São falsos, esnobes, articulados e protegidos pelo sistema. Mas não se engane mesmo com todos os privilégios, os mauricinhos gostam de jogar sujo e ainda riem entre si quando você escorrega no ovo que eles jogaram do terceiro andar.
+           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;São falsos, esnobes, articulados e protegidos pelo sistema. Mas não se engane mesmo com todos os privilégios, os mauricinhos gostam de jogar sujo e ainda riem entre si quando você escorrega no ovo que eles jogaram do terceiro andar.
             </p>
 
         </section>
@@ -119,48 +112,6 @@
 
 </main>
 
-<audio id="gang-music" src="/audio/preppies-theme.mp3" loop></audio>
-
-<script>
-    const navLinks = document.querySelectorAll(".gang-file-nav a[href^='#']");
-    const sections = document.querySelectorAll(".gang-section");
-
-    window.addEventListener("scroll", () => {
-        let current = "";
-
-        sections.forEach(section => {
-            const sectionTop = section.offsetTop - 180;
-
-            if(window.scrollY >= sectionTop){
-                current = section.getAttribute("id");
-            }
-        });
-
-        navLinks.forEach(link => {
-            link.classList.remove("active");
-
-            if(link.getAttribute("href") === "#" + current){
-                link.classList.add("active");
-            }
-        });
-    });
-
-    const gangToggle = document.getElementById("gang-music-toggle");
-    const gangAudio = document.getElementById("gang-music");
-
-    gangAudio.volume = 0.25;
-
-    window.addEventListener("load", () => {
-        gangAudio.play().catch(() => {});
-    });
-
-    gangToggle.addEventListener("click", () => {
-        if(gangAudio.paused){
-            gangAudio.play();
-        }else{
-            gangAudio.pause();
-        }
-    });
-</script>
+<audio id="gang-music" src="/audio/preppies-theme.mp3" loop preload="auto"></audio>
 
 <%- include("../partials/footer") %>

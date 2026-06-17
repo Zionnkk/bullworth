@@ -1143,9 +1143,68 @@ body::after{
     text-shadow:2px 2px 0 rgba(0,0,0,.55);
 }
 
+.bully-music-display,
+.gang-music-display{
+    width:fit-content;
+    margin:78px auto 0;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:10px;
+
+    color:#e6e6e6;
+    font-family:"EB Garamond", Georgia, serif;
+    font-style:italic;
+    text-shadow:2px 2px 0 rgba(0,0,0,.55);
+}
+
 .bully-music-display button,
 .gang-music-display button{
-    display:none;
+    display:flex;
+
+    width:24px;
+    height:22px;
+
+    align-items:center;
+    justify-content:center;
+
+    border:1px solid rgba(230,230,230,.65);
+    background:rgba(255,255,255,.12);
+
+    color:#e6e6e6;
+    font-size:12px;
+
+    cursor:pointer;
+    transition:.22s ease;
+}
+
+.bully-music-display button:hover,
+.gang-music-display button:hover{
+    color:#d4a017;
+    border-color:#d4a017;
+    box-shadow:0 0 10px rgba(255,191,0,.35);
+}
+
+.bully-music-display div,
+.gang-music-display div{
+    display:flex;
+    flex-direction:column;
+    align-items:flex-start;
+}
+
+.bully-music-display strong,
+.gang-music-display strong{
+    font-size:20px;
+    line-height:1;
+    color:#f0f0f0;
+}
+
+.bully-music-display span,
+.gang-music-display span{
+    font-size:16px;
+    margin-top:4px;
+    color:#d8d8d8;
 }
 
 .bully-music-display div{
@@ -1331,15 +1390,94 @@ body::after{
 .gang-banner-overlay h1{
     display:none;
 }
-.gang-greasers .gang-menu-box::before,
 .gang-greasers::before{
+    background:
+    linear-gradient(
+        rgba(16,16,16,.90),
+        rgba(16,16,16,.90)
+    ),
+    url("/img/backgroundstatus.png") !important;
+}
+
+.gang-greasers .gang-menu-box::before{
     background:
     linear-gradient(
         rgba(16,16,16,.95),
         rgba(16,16,16,.95)
-    ),
-    url("/img/backgroundstatus.png");
+    ) !important;
 }
 .bully-music-display:not(.gang-music-display){
     display:none !important;
+}
+.gang-menu-box{
+    padding-top:38px;
+}
+
+.gang-banner{
+    display:none;
+}
+
+.gang-top-title{
+    text-align:center;
+    margin-top:40px;
+    margin-bottom:4px;
+}
+
+.gang-top-title h1{
+    font-family:"EB Garamond", Georgia, serif;
+    font-size:54px;
+    font-weight:800;
+    font-style:italic;
+    color:#d4a017;
+    text-transform:uppercase;
+    text-shadow:
+        2px 2px 0 rgba(0,0,0,.65),
+        0 0 10px rgba(255,191,0,.35);
+}
+
+.gang-top-title span{
+    display:block;
+    margin-top:6px;
+    font-family:"EB Garamond", Georgia, serif;
+    font-size:26px;
+    font-weight:800;
+    color:#f0f0f0;
+    text-transform:uppercase;
+    text-shadow:2px 2px 0 rgba(0,0,0,.6);
+}
+
+.gang-music-display{
+    margin:0 auto 30px;
+}
+
+.report-title{
+    text-align:center !important;
+    width:100%;
+    display:block;
+    margin:18px auto 38px !important;
+}
+.gang-text-section p{
+    text-indent: 5ch;
+}
+.report-title-wrap{
+    display:flex;
+    justify-content:center;
+
+    padding-left:135px;
+}
+
+.report-title{
+    margin-bottom:35px;
+}
+.gang-preppies .report-title{
+    position:relative;
+    left:38px;
+}
+.gang-cheers .report-title{
+    position:relative;
+    left:23px;
+}
+.gang-greasers .report-title{
+    position:relative;
+    left:13px;
 }
