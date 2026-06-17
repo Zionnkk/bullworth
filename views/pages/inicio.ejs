@@ -50,51 +50,37 @@
 </audio>
 
 <script>
-    const clickSound = document.getElementById("menu-click");
-    const musicToggle = document.getElementById("music-toggle");
-    const musicText = document.querySelector(".bully-music-display strong");
-    const audio = document.getElementById("main-theme");
+    // Menu sounds and music toggle
+    (function(){
+        const menuClick = document.getElementById('menu-click');
+        const mainTheme = document.getElementById('main-theme');
+        const musicToggle = document.getElementById('music-toggle');
+        const musicText = document.querySelector('.bully-music-display strong');
 
-    clickSound.volume = 0.2;
-    audio.volume = 0.25;
+        // Play click on navigation links
+        document.querySelectorAll('.pause-options a').forEach(a => {
+            a.addEventListener('click', () => {
+                if(menuClick) menuClick.currentTime = 0, menuClick.play();
+            });
+        });
 
-    document.querySelectorAll(".pause-options a").forEach(link => {
-        link.addEventListener("click", async (e) => {
-            e.preventDefault();
+        let playing = false;
+        const audio = mainTheme || { play: ()=>{}, pause: ()=>{} };
 
-            clickSound.currentTime = 0;
-
-            try{
-                await clickSound.play();
-            }catch(error){
-                console.log("Som bloqueado ou arquivo não encontrado.");
-            }
-
-            const href = link.getAttribute("href");
-
-            if(href && href !== "#"){
-                setTimeout(() => {
-    window.location.href = href;
-}, 700);
+        musicToggle.addEventListener('click', () => {
+            if(!playing){
+                audio.play();
+                if(musicText) musicText.textContent = 'MAIN THEME : PLAYING';
+                musicToggle.textContent = '❚❚';
+                playing = true;
+            } else {
+                audio.pause();
+                if(musicText) musicText.textContent = 'MAIN THEME : PAUSED';
+                musicToggle.textContent = '▶';
+                playing = false;
             }
         });
-    });
-
-    let playing = false;
-
-    musicToggle.addEventListener("click", () => {
-        if(!playing){
-            audio.play();
-            musicText.textContent = "MAIN THEME : PLAYING";
-            musicToggle.textContent = "❚❚";
-            playing = true;
-        }else{
-            audio.pause();
-            musicText.textContent = "MAIN THEME : PAUSED";
-            musicToggle.textContent = "▶";
-            playing = false;
-        }
-    });
+    })();
 </script>
 
 <%- include("../partials/footer") %>
