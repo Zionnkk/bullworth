@@ -1495,9 +1495,9 @@ body::after{
 
     html,
     body{
+        width:100%;
         overflow-x:auto !important;
         overflow-y:auto;
-        width:auto;
     }
 
     body{
@@ -1562,19 +1562,19 @@ body::after{
         font-size:28px !important;
         width:100%;
         margin:18px auto 38px !important;
-        left:0;
-        padding-left:0;
+        left:0 !important;
+        padding-left:0 !important;
     }
 
     .status-grid{
-        width:100% !important;
-        min-width:0 !important;
-        max-width:980px !important;
+        width:980px !important;
+        min-width:980px !important;
+        max-width:none !important;
 
         display:grid;
-        grid-template-columns:190px 125px 125px 150px 125px 125px;
-        column-gap:28px;
-        row-gap:34px;
+        grid-template-columns:190px 125px 125px 150px 125px 125px !important;
+        column-gap:28px !important;
+        row-gap:34px !important;
     }
 
     .year-title{
