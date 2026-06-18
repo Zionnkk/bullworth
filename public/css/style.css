@@ -1622,3 +1622,34 @@ body::after{
         font-size:28px;
     }
 }
+@media(max-width:700px){
+
+    html,
+    body{
+        overflow-x:scroll !important;
+        width:1100px !important;
+        min-width:1100px !important;
+        max-width:none !important;
+    }
+
+    .gang-menu-page{
+        width:1100px !important;
+        min-width:1100px !important;
+        max-width:none !important;
+        overflow:visible !important;
+    }
+
+    .gang-menu-box{
+        width:1000px !important;
+        min-width:1000px !important;
+        max-width:none !important;
+        overflow:visible !important;
+    }
+
+    .status-grid{
+        width:980px !important;
+        min-width:980px !important;
+        max-width:none !important;
+        grid-template-columns:190px 125px 125px 150px 125px 125px !important;
+    }
+}
