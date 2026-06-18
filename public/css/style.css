@@ -1583,3 +1583,23 @@ body::after{
     }
 
 }
+@media(max-width:700px){
+
+    .status-scroll{
+        width:100%;
+        overflow-x:auto;
+        overflow-y:hidden;
+        -webkit-overflow-scrolling:touch;
+        padding-bottom:18px;
+    }
+
+    .status-grid{
+        width:900px !important;
+        min-width:900px !important;
+        max-width:none !important;
+    }
+
+    .gang-menu-box{
+        overflow:visible !important;
+    }
+}
