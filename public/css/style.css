@@ -1603,3 +1603,48 @@ body::after{
         overflow:visible !important;
     }
 }
+@media(max-width:700px){
+
+    .gang-balance-section{
+        overflow:visible !important;
+    }
+
+    .status-grid{
+        width:100% !important;
+        min-width:0 !important;
+        max-width:100% !important;
+
+        grid-template-columns: 78px repeat(5, 1fr) !important;
+        column-gap:4px !important;
+        row-gap:22px !important;
+    }
+
+    .year-title{
+        font-size:9px !important;
+        letter-spacing:2px !important;
+        line-height:1.15 !important;
+    }
+
+    .stat-name{
+        font-size:15px !important;
+        letter-spacing:1px !important;
+        padding-right:2px !important;
+    }
+
+    .stars{
+        gap:2px !important;
+    }
+
+    .stars img,
+    .status-grid .stars img{
+        width:11px !important;
+        height:11px !important;
+    }
+
+    .report-title{
+        font-size:18px !important;
+        margin:14px auto 26px !important;
+        left:0 !important;
+        padding-left:0 !important;
+    }
+}
