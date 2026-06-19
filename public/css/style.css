@@ -1566,13 +1566,15 @@ body::after{
     overflow-y:hidden !important;
     display:block !important;
     width:100% !important;
-
-    border:2px solid red !important;
+    -webkit-overflow-scrolling:touch;
+    touch-action:pan-x;
+    padding-bottom:18px;
 }
 
 .status-grid{
     width:1200px !important;
     min-width:1200px !important;
+    max-width:none !important;
 }
 
 .gang-menu-page,
