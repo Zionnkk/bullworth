@@ -1561,3 +1561,22 @@ body::after{
         padding-left:0 !important;
     }
 }
+.status-scroll{
+    overflow-x:auto !important;
+    overflow-y:hidden !important;
+    display:block !important;
+    width:100% !important;
+
+    border:2px solid red !important;
+}
+
+.status-grid{
+    width:1200px !important;
+    min-width:1200px !important;
+}
+
+.gang-menu-page,
+.gang-menu-box,
+.gang-balance-section{
+    overflow:visible !important;
+}
