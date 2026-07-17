@@ -4,83 +4,305 @@
 
     <section class="pause-menu">
 
-        <img src="/img/bullworthacademy.png" class="pause-title-img" alt="BULLWORTH ACADEMY">
+        <div style="margin-top:-10px; text-align:center;">
 
-<img src="/img/gamepaused.png" class="pause-subtitle-img" alt="GAME PAUSED">
+            <img
+                src="/img/bullworthacademy.png"
+                alt="Bullworth Academy"
+                class="pause-title-img"
+                style="
+                    width:650px;
+                    max-width:90vw;
+                    margin:0 auto 14px;
+                "
+            >
 
-        <nav class="pause-options">
+            <img
+                src="/img/gamepaused.png"
+                alt="Game Paused"
+                class="pause-subtitle-img"
+                style="
+                    width:290px;
+                    max-width:80vw;
+                    margin:0 auto 58px;
+                "
+            >
 
-    <a href="/sistemas">SISTEMAS</a>
+        </div>
 
-    <a href="/camarilhas">CAMARILHAS</a>
+        <nav class="pause-options" style="gap:14px;">
 
-    <a href="/privilegios">PRIVILÉGIOS</a>
+            <a href="/sistemas">SISTEMAS</a>
 
-    <a href="#" class="disabled-menu">LOAD</a>
+            <a href="/camarilhas">CAMARILHAS</a>
 
-    <a href="#" class="disabled-menu">RESTART</a>
+            <a href="/privilegios">PRIVILÉGIOS</a>
 
-    <a href="#" class="disabled-menu">QUIT TO MAIN MENU</a>
+            <a href="#">LOAD</a>
 
-</nav>
+            <a href="/">RESTART</a>
 
-               <div class="bully-music-display">
+            <a href="/">QUIT TO MAIN MENU</a>
 
-            <button type="button" id="music-toggle">
-                ▶
+        </nav>
+
+        <div class="bully-music-display home-music-display">
+
+            <button
+                type="button"
+                id="main-theme-toggle"
+                aria-label="Tocar música"
+            >
+                <span
+                    class="main-theme-play-icon"
+                    aria-hidden="true"
+                ></span>
+
+                <span
+                    class="main-theme-pause-icon"
+                    aria-hidden="true"
+                >
+                    <i></i>
+                    <i></i>
+                </span>
             </button>
 
-            <div>
-                <strong>MAIN THEME : PAUSED</strong>
-                <span>1985, New England</span>
+            <div class="home-music-text">
+
+                <strong id="main-theme-status">
+                    MAIN THEME : PAUSED
+                </strong>
+
+                <span>
+                    1985, New England
+                </span>
+
             </div>
 
         </div>
 
+        <style>
+            .home-music-display{
+                margin:62px auto 30px !important;
+
+                display:flex !important;
+                align-items:center !important;
+                justify-content:center !important;
+
+                gap:9px !important;
+
+                transform:translateY(-8px);
+            }
+
+            .home-music-display #main-theme-toggle{
+                width:30px !important;
+                height:28px !important;
+                min-width:30px !important;
+                flex:0 0 30px !important;
+
+                position:relative !important;
+
+                display:flex !important;
+                align-items:center !important;
+                justify-content:center !important;
+
+                padding:0 !important;
+                margin:0 !important;
+
+                background:#203336 !important;
+
+                border:1px solid transparent !important;
+                border-radius:4px !important;
+
+                outline:none !important;
+
+                appearance:none !important;
+                -webkit-appearance:none !important;
+
+                box-shadow:
+                    inset 0 0 4px rgba(0,0,0,.75) !important;
+
+                cursor:pointer !important;
+
+                transition:
+                    background .12s ease,
+                    border-color .12s ease,
+                    box-shadow .12s ease;
+            }
+
+            .home-music-display #main-theme-toggle:hover{
+                background:#29464a !important;
+                border-color:#ffd22a !important;
+
+                box-shadow:
+                    0 0 5px rgba(255,255,255,.35),
+                    0 0 8px rgba(255,210,42,.65),
+                    inset 0 0 4px rgba(0,0,0,.75) !important;
+            }
+
+            .home-music-display #main-theme-toggle:focus,
+            .home-music-display #main-theme-toggle:focus-visible{
+                outline:none !important;
+            }
+
+            .home-music-display .main-theme-play-icon{
+                display:block !important;
+
+                position:absolute !important;
+                left:50% !important;
+                top:50% !important;
+
+                width:0 !important;
+                height:0 !important;
+
+                margin:0 !important;
+
+                border-top:5px solid transparent !important;
+                border-bottom:5px solid transparent !important;
+                border-left:8px solid #ffffff !important;
+
+                transform:translate(-42%, -58%) !important;
+
+                filter:none !important;
+            }
+
+            .home-music-display #main-theme-toggle:hover .main-theme-play-icon{
+                border-left-color:#ffd22a !important;
+
+                filter:
+                    drop-shadow(0 0 3px rgba(255,210,42,.9)) !important;
+            }
+
+            .home-music-display .main-theme-pause-icon{
+                display:none !important;
+
+                position:absolute !important;
+                left:50% !important;
+                top:50% !important;
+
+                width:9px !important;
+                height:11px !important;
+
+                margin:0 !important;
+
+                transform:translate(-50%, -58%) !important;
+            }
+
+            .home-music-display .main-theme-pause-icon i{
+                display:block !important;
+
+                position:absolute !important;
+                top:0 !important;
+
+                width:3px !important;
+                height:11px !important;
+
+                margin:0 !important;
+
+                background:#ffffff !important;
+            }
+
+            .home-music-display .main-theme-pause-icon i:first-child{
+                left:0 !important;
+            }
+
+            .home-music-display .main-theme-pause-icon i:last-child{
+                right:0 !important;
+            }
+
+            .home-music-display #main-theme-toggle:hover .main-theme-pause-icon i{
+                background:#ffd22a !important;
+
+                box-shadow:
+                    0 0 3px rgba(255,210,42,.9) !important;
+            }
+
+            .home-music-display
+            #main-theme-toggle.is-playing
+            .main-theme-play-icon{
+                display:none !important;
+            }
+
+            .home-music-display
+            #main-theme-toggle.is-playing
+            .main-theme-pause-icon{
+                display:block !important;
+            }
+
+            .home-music-display .home-music-text{
+                display:flex !important;
+                flex-direction:column !important;
+                align-items:flex-start !important;
+                justify-content:center !important;
+            }
+
+            .home-music-display .home-music-text strong{
+                font-size:22px !important;
+                line-height:1 !important;
+            }
+
+            .home-music-display .home-music-text span{
+                margin-top:3px !important;
+                font-size:16px !important;
+                line-height:1 !important;
+            }
+        </style>
+
+        <script>
+            document.addEventListener("DOMContentLoaded", () => {
+                setTimeout(() => {
+    document
+        .querySelectorAll(".pause-options a")
+        .forEach(link => link.classList.remove("selected"));
+}, 0);
+                const audio = document.getElementById("main-theme");
+                const button = document.getElementById("main-theme-toggle");
+                const status = document.getElementById("main-theme-status");
+
+                if (!audio || !button || !status) return;
+
+                const updateMusicDisplay = () => {
+                    const isPlaying = !audio.paused;
+
+                    button.classList.toggle("is-playing", isPlaying);
+
+                    button.setAttribute(
+                        "aria-label",
+                        isPlaying
+                            ? "Pausar música"
+                            : "Tocar música"
+                    );
+
+                    status.textContent = isPlaying
+                        ? "MAIN THEME : PLAYING"
+                        : "MAIN THEME : PAUSED";
+                };
+
+                button.addEventListener("click", async () => {
+                    try {
+                        if (audio.paused) {
+                            await audio.play();
+                        } else {
+                            audio.pause();
+                        }
+                    } catch (error) {
+                        console.error(
+                            "Não foi possível iniciar a música:",
+                            error
+                        );
+                    }
+                });
+
+                audio.addEventListener("play", updateMusicDisplay);
+                audio.addEventListener("pause", updateMusicDisplay);
+                audio.addEventListener("ended", updateMusicDisplay);
+
+                updateMusicDisplay();
+            });
+        </script>
+
     </section>
 
 </main>
-
-<audio id="menu-click" preload="auto">
-    <source src="/audio/menu-click.mp3" type="audio/mpeg">
-</audio>
-
-<audio id="main-theme" loop preload="auto">
-    <source src="/audio/bully-main-theme.mp3" type="audio/mpeg">
-</audio>
-
-<script>
-    // Menu sounds and music toggle
-    (function(){
-        const menuClick = document.getElementById('menu-click');
-        const mainTheme = document.getElementById('main-theme');
-        const musicToggle = document.getElementById('music-toggle');
-        const musicText = document.querySelector('.bully-music-display strong');
-
-        // Play click on navigation links
-        document.querySelectorAll('.pause-options a').forEach(a => {
-            a.addEventListener('click', () => {
-                if(menuClick) menuClick.currentTime = 0, menuClick.play();
-            });
-        });
-
-        let playing = false;
-        const audio = mainTheme || { play: ()=>{}, pause: ()=>{} };
-
-        musicToggle.addEventListener('click', () => {
-            if(!playing){
-                audio.play();
-                if(musicText) musicText.textContent = 'MAIN THEME : PLAYING';
-                musicToggle.textContent = '❚❚';
-                playing = true;
-            } else {
-                audio.pause();
-                if(musicText) musicText.textContent = 'MAIN THEME : PAUSED';
-                musicToggle.textContent = '▶';
-                playing = false;
-            }
-        });
-    })();
-</script>
 
 <%- include("../partials/footer") %>

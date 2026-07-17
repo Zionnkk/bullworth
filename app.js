@@ -95,3 +95,10 @@ app.get("/camarilhas/cheers/nivelamento", (req, res) => {
 app.listen(3000, () => {
     console.log("Servidor rodando em http://localhost:3000");
 });
+app.get("/privilegios", (req, res) => {
+    res.render("pages/privilegios");
+});
+
+app.get("/privilegios/atletas", (req, res) => {
+    res.render("pages/privilegios/atletas");
+});

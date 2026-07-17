@@ -1,0 +1,750 @@
+<%- include("../../partials/header") %>
+
+<style>
+
+/* =====================================================
+   PÁGINA DE PRIVILÉGIOS — ATLETAS
+===================================================== */
+
+html {
+    scroll-behavior: smooth;
+}
+
+.privilegios-atletas-page .bully-status-box {
+    width: min(1060px, 90%);
+    margin: 40px auto;
+}
+
+/* PLAYER */
+
+.privilegios-atletas-page .gang-music-display {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+}
+
+.privilegios-atletas-page #gang-music-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 27px;
+    height: 27px;
+    padding: 0;
+
+    color: #ffffff;
+    background: transparent;
+
+    border: 1px solid rgba(255, 255, 255, 0.75);
+    border-radius: 0;
+
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    font-weight: 900;
+    line-height: 1;
+
+    cursor: pointer;
+
+    transition:
+        color 0.18s ease,
+        border-color 0.18s ease,
+        box-shadow 0.18s ease,
+        transform 0.18s ease;
+}
+
+.privilegios-atletas-page #gang-music-toggle:hover {
+    color: #e8a817;
+    border-color: #e8a817;
+
+    box-shadow:
+        0 0 6px rgba(232, 168, 23, 0.75),
+        0 0 12px rgba(232, 168, 23, 0.35);
+
+    transform: scale(1.05);
+}
+
+.privilegios-atletas-page .gang-music-display > div {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.privilegios-atletas-page .gang-music-display strong {
+    color: #ffffff;
+
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 21px;
+    font-weight: 900;
+    font-style: italic;
+
+    text-shadow:
+        1px 1px 0 #203746,
+        2px 2px 0 rgba(0, 0, 0, 0.58);
+}
+
+.privilegios-atletas-page .gang-music-display > div > span {
+    color: #ffffff;
+
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 16px;
+    font-weight: 700;
+    font-style: italic;
+
+    text-shadow:
+        1px 1px 0 #203746,
+        2px 2px 0 rgba(0, 0, 0, 0.58);
+}
+
+/* TÍTULO PRINCIPAL */
+
+.privilegios-atletas-page > .bully-status-box > h1 {
+    margin: 42px 0 8px;
+    text-align: center;
+}
+
+/* NAVEGAÇÃO */
+
+.privilegio-file-nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 7px;
+
+    margin: 0 0 34px;
+}
+
+.privilegio-file-nav a,
+.privilegio-file-nav span {
+    display: inline-block;
+
+    color: #ffffff;
+    background: transparent;
+    border: none;
+
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 23px;
+    font-weight: 900;
+    font-style: italic;
+
+    text-decoration: none;
+
+    text-shadow:
+        1px 1px 0 #213645,
+        2px 2px 0 rgba(0, 0, 0, 0.55);
+
+    transition:
+        color 0.18s ease,
+        text-shadow 0.18s ease,
+        transform 0.18s ease;
+}
+
+.privilegio-file-nav span {
+    font-style: normal;
+}
+
+.privilegio-file-nav a:hover,
+.privilegio-file-nav a.active {
+    color: #e8a817;
+
+    text-shadow:
+        1px 1px 0 #213645,
+        0 0 6px rgba(232, 168, 23, 0.85),
+        0 0 13px rgba(232, 168, 23, 0.45);
+
+    transform: scale(1.04);
+}
+
+.privilegio-file-nav .privilegio-home {
+    color: #e8a817;
+}
+
+/* LINHAS */
+
+.privilegios-atletas-page .camarilhas-bully-line {
+    width: 86%;
+    height: 2px;
+
+    margin: 34px auto;
+
+    background: rgba(255, 255, 255, 0.68);
+}
+
+/* PERSONAGENS */
+
+.privilegio-personagem {
+    width: 86%;
+
+    margin: 0 auto;
+    padding-top: 25px;
+
+    scroll-margin-top: 120px;
+}
+
+.privilegio-personagem h2 {
+    margin: 0 0 18px;
+
+    color: #e8a817;
+
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 34px;
+    font-weight: 900;
+    font-style: italic;
+
+    letter-spacing: 0.5px;
+
+    text-shadow:
+        1px 1px 0 #203746,
+        2px 2px 0 rgba(0, 0, 0, 0.58);
+}
+
+.privilegio-personagem > p {
+    margin: 0;
+
+    color: #ffffff;
+
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 23px;
+    font-weight: 700;
+
+    line-height: 1.62;
+    text-align: justify;
+    text-indent: 3.5rem;
+
+    text-shadow:
+        1px 1px 0 #1d3342,
+        2px 2px 0 rgba(0, 0, 0, 0.58);
+}
+
+/* ANOS E PRIVILÉGIOS */
+
+.privilegio-ano {
+    margin-top: 44px;
+}
+
+.privilegio-ano h3 {
+    margin: 0 0 16px;
+
+    color: #e8a817;
+
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 28px;
+    font-weight: 900;
+    font-style: italic;
+
+    letter-spacing: 0.4px;
+
+    text-shadow:
+        1px 1px 0 #203746,
+        2px 2px 0 rgba(0, 0, 0, 0.58);
+}
+
+.privilegio-ano p {
+    margin: 0;
+
+    color: #ffffff;
+
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 22px;
+    font-weight: 700;
+
+    line-height: 1.62;
+    text-align: justify;
+    text-indent: 3.5rem;
+
+    text-shadow:
+        1px 1px 0 #1d3342,
+        2px 2px 0 rgba(0, 0, 0, 0.58);
+}
+
+.privilegio-ano p strong {
+    color: #e8a817;
+    font-weight: 900;
+
+    text-shadow:
+        1px 1px 0 #203746,
+        2px 2px 0 rgba(0, 0, 0, 0.58);
+}
+
+/* ATRIBUTOS E ESTRELAS */
+
+.privilegio-atributo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    margin-top: 18px;
+
+    color: #ffffff;
+
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 22px;
+    font-weight: 900;
+    font-style: italic;
+
+    text-shadow:
+        1px 1px 0 #203746,
+        2px 2px 0 rgba(0, 0, 0, 0.58);
+}
+
+.privilegio-atributo .status-stars {
+    display: inline-flex;
+    align-items: center;
+    gap: 3px;
+}
+
+.privilegio-atributo .status-star {
+    color: #e8a817;
+
+    font-size: 24px;
+    line-height: 1;
+
+    text-shadow:
+        1px 1px 0 #203746,
+        0 0 5px rgba(232, 168, 23, 0.5);
+}
+
+/* VOLTAR */
+
+.privilegios-atletas-page .return-to-gangs {
+    display: block;
+    width: max-content;
+
+    margin: 35px auto 12px;
+
+    color: #ffffff;
+
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 22px;
+    font-weight: 900;
+    font-style: italic;
+
+    text-decoration: none;
+
+    text-shadow:
+        1px 1px 0 #203746,
+        2px 2px 0 rgba(0, 0, 0, 0.58);
+
+    transition:
+        color 0.18s ease,
+        text-shadow 0.18s ease,
+        transform 0.18s ease;
+}
+
+.privilegios-atletas-page .return-to-gangs:hover {
+    color: #e8a817;
+
+    text-shadow:
+        1px 1px 0 #203746,
+        0 0 7px rgba(232, 168, 23, 0.8);
+
+    transform: scale(1.04);
+}
+
+/* CELULAR */
+
+@media (max-width: 700px) {
+
+    .privilegios-atletas-page .bully-status-box {
+        width: 94%;
+    }
+
+    .privilegio-file-nav {
+        gap: 5px;
+    }
+
+    .privilegio-file-nav a,
+    .privilegio-file-nav span {
+        font-size: 16px;
+    }
+
+    .privilegio-personagem {
+        width: 90%;
+    }
+
+    .privilegio-personagem h2 {
+        font-size: 27px;
+    }
+
+    .privilegio-personagem > p,
+    .privilegio-ano p {
+        font-size: 18px;
+        line-height: 1.55;
+        text-indent: 2rem;
+    }
+
+    .privilegio-ano h3 {
+        font-size: 23px;
+    }
+
+    .privilegios-atletas-page .gang-music-display strong {
+        font-size: 17px;
+    }
+
+    .privilegios-atletas-page .gang-music-display > div > span {
+        font-size: 14px;
+    }
+
+}
+
+</style>
+
+<main class="bully-status-page gang-jocks privilegios-atletas-page">
+
+    <section class="bully-status-box">
+
+        <!-- PLAYER -->
+
+        <div class="bully-music-display gang-music-display">
+
+            <button
+                type="button"
+                id="gang-music-toggle"
+                aria-label="Tocar ou pausar a música"
+            >
+                &gt;
+            </button>
+
+            <div>
+                <strong>JOCKS THEME : PAUSED</strong>
+                <span>BULLHORNS TEAM</span>
+            </div>
+
+        </div>
+
+        <audio
+            id="gang-music"
+            src="/audio/jocks-theme.mp3"
+            preload="auto"
+            loop
+        ></audio>
+
+        <!-- TÍTULO -->
+
+        <h1>ATLETAS</h1>
+
+        <!-- NAVEGAÇÃO -->
+
+        <nav class="gang-file-nav privilegio-file-nav">
+
+            <a href="/privilegios" class="privilegio-home">
+                HOME
+            </a>
+
+            <span>:</span>
+
+            <a href="#thompson">
+                THOMPSON
+            </a>
+
+            <span>:</span>
+
+            <a href="#west">
+                WEST
+            </a>
+
+            <span>:</span>
+
+            <a href="#brakus">
+                BRAKUS
+            </a>
+
+        </nav>
+
+        <div class="camarilhas-bully-line"></div>
+
+        <!-- ==================================================
+                            GENE THOMPSON
+        =================================================== -->
+
+        <section
+            id="thompson"
+            class="privilegio-personagem gang-section"
+        >
+
+            <h2>GENE THOMPSON</h2>
+
+            <p>
+                Aclamado pelos corredores do prédio estudantil como um talento
+                geracional, o jogador conquistou sua reputação através da vocação
+                para o esporte demonstrada em campo, destacando-se entre os demais
+                de sua idade. Detentor de um físico bem-acondicionado e de uma
+                presença que ostenta carisma, é comum que esteja no centro das
+                atenções mesmo fora dos limites das quatro linhas futebolísticas.
+                Respeitado pelos companheiros de plantel e charmoso com as garotas,
+                naturalmente transmite confiança sem o mesmo esforço que despende
+                em arrancadas pelo gramado. Ágil, forte e movido por um instinto
+                competitivo aguçado, o astro atesta seu domínio prodigioso do
+                esporte a cada partida, seja como um quarterback com lançamentos
+                precisos, como um center invencível na linha dianteira ou como um
+                wide receiver velocíssimo, recordista de pontos. Ao misturar
+                esforço com seu dom natural, torna-se o atleta perfeito aos olhos
+                do técnico dos Bullhorns, sempre alocado entre os titulares.
+            </p>
+
+            <article class="privilegio-ano">
+
+                <h3>FRESHMAN YEAR</h3>
+
+                <p>
+                    <strong>QUERIDINHO DO TREINADOR:</strong>
+                    Ao contrário de outros atletas que têm acesso limitado aos
+                    itens da camarilha, o astro do time consegue empunhar um taco
+                    de beisebol — realizando-o com mais maestria que seus aliados —
+                    ou vestir o capacete de football em qualquer parte do internato,
+                    isento da necessidade de respeitar as regras territoriais para
+                    usufruir do arsenal que tem por direito. A exceção, no entanto,
+                    limita-se ao uso de um por vez, não sendo possível portar o taco
+                    e o capacete em simultaneidade.
+                </p>
+
+            </article>
+
+            <article class="privilegio-ano">
+
+                <h3>SOPHOMORE YEAR</h3>
+
+                <p>
+                    <strong>NHSCA WRESTLING:</strong>
+                    Como parte da tradição esportiva cultivada entre atletas do
+                    internato, o Thompson desenvolveu um conhecimento acima da média
+                    na luta livre — modalidade de tradição nas escolas americanas
+                    que ensinam jovens em formação a lidarem com adversidades da
+                    vida através das virtudes do combate agarrado. Adquire, assim
+                    sendo, um acréscimo em seu wrestling.
+                </p>
+
+                <div class="privilegio-atributo">
+
+                    <span>WRESTLING</span>
+
+                    <div class="status-stars" aria-label="Uma estrela">
+                        <span class="status-star active">★</span>
+                    </div>
+
+                </div>
+
+            </article>
+
+            <article class="privilegio-ano">
+
+                <h3>JUNIOR YEAR</h3>
+
+                <p>
+                    <strong>UNIFORME DO TIME:</strong>
+                    A ligação do craque com o esporte que mudou sua vida vai muito
+                    além do campo, sendo parte de sua identidade. Sempre que veste
+                    seu uniforme de football, passa a contar com a proteção típica
+                    do equipamento utilizado geralmente em campo: ombreiras rígidas
+                    e intransponíveis, acolchoamentos que reduzem impactos no torso,
+                    nas coxas e nos joelhos, um capacete robusto projetado para
+                    guarnecer sua cabeça de lesões comprometedoras à sua carreira
+                    e uma coquilha responsável por mitigar danos maiores nas partes
+                    baixas. O capacete ainda segue a regra do arsenal, enquanto as
+                    demais são proteções permanentes que reduzem a força dos golpes
+                    recebidos para o nível anterior. Por exemplo, caso o atleta
+                    receba um soco de força extraordinária no peito, contará como
+                    se fosse um de força alta. É possível utilizar o uniforme em
+                    qualquer parte do internato, desde que esteja desde o início do
+                    combate vestido de acordo.
+                </p>
+
+            </article>
+
+            <article class="privilegio-ano">
+
+                <h3>SENIOR YEAR</h3>
+
+                <p>
+                    <strong>ASTRO DOS BULLHORNS:</strong>
+                    Depois de tanto se destacar, o astro das quatro linhas alcançou
+                    um patamar de popularidade e influência que poucos um dia
+                    sonharam alcançar, despertando inveja e admiração por onde
+                    passa. Tornando-se a figura central na hierarquia escolar, o
+                    astro reivindicou para si a capitania dos atletas, desfrutando
+                    de uma autoridade incontestável: sua palavra funciona como
+                    ordem, orientando decisões e impondo regras, sejam elas
+                    benquistas ou não, aos colegas de equipe, que devem obedecê-las.
+                    Enquanto ocupar o posto, absoluto será entre os seus, não
+                    havendo nada que possam fazer senão destroná-lo diante de uma
+                    multidão para que surja um novo regente a partir de sua queda.
+                </p>
+
+            </article>
+
+        </section>
+
+        <div class="camarilhas-bully-line"></div>
+
+        <!-- ==================================================
+                              GENE WEST
+        =================================================== -->
+
+        <section
+            id="west"
+            class="privilegio-personagem gang-section"
+        >
+
+            <h2>GENE WEST</h2>
+
+            <p>
+                Se os atletas de Bullworth são conhecidos por exercer domínio
+                sobre o internato, isso se deve, em partes, à combinação de sua
+                força bruta e à prática constante de wrestling, dois fatores
+                determinantes para içar os Bullhorns ao topo da hierarquia social
+                sem que outras camarilhas consigam rivalizar à altura. Entre os
+                jogadores, contudo, há aquele que se destacou de forma
+                desproporcional em ambos aspectos mencionados, impondo respeito
+                mesmo através de encaradas — estas, intimidadoras e endossadas por
+                sua compleição física. Dados como uma ameaça, são mais altos, mais
+                robustos e mais truculentos que os demais atletas, representando o
+                auge físico e viril dentro da camarilha. Noutras palavras, são os
+                responsáveis diretos por sustentar a reputação do time através da
+                violência, subjugando os mais fracos sem piedade.
+            </p>
+
+            <article class="privilegio-ano">
+
+                <h3>DAMON WEST</h3>
+
+                <p>
+                    Talvez por culpa dos esteroides, o colosso do time alcançou tão
+                    cedo uma altura tão avassaladora, beirando os um metro e noventa
+                    e cinco centímetros com facilidade — algo incomum mesmo entre
+                    outros atletas, cujo padrão entorna os cento e oitenta
+                    centímetros. Tem seu peso avaliado em aproximadamente cem
+                    quilos.
+                </p>
+
+                <div class="privilegio-atributo">
+
+                    <span>PORTE FÍSICO</span>
+
+                    <div class="status-stars" aria-label="Quatro estrelas">
+                        <span class="status-star active">★</span>
+                        <span class="status-star active">★</span>
+                        <span class="status-star active">★</span>
+                        <span class="status-star active">★</span>
+                    </div>
+
+                </div>
+
+            </article>
+
+            <article class="privilegio-ano">
+
+                <h3>STATE CHAMPION</h3>
+
+                <p>
+                    A prática constante de wrestling sempre foi uma tradição entre
+                    os atletas do internato, mas alguns poucos foram mais
+                    disciplinados do que o necessário, e destacaram-se por isso.
+                    Com um ano de treino intenso e tamanha vocação, o West
+                    desenvolveu domínio absoluto na luta livre, equiparando-se a
+                    campeões estaduais de high school. Seu repertório capacita-o de
+                    aplicar quedas limpas, suplex perfeitos e submissões impossíveis
+                    de se escapar quando encaixadas, tornando-se invencível até que
+                    encontre um oponente à altura de seu nível técnico. Recebe um
+                    acréscimo em seu wrestling.
+                </p>
+
+                <div class="privilegio-atributo">
+
+                    <span>WRESTLING</span>
+
+                    <div class="status-stars" aria-label="Duas estrelas">
+                        <span class="status-star active">★</span>
+                        <span class="status-star active">★</span>
+                    </div>
+
+                </div>
+
+            </article>
+
+        </section>
+
+        <div class="camarilhas-bully-line"></div>
+
+        <!-- ==================================================
+                            GENE BRAKUS
+        =================================================== -->
+
+        <section
+            id="brakus"
+            class="privilegio-personagem gang-section"
+        >
+
+            <h2>GENE BRAKUS</h2>
+
+            <p>
+                Longe de conquistar prestígio pela força bruta demonstrada nas
+                linhas de scrimmage do futebol americano, o detentor do manto do
+                touro vermelho encontra sua relevância através do carisma e da
+                energia contagiante que emana ao vestir a fantasia, simbolizando o
+                espírito esportivo do internato com perfeição. Encoberto pelo traje
+                que personifica o mascote da instituição, o estudante conquista o
+                anonimato que costuma acometê-lo ao papel central das arquibancadas
+                como animador, sempre à frente da torcida à beira do campo. Seus
+                movimentos performáticos, saltos e danças protagonizadas em meio
+                ao êxtase dos jogos consagram-no como uma referência quando na
+                companhia das líderes de torcida, inflamando o público e motivando
+                os jogadores através disso.
+            </p>
+
+            <article class="privilegio-ano">
+
+                <h3>MASCOTE</h3>
+
+                <p>
+                    O traje do touro vermelho é um conjunto de tecido vermelho e
+                    volumoso que cobre completamente o corpo do mascote, composto
+                    de um macacão espesso e grande cabeça acolchoada, preenchida por
+                    uma camada extra de espuma. Quando arroupado pela fantasia, o
+                    mascote do time recebe um acréscimo em seu porte físico.
+                </p>
+
+                <div class="privilegio-atributo">
+
+                    <span>ACRÉSCIMO</span>
+
+                    <div class="status-stars" aria-label="Duas estrelas">
+                        <span class="status-star active">★</span>
+                        <span class="status-star active">★</span>
+                    </div>
+
+                </div>
+
+            </article>
+
+            <article class="privilegio-ano">
+
+                <h3>TACKLE</h3>
+
+                <p>
+                    Ao percorrer pelo menos dois metros em um avanço veloz e
+                    premeditado, o mascote consegue desequilibrar qualquer oponente
+                    — independentemente de sua resistência — através de uma
+                    cabeçada contundente na parte superior do corpo, quedando-o de
+                    forma que fique desorientado no chão. De uso único por combate,
+                    o avanço trata-se de um tackle ideal para encurralar
+                    adversários, surpreendendo-os em combates vigentes ou
+                    intervindo em suas fugas graças à velocidade que lhe é
+                    conferida por conta de suas valências físicas.
+                </p>
+
+            </article>
+
+        </section>
+
+        <div class="camarilhas-bully-line"></div>
+
+        <a href="/privilegios" class="return-to-gangs">
+            RETURN TO PRIVILEGES
+        </a>
+
+    </section>
+
+</main>
+
+<%- include("../../partials/footer") %>
