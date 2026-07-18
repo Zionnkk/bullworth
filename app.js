@@ -102,3 +102,9 @@ app.get("/privilegios", (req, res) => {
 app.get("/privilegios/atletas", (req, res) => {
     res.render("pages/privilegios/atletas");
 });
+app.get("/privilegios/preppies", (req, res) => {
+    res.render("pages/privilegios/preppies");
+});
+app.get("/privilegios/greasers", (req, res) => {
+    res.render("pages/privilegios/greasers");
+});

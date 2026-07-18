@@ -1,0 +1,522 @@
+<%- include("../../partials/header") %>
+
+<style>
+html {
+    scroll-behavior: smooth;
+}
+
+.privilegios-greasers-page .bully-status-box {
+    width: min(1060px, 90%);
+    margin: 40px auto;
+}
+
+.privilegios-greasers-page .gang-music-display {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    width: fit-content;
+    margin: 0 auto 30px;
+}
+
+.privilegios-greasers-page #gang-music-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    padding: 0;
+    color: #ffffff;
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.75);
+    border-radius: 0;
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    font-weight: 900;
+    line-height: 1;
+    cursor: pointer;
+    transition:
+        color 0.18s ease,
+        border-color 0.18s ease,
+        box-shadow 0.18s ease,
+        transform 0.18s ease;
+}
+
+.privilegios-greasers-page #gang-music-toggle:hover {
+    color: #d4a017;
+    border-color: #d4a017;
+    box-shadow:
+        0 0 7px rgba(255, 191, 0, 0.8),
+        0 0 15px rgba(255, 191, 0, 0.4);
+    transform: scale(1.06);
+}
+
+.privilegios-greasers-page .gang-music-display > div {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.privilegios-greasers-page .gang-music-display strong {
+    color: #ffffff;
+    font-family: "EB Garamond", Georgia, serif;
+    font-size: 22px;
+    font-weight: 800;
+    font-style: italic;
+    text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.65);
+}
+
+.privilegios-greasers-page .gang-music-display > div > span {
+    color: #ffffff;
+    font-family: "EB Garamond", Georgia, serif;
+    font-size: 17px;
+    font-weight: 700;
+    font-style: italic;
+    text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.65);
+}
+
+.privilegios-greasers-page > .bully-status-box > h1 {
+    margin: 42px 0 8px;
+    color: #d4a017;
+    font-family: "EB Garamond", Georgia, serif;
+    font-size: 54px;
+    font-weight: 800;
+    font-style: italic;
+    text-align: center;
+    text-transform: uppercase;
+    text-shadow:
+        2px 2px 0 rgba(0, 0, 0, 0.65),
+        0 0 10px rgba(255, 191, 0, 0.35);
+}
+
+/* NAVEGAÇÃO */
+
+.privilegio-file-nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 7px;
+    margin: 0 0 34px;
+}
+
+.privilegio-file-nav a,
+.privilegio-file-nav span {
+    display: inline-block;
+    color: #ffffff;
+    background: transparent;
+    border: none;
+    font-family: "EB Garamond", Georgia, serif;
+    font-size: 23px;
+    font-weight: 800;
+    font-style: italic;
+    text-decoration: none;
+    text-transform: uppercase;
+    text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.65);
+    transition:
+        color 0.18s ease,
+        text-shadow 0.18s ease,
+        transform 0.18s ease;
+}
+
+.privilegio-file-nav span {
+    font-style: normal;
+}
+
+.privilegio-file-nav a:hover,
+.privilegio-file-nav a.active {
+    color: #d4a017;
+    text-shadow:
+        0 0 10px rgba(255, 191, 0, 0.8),
+        0 0 22px rgba(255, 191, 0, 0.45),
+        2px 2px 0 rgba(0, 0, 0, 0.7);
+    transform: scale(1.06);
+}
+
+.privilegio-file-nav .privilegio-home {
+    color: #d4a017;
+}
+
+/* LINHAS */
+
+.privilegios-greasers-page .camarilhas-bully-line {
+    width: 86%;
+    height: 2px;
+    margin: 34px auto;
+    background: rgba(230, 230, 230, 0.55);
+}
+
+/* PERSONAGENS */
+
+.privilegio-personagem {
+    width: 86%;
+    margin: 0 auto;
+    padding-top: 25px;
+    scroll-margin-top: 120px;
+}
+
+.privilegio-personagem h2 {
+    margin: 0 0 18px;
+    color: #d4a017;
+    font-family: "EB Garamond", Georgia, serif;
+    font-size: 34px;
+    font-weight: 800;
+    font-style: italic;
+    text-transform: uppercase;
+    text-shadow:
+        2px 2px 0 rgba(0, 0, 0, 0.65),
+        0 0 10px rgba(255, 191, 0, 0.25);
+}
+
+.privilegio-personagem > p {
+    margin: 0;
+    color: #f0f0f0;
+    font-family: "EB Garamond", Georgia, serif;
+    font-size: 23px;
+    font-weight: 700;
+    line-height: 1.65;
+    text-align: justify;
+    text-indent: 5ch;
+    text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.65);
+}
+
+/* ANOS E PRIVILÉGIOS */
+
+.privilegio-ano {
+    margin-top: 44px;
+}
+
+.privilegio-ano h3 {
+    margin: 0 0 14px;
+    color: #d4a017;
+    font-family: "EB Garamond", Georgia, serif;
+    font-size: 20px;
+    font-weight: 800;
+    font-style: italic;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    text-shadow:
+        2px 2px 0 rgba(0, 0, 0, 0.65),
+        0 0 6px rgba(255, 191, 0, 0.18);
+}
+
+.privilegio-ano p {
+    margin: 0;
+    color: #f0f0f0;
+    font-family: "EB Garamond", Georgia, serif;
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 1.65;
+    text-align: justify;
+    text-indent: 5ch;
+    text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.65);
+}
+
+.privilegio-ano p strong {
+    color: #d4a017;
+    font-weight: 800;
+    text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.65);
+}
+
+/* ATRIBUTOS E ESTRELAS */
+
+.privilegio-atributo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 18px;
+    color: #f0f0f0;
+    font-family: "EB Garamond", Georgia, serif;
+    font-size: 22px;
+    font-weight: 800;
+    font-style: italic;
+    text-transform: uppercase;
+    text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.65);
+}
+
+.privilegio-estrelas {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 28px;
+    line-height: 1;
+}
+
+.privilegio-estrelas .estrela-bully {
+    display: inline-block;
+    color: #f7c948;
+    text-shadow:
+        0 0 2px #fff7b3,
+        0 0 8px rgba(255, 200, 0, 0.45),
+        1px 1px 0 #8c5a00,
+        2px 2px 0 rgba(0, 0, 0, 0.85);
+    transition:
+        transform 0.18s cubic-bezier(.2, .8, .2, 1),
+        color 0.18s ease,
+        text-shadow 0.18s ease,
+        filter 0.18s ease;
+}
+
+.privilegio-atributo:hover .estrela-bully {
+    color: #ffe96b;
+    transform: scale(1.22) translateY(-2px);
+    text-shadow:
+        0 0 4px #fff9c4,
+        0 0 12px rgba(255, 230, 100, 0.95),
+        0 0 22px rgba(255, 208, 0, 0.8),
+        1px 1px 0 #8c5a00,
+        2px 2px 0 rgba(0, 0, 0, 0.85);
+    filter: brightness(1.2);
+}
+
+.privilegio-estrelas .estrela-bully:nth-child(2) {
+    transition-delay: 0.025s;
+}
+
+.privilegio-estrelas .estrela-bully:nth-child(3) {
+    transition-delay: 0.05s;
+}
+
+.privilegio-estrelas .estrela-bully:nth-child(4) {
+    transition-delay: 0.075s;
+}
+
+/* VOLTAR */
+
+.privilegios-greasers-page .return-to-gangs {
+    display: block;
+    width: fit-content;
+    margin: 35px auto 12px;
+    color: #f0f0f0;
+    font-family: "EB Garamond", Georgia, serif;
+    font-size: 24px;
+    font-weight: 800;
+    font-style: italic;
+    text-decoration: none;
+    text-transform: uppercase;
+    text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.65);
+    transition:
+        color 0.18s ease,
+        text-shadow 0.18s ease,
+        transform 0.18s ease;
+}
+
+.privilegios-greasers-page .return-to-gangs:hover {
+    color: #d4a017;
+    text-shadow:
+        0 0 10px rgba(255, 191, 0, 0.8),
+        0 0 22px rgba(255, 191, 0, 0.45),
+        2px 2px 0 rgba(0, 0, 0, 0.7);
+    transform: scale(1.06);
+}
+
+/* CELULAR */
+
+@media (max-width: 700px) {
+    .privilegios-greasers-page .bully-status-box {
+        width: 94%;
+    }
+
+    .privilegio-file-nav {
+        gap: 5px;
+    }
+
+    .privilegio-file-nav a,
+    .privilegio-file-nav span {
+        font-size: 16px;
+    }
+
+    .privilegio-personagem {
+        width: 90%;
+    }
+
+    .privilegio-personagem h2 {
+        font-size: 27px;
+    }
+
+    .privilegio-personagem > p,
+    .privilegio-ano p {
+        font-size: 18px;
+        line-height: 1.55;
+        text-indent: 3ch;
+    }
+
+    .privilegio-ano h3 {
+        font-size: 17px;
+    }
+
+    .privilegio-atributo {
+        flex-wrap: wrap;
+        gap: 8px;
+        font-size: 19px;
+    }
+}
+</style>
+
+<main class="bully-status-page gang-greasers privilegios-greasers-page">
+
+    <section class="bully-status-box">
+
+        <div class="bully-music-display gang-music-display">
+            <button
+                type="button"
+                id="gang-music-toggle"
+                aria-label="Tocar ou pausar a música"
+            >
+                &gt;
+            </button>
+
+            <div>
+                <strong>GREASERS THEME : PAUSED</strong>
+                <span>THE GREASERS MOB</span>
+            </div>
+        </div>
+
+        <audio
+            id="gang-music"
+            src="/audio/greasers-theme.mp3"
+            preload="auto"
+            loop
+        ></audio>
+
+        <h1>DESCOLADOS</h1>
+
+        <nav class="gang-file-nav privilegio-file-nav">
+            <a href="/privilegios" class="privilegio-home">HOME</a>
+            <span>:</span>
+            <a href="#vincent">VINCENT</a>
+            <span>:</span>
+            <a href="#williams">WILLIAMS</a>
+            <span>:</span>
+            <a href="#esposito">ESPOSITO</a>
+        </nav>
+
+        <div class="camarilhas-bully-line"></div>
+
+        <section id="vincent" class="privilegio-personagem gang-section">
+            <h2>LEGADO VINCENT</h2>
+
+            <p>
+                Habitar o subúrbio de Bullworth molda o caráter de quem cresce entre suas ruas que mais parecem um esgoto a céu aberto, e os que se indignam com sua árdua realidade são chamados de rebeldes, por mais justificável que seja a sua revolta. Familiarizado com as vielas de New Coventry e Blue Skies, o jovem suburbano é conhecedor dos atalhos e curvas do lado mais impróspero da cidade, explorando-o a pé ou em veículos de sua preferência. Sua destreza ao pilotar um modelo motorizado ou pedalar em uma bicicleta fizeram-no conhecido na região, sendo figurinha carimbada em rachas noturnos. Além da habilidade sobre duas rodas, sua rebeldia também é representada pela prática de muay thai a nível avançado, despontando como um prodígio na arte das oito armas após tantas experiências em brigas situadas tanto no subúrbio da cidade quanto nas instalações do internato. Em suma, encarna a essência da camarilha: é indomável, corajoso, de origem humilde e tão bom nas corridas clandestinas quanto na pancadaria.
+            </p>
+
+            <article class="privilegio-ano">
+                <h3>FRESHMAN YEAR</h3>
+                <p>
+                    <strong>JOHNNY VINCENT:</strong>
+                    Todos sabiam que não seria correto justificar seus resultados no talento inato, o dom não havia vindo de nascença, estava muito distante da riqueza de berço herdada dos mauricinhos. Todo prestígio que sonhou em alcançar foi conquistado na raça, fruto de muito suor, depois de muito apanhar, mas sempre teimando em se levantar. O sobrenome Vincent se provou não ser mais um qualquer, e pouco a pouco as ruas de New Coventry e corredores de Bullworth acentuaram-no mais através de seus rumores. Uns diziam que seu aprendizado marcial vinha da própria Tailândia, outros cochichavam que um único chute seu poderia nocautear qualquer veterano, e haviam alguns — estes, mais pés no chão — que entendiam que toda sua força era, sim, humana, mas advinha de uma dedicação infalível. Assim sendo, recebe um acréscimo em seu striking.
+                </p>
+
+                <div class="privilegio-atributo">
+                    <span>ACRÉSCIMO</span>
+                    <span class="privilegio-estrelas" aria-label="Uma estrela">
+                        <span class="estrela-bully">★</span>
+                    </span>
+                </div>
+            </article>
+
+            <article class="privilegio-ano">
+                <h3>SOPHOMORE YEAR</h3>
+                <p>
+                    <strong>AXE KICK:</strong>
+                    O axe kick é um chute descendente que exige alto nível técnico, elasticidade e distância para que seja realizado com a potência necessária. O movimento é iniciado com a elevação da perna ao máximo, alcançando uma posição quase vertical antes de descê-la com impetuosidade na cabeça do alvo, funcionando como um machado de guilhotina. Assim que seu pé atinge o crânio do oponente, obriga-o a cair de rosto no asfalto, desequilibrando-o em virtude do impacto concebido. É uma dádiva de uso único por combate que, se absorvida numa guarda alta, força o adversário a ficar vulnerável no turno seguinte, baixando seus braços e deixando-o à mercê da ofensiva subsequente.
+                </p>
+            </article>
+
+            <article class="privilegio-ano">
+                <h3>JUNIOR YEAR</h3>
+                <p>
+                    <strong>YAMAHA MT-07:</strong>
+                    Criado entre ruas, oficinas e encontros noturnos de motociclistas, o rebelde desenvolveu uma afeição por motos desde cedo, pilotando-as sempre que possível. Compartilhando uma Yamaha MT-07 seminova com sua família, utiliza o veículo para se deslocar pela cidade sempre que necessário ou, em alguns casos, também utiliza-o para marcar sua presença em rachas clandestinos realizados nos arredores de New Coventry. Em ambos casos, o descolado demonstra ser um condutor habilidoso e ousado, atravessando sinais e se expondo a riscos que podem, de um dia para o outro, colocá-lo em uma cama de hospital como penitência por sua sede de adrenalina.
+                </p>
+            </article>
+
+            <article class="privilegio-ano">
+                <h3>SENIOR YEAR</h3>
+                <p>
+                    <strong>GREASEBALL:</strong>
+                    Entre os membros da camarilha, poucos são capazes de replicar a coragem inexorável de um rebelde da estrada, valente como sua alcunha faz parecer. O greaseball não teme ninguém, desconhecendo riscos em sua perspectiva de vida distorcida e ignorando efeitos intimidatórios que obrigariam seus colegas de classe a hesitar. Sua resiliência, para além do fator psicológico mencionado, alcança uma outra esfera: o rebelde se recusa a ceder numa luta, desenvolvendo uma tolerância incomum à dor. Uma vez por combate, consegue ignorar completamente os danos de algum golpe recebido à escolha e seguir lutando até o efeito da adrenalina se esvair de seu corpo, embora ainda esteja suscetível às mazelas dele, vide as limitações anatômicas que um osso fraturado pode incutir em sua mobilidade, por exemplo.
+                </p>
+            </article>
+        </section>
+
+        <div class="camarilhas-bully-line"></div>
+
+        <section id="williams" class="privilegio-personagem gang-section">
+            <h2>LEGADO WILLIAMS</h2>
+
+            <p>
+                Entre os descolados da garagem, conhecidos por sua postura durona e pela disposição constante para resolver conflitos com as próprias mãos, há alguém que se destaca acima dos demais, expresso em sentido literal. Mais alto, mais largo e mais robusto que seus companheiros de camarilha por debaixo da jaqueta de couro que veste, o carrasco faz jus à sua alcunha e impõe respeito pela presença, por vezes bastando um olhar para que seus adversários repensem sobre ações mais hostis, cientes da reputação que o precede. Forjado em uma realidade difícil no subúrbio de New Coventry, o greaseball ostenta uma compleição física que o equipara a um atleta veterano, acostumado a assumir a linha de frente em confrontos generalizados.
+            </p>
+
+            <article class="privilegio-ano">
+                <p>
+                    <strong>NORTON WILLIAMS:</strong>
+                    Foi durante a triagem que o líder o percebeu. Seu tamanho robusto e alto o distinguia dos demais greasers da seleção; entre inúmeros pirralhos barulhentos, ambiciosos pela oportunidade honorável de vestir a jaqueta de couro, o seu silêncio foi o mais barulhento. Era mandatório saber que o Williams foi o primeiro calouro escolhido para fazer parte dos descolados. O greaser que carrega a genética Williams em seu corpo ostenta o título de ser o mais corpulento de sua camarilha, e por mais que sua estatura incite a admiração de seus camaradas, certamente é mal encarada pelos adversários. Ostenta até um metro e noventa centímetros de altura, seu peso se aproxima dos noventa quilos.
+                </p>
+
+                <div class="privilegio-atributo">
+                    <span>PORTE FÍSICO</span>
+                    <span class="privilegio-estrelas" aria-label="Quatro estrelas">
+                        <span class="estrela-bully">★</span>
+                        <span class="estrela-bully">★</span>
+                        <span class="estrela-bully">★</span>
+                        <span class="estrela-bully">★</span>
+                    </span>
+                </div>
+            </article>
+
+            <article class="privilegio-ano">
+                <p>
+                    <strong>SLEDGEHAMMER:</strong>
+                    Quando o apogeu da brutalidade greaser é alcançado, o carrasco dá significado ao seu alter ego no momento em que se recorre à marreta — ferramenta pesada de duas mãos cujo poder destrutivo ultrapassa os limites convencionais que é visto em brigas de adolescentes. O impacto da pancada, se bem conectado, é capaz de romper estruturas sólidas com facilidade, desde paredes até ossos por si só, causando fraturas ou traumas severos em oponentes descuidados. Ainda que o grandalhão dos descolados possa manuseá-la por onde bem entender, seu uso é desgastante a longo prazo e compromete a mobilidade de quem a empunha, reduzindo sua agilidade em uma estrela, tornando seus movimentos mais previsíveis e seu corpo vulnerável a ataques em detrimento das duas mãos no cabo.
+                </p>
+            </article>
+        </section>
+
+        <div class="camarilhas-bully-line"></div>
+
+        <section id="esposito" class="privilegio-personagem gang-section">
+            <h2>LEGADO ESPOSITO</h2>
+
+            <p>
+                Inspirado por diferentes formas de luta, o Esposito combina elementos do boxe tailandês, arte marcial típica de sua camarilha, com técnicas de wrestling que costumam mais comuns das aulas de Educação Física, tendo os atletas como seus principais concorrentes nas lições de luta agarrada que são lecionadas pelo treinador do internato. O estilo híbrido caracteriza-o como alguém único no meio dos descolados, técnico o suficiente para lidar com outros strikers numa luta em pé e conhecedor de artimanhas que viabilizem a progressão do combate no chão, conseguindo tanto defender quanto atacar em ambas circunstâncias. Sua familiaridade com os atletas de Bullworth, contudo, é restrita às similaridades marciais.
+            </p>
+
+            <article class="privilegio-ano">
+                <p>
+                    <strong>HAL ESPOSITO:</strong>
+                    Sua noção de luta sempre foi mais racional do que impulsiva. Sendo mais adiposo que os “normais” de sua camarilha, Esposito aprendeu a usar seu corpo a favor em combates. O interesse por wrestling veio de maneira imperceptível, e já em seu primeiro ano no colégio, via aulas de luta livre às escondidas, sempre entre as lacunas da arquibancada.
+                </p>
+
+                <div class="privilegio-atributo">
+                    <span>PORTE FÍSICO</span>
+                    <span class="privilegio-estrelas" aria-label="Três estrelas">
+                        <span class="estrela-bully">★</span>
+                        <span class="estrela-bully">★</span>
+                        <span class="estrela-bully">★</span>
+                    </span>
+                </div>
+
+                <div class="privilegio-atributo">
+                    <span>WRESTLING</span>
+                    <span class="privilegio-estrelas" aria-label="Três estrelas">
+                        <span class="estrela-bully">★</span>
+                        <span class="estrela-bully">★</span>
+                        <span class="estrela-bully">★</span>
+                    </span>
+                </div>
+            </article>
+        </section>
+
+        <div class="camarilhas-bully-line"></div>
+
+        <a href="/privilegios" class="return-to-gangs">
+            RETURN TO PRIVILEGES
+        </a>
+
+    </section>
+
+</main>
+
+<%- include("../../partials/footer") %>

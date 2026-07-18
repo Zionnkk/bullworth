@@ -224,12 +224,12 @@ html {
 }
 
 .privilegio-ano h3 {
-    margin: 0 0 16px;
+    margin: 0 0 14px;
 
     color: #e8a817;
 
     font-family: Georgia, "Times New Roman", serif;
-    font-size: 28px;
+    font-size: 20px;
     font-weight: 900;
     font-style: italic;
 
@@ -288,21 +288,59 @@ html {
         2px 2px 0 rgba(0, 0, 0, 0.58);
 }
 
-.privilegio-atributo .status-stars {
+.privilegio-estrelas {
     display: inline-flex;
     align-items: center;
-    gap: 3px;
+    gap: 4px;
+
+    font-size: 28px;
+    line-height: 1;
+    letter-spacing: 1px;
 }
 
-.privilegio-atributo .status-star {
+.privilegio-estrelas .estrela-bully {
+    display: inline-block;
+
     color: #e8a817;
 
-    font-size: 24px;
-    line-height: 1;
+    text-shadow:
+        0 0 2px #fff7b3,
+        0 0 8px rgba(232, 168, 23, 0.45),
+        1px 1px 0 #7c5200,
+        2px 2px 0 rgba(0, 0, 0, 0.85);
+
+    transition:
+        transform 0.18s cubic-bezier(.2, .8, .2, 1),
+        color 0.18s ease,
+        text-shadow 0.18s ease,
+        filter 0.18s ease;
+}
+
+.privilegio-atributo:hover .estrela-bully {
+    color: #ffe96b;
+
+    transform: scale(1.22) translateY(-2px);
 
     text-shadow:
-        1px 1px 0 #203746,
-        0 0 5px rgba(232, 168, 23, 0.5);
+        0 0 4px #fff9c4,
+        0 0 12px rgba(255, 230, 100, 0.95),
+        0 0 22px rgba(255, 208, 0, 0.8),
+        1px 1px 0 #7c5200,
+        2px 2px 0 rgba(0, 0, 0, 0.85);
+
+    filter: brightness(1.2);
+}
+
+.privilegio-estrelas .estrela-bully:nth-child(2) {
+    transition-delay: 0.025s;
+}
+
+.privilegio-estrelas .estrela-bully:nth-child(3) {
+    transition-delay: 0.05s;
+}
+
+.privilegio-estrelas .estrela-bully:nth-child(4) {
+    transition-delay: 0.075s;
 }
 
 /* VOLTAR */
@@ -375,7 +413,7 @@ html {
     }
 
     .privilegio-ano h3 {
-        font-size: 23px;
+        font-size: 17px;
     }
 
     .privilegios-atletas-page .gang-music-display strong {
@@ -519,9 +557,9 @@ html {
 
                     <span>WRESTLING</span>
 
-                    <div class="status-stars" aria-label="Uma estrela">
-                        <span class="status-star active">★</span>
-                    </div>
+                    <span class="privilegio-estrelas" aria-label="Uma estrela">
+                        <span class="estrela-bully">★</span>
+                    </span>
 
                 </div>
 
@@ -606,9 +644,10 @@ html {
 
             <article class="privilegio-ano">
 
-                <h3>DAMON WEST</h3>
+                <h3>FRESHMAN YEAR</h3>
 
                 <p>
+                    <strong>DAMON WEST:</strong>
                     Talvez por culpa dos esteroides, o colosso do time alcançou tão
                     cedo uma altura tão avassaladora, beirando os um metro e noventa
                     e cinco centímetros com facilidade — algo incomum mesmo entre
@@ -621,12 +660,12 @@ html {
 
                     <span>PORTE FÍSICO</span>
 
-                    <div class="status-stars" aria-label="Quatro estrelas">
-                        <span class="status-star active">★</span>
-                        <span class="status-star active">★</span>
-                        <span class="status-star active">★</span>
-                        <span class="status-star active">★</span>
-                    </div>
+                    <span class="privilegio-estrelas" aria-label="Quatro estrelas">
+                        <span class="estrela-bully">★</span>
+                        <span class="estrela-bully">★</span>
+                        <span class="estrela-bully">★</span>
+                        <span class="estrela-bully">★</span>
+                    </span>
 
                 </div>
 
@@ -634,9 +673,10 @@ html {
 
             <article class="privilegio-ano">
 
-                <h3>STATE CHAMPION</h3>
+                <h3>SOPHOMORE YEAR</h3>
 
                 <p>
+                    <strong>STATE CHAMPION:</strong>
                     A prática constante de wrestling sempre foi uma tradição entre
                     os atletas do internato, mas alguns poucos foram mais
                     disciplinados do que o necessário, e destacaram-se por isso.
@@ -653,10 +693,10 @@ html {
 
                     <span>WRESTLING</span>
 
-                    <div class="status-stars" aria-label="Duas estrelas">
-                        <span class="status-star active">★</span>
-                        <span class="status-star active">★</span>
-                    </div>
+                    <span class="privilegio-estrelas" aria-label="Duas estrelas">
+                        <span class="estrela-bully">★</span>
+                        <span class="estrela-bully">★</span>
+                    </span>
 
                 </div>
 
@@ -694,9 +734,10 @@ html {
 
             <article class="privilegio-ano">
 
-                <h3>MASCOTE</h3>
+                <h3>FRESHMAN YEAR</h3>
 
                 <p>
+                    <strong>MASCOTE:</strong>
                     O traje do touro vermelho é um conjunto de tecido vermelho e
                     volumoso que cobre completamente o corpo do mascote, composto
                     de um macacão espesso e grande cabeça acolchoada, preenchida por
@@ -708,10 +749,10 @@ html {
 
                     <span>ACRÉSCIMO</span>
 
-                    <div class="status-stars" aria-label="Duas estrelas">
-                        <span class="status-star active">★</span>
-                        <span class="status-star active">★</span>
-                    </div>
+                    <span class="privilegio-estrelas" aria-label="Duas estrelas">
+                        <span class="estrela-bully">★</span>
+                        <span class="estrela-bully">★</span>
+                    </span>
 
                 </div>
 
@@ -719,9 +760,10 @@ html {
 
             <article class="privilegio-ano">
 
-                <h3>TACKLE</h3>
+                <h3>SOPHOMORE YEAR</h3>
 
                 <p>
+                    <strong>TACKLE:</strong>
                     Ao percorrer pelo menos dois metros em um avanço veloz e
                     premeditado, o mascote consegue desequilibrar qualquer oponente
                     — independentemente de sua resistência — através de uma

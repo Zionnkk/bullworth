@@ -1,0 +1,861 @@
+<%- include("../../partials/header") %>
+
+<style>
+
+html {
+    scroll-behavior: smooth;
+}
+
+.privilegios-preppies-page .bully-status-box {
+    width: min(1060px, 90%);
+    margin: 40px auto;
+}
+
+.privilegios-preppies-page .gang-music-display {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+
+    width: fit-content;
+    margin: 0 auto 30px;
+}
+
+.privilegios-preppies-page #gang-music-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 28px;
+    height: 28px;
+    padding: 0;
+
+    color: #ffffff;
+    background: transparent;
+
+    border: 1px solid rgba(255, 255, 255, 0.75);
+    border-radius: 0;
+
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    font-weight: 900;
+    line-height: 1;
+
+    cursor: pointer;
+
+    transition:
+        color 0.18s ease,
+        border-color 0.18s ease,
+        box-shadow 0.18s ease,
+        transform 0.18s ease;
+}
+
+.privilegios-preppies-page #gang-music-toggle:hover {
+    color: #d4a017;
+    border-color: #d4a017;
+
+    box-shadow:
+        0 0 7px rgba(255, 191, 0, 0.8),
+        0 0 15px rgba(255, 191, 0, 0.4);
+
+    transform: scale(1.06);
+}
+
+.privilegios-preppies-page .gang-music-display > div {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.privilegios-preppies-page .gang-music-display strong {
+    color: #ffffff;
+
+    font-family: "EB Garamond", Georgia, serif;
+    font-size: 22px;
+    font-weight: 800;
+    font-style: italic;
+
+    text-shadow:
+        2px 2px 0 rgba(0, 0, 0, 0.65);
+}
+
+.privilegios-preppies-page .gang-music-display > div > span {
+    color: #ffffff;
+
+    font-family: "EB Garamond", Georgia, serif;
+    font-size: 17px;
+    font-weight: 700;
+    font-style: italic;
+
+    text-shadow:
+        2px 2px 0 rgba(0, 0, 0, 0.65);
+}
+
+
+
+.privilegios-preppies-page > .bully-status-box > h1 {
+    margin: 42px 0 8px;
+
+    color: #d4a017;
+
+    font-family: "EB Garamond", Georgia, serif;
+    font-size: 54px;
+    font-weight: 800;
+    font-style: italic;
+
+    text-align: center;
+    text-transform: uppercase;
+
+    text-shadow:
+        2px 2px 0 rgba(0, 0, 0, 0.65),
+        0 0 10px rgba(255, 191, 0, 0.35);
+}
+
+/* =====================================================
+   NAVEGAÇÃO
+===================================================== */
+
+.privilegio-file-nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 7px;
+
+    margin: 0 0 34px;
+}
+
+.privilegio-file-nav a,
+.privilegio-file-nav span {
+    display: inline-block;
+
+    color: #ffffff;
+    background: transparent;
+    border: none;
+
+    font-family: "EB Garamond", Georgia, serif;
+    font-size: 23px;
+    font-weight: 800;
+    font-style: italic;
+
+    text-decoration: none;
+    text-transform: uppercase;
+
+    text-shadow:
+        2px 2px 0 rgba(0, 0, 0, 0.65);
+
+    transition:
+        color 0.18s ease,
+        text-shadow 0.18s ease,
+        transform 0.18s ease;
+}
+
+.privilegio-file-nav span {
+    font-style: normal;
+}
+
+.privilegio-file-nav a:hover,
+.privilegio-file-nav a.active {
+    color: #d4a017;
+
+    text-shadow:
+        0 0 10px rgba(255, 191, 0, 0.8),
+        0 0 22px rgba(255, 191, 0, 0.45),
+        2px 2px 0 rgba(0, 0, 0, 0.7);
+
+    transform: scale(1.06);
+}
+
+.privilegio-file-nav .privilegio-home {
+    color: #d4a017;
+}
+
+/* =====================================================
+   LINHAS
+===================================================== */
+
+.privilegios-preppies-page .camarilhas-bully-line {
+    width: 86%;
+    height: 2px;
+
+    margin: 34px auto;
+
+    background: rgba(230, 230, 230, 0.55);
+}
+
+/* =====================================================
+   PERSONAGENS
+===================================================== */
+
+.privilegio-personagem {
+    width: 86%;
+
+    margin: 0 auto;
+    padding-top: 25px;
+
+    scroll-margin-top: 120px;
+}
+
+.privilegio-personagem h2 {
+    margin: 0 0 18px;
+
+    color: #d4a017;
+
+    font-family: "EB Garamond", Georgia, serif;
+    font-size: 34px;
+    font-weight: 800;
+    font-style: italic;
+
+    text-transform: uppercase;
+
+    text-shadow:
+        2px 2px 0 rgba(0, 0, 0, 0.65),
+        0 0 10px rgba(255, 191, 0, 0.25);
+}
+
+.privilegio-personagem > p {
+    margin: 0;
+
+    color: #f0f0f0;
+
+    font-family: "EB Garamond", Georgia, serif;
+    font-size: 23px;
+    font-weight: 700;
+
+    line-height: 1.65;
+    text-align: justify;
+    text-indent: 5ch;
+
+    text-shadow:
+        2px 2px 0 rgba(0, 0, 0, 0.65);
+}
+
+/* =====================================================
+   ANOS E PRIVILÉGIOS
+===================================================== */
+
+.privilegio-ano {
+    margin-top: 44px;
+}
+
+.privilegio-ano h3 {
+    margin: 0 0 14px;
+
+    color: #d4a017;
+
+    font-family: "EB Garamond", Georgia, serif;
+    font-size: 20px;
+    font-weight: 800;
+    font-style: italic;
+
+    letter-spacing: 1px;
+    text-transform: uppercase;
+
+    text-shadow:
+        2px 2px 0 rgba(0, 0, 0, 0.65),
+        0 0 6px rgba(255, 191, 0, 0.18);
+}
+
+.privilegio-ano p {
+    margin: 0;
+
+    color: #f0f0f0;
+
+    font-family: "EB Garamond", Georgia, serif;
+    font-size: 22px;
+    font-weight: 700;
+
+    line-height: 1.65;
+    text-align: justify;
+    text-indent: 5ch;
+
+    text-shadow:
+        2px 2px 0 rgba(0, 0, 0, 0.65);
+}
+
+.privilegio-ano p strong {
+    color: #d4a017;
+    font-weight: 800;
+
+    text-shadow:
+        2px 2px 0 rgba(0, 0, 0, 0.65);
+}
+
+/* =====================================================
+   ATRIBUTOS
+===================================================== */
+
+.privilegio-atributo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    margin-top: 18px;
+
+    color: #f0f0f0;
+
+    font-family: "EB Garamond", Georgia, serif;
+    font-size: 22px;
+    font-weight: 800;
+    font-style: italic;
+
+    text-transform: uppercase;
+
+    text-shadow:
+        2px 2px 0 rgba(0, 0, 0, 0.65);
+}
+
+.privilegio-estrelas {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+
+    font-size: 28px;
+    line-height: 1;
+    letter-spacing: 1px;
+}
+
+.privilegio-estrelas .estrela-bully {
+    display: inline-block;
+
+    color: #f7c948;
+
+    text-shadow:
+        0 0 2px #fff7b3,
+        0 0 8px rgba(255, 200, 0, 0.45),
+        1px 1px 0 #8c5a00,
+        2px 2px 0 rgba(0, 0, 0, 0.85);
+
+    transition:
+        transform 0.18s cubic-bezier(.2, .8, .2, 1),
+        color 0.18s ease,
+        text-shadow 0.18s ease,
+        filter 0.18s ease;
+}
+
+.privilegio-atributo:hover .estrela-bully {
+    color: #ffe96b;
+
+    transform: scale(1.22) translateY(-2px);
+
+    text-shadow:
+        0 0 4px #fff9c4,
+        0 0 12px rgba(255, 230, 100, 0.95),
+        0 0 22px rgba(255, 208, 0, 0.8),
+        1px 1px 0 #8c5a00,
+        2px 2px 0 rgba(0, 0, 0, 0.85);
+
+    filter: brightness(1.2);
+}
+
+.privilegio-estrelas .estrela-bully:nth-child(2) {
+    transition-delay: 0.025s;
+}
+
+.privilegio-estrelas .estrela-bully:nth-child(3) {
+    transition-delay: 0.05s;
+}
+
+.privilegio-estrelas .estrela-bully:nth-child(4) {
+    transition-delay: 0.075s;
+}
+
+/* =====================================================
+   VOLTAR
+===================================================== */
+
+.privilegios-preppies-page .return-to-gangs {
+    display: block;
+    width: fit-content;
+
+    margin: 35px auto 12px;
+
+    color: #f0f0f0;
+
+    font-family: "EB Garamond", Georgia, serif;
+    font-size: 24px;
+    font-weight: 800;
+    font-style: italic;
+
+    text-decoration: none;
+    text-transform: uppercase;
+
+    text-shadow:
+        2px 2px 0 rgba(0, 0, 0, 0.65);
+
+    transition:
+        color 0.18s ease,
+        text-shadow 0.18s ease,
+        transform 0.18s ease;
+}
+
+.privilegios-preppies-page .return-to-gangs:hover {
+    color: #d4a017;
+
+    text-shadow:
+        0 0 10px rgba(255, 191, 0, 0.8),
+        0 0 22px rgba(255, 191, 0, 0.45),
+        2px 2px 0 rgba(0, 0, 0, 0.7);
+
+    transform: scale(1.06);
+}
+
+/* =====================================================
+   CELULAR
+===================================================== */
+
+@media (max-width: 700px) {
+
+    .privilegios-preppies-page .bully-status-box {
+        width: 94%;
+    }
+
+    .privilegio-file-nav {
+        gap: 5px;
+    }
+
+    .privilegio-file-nav a,
+    .privilegio-file-nav span {
+        font-size: 16px;
+    }
+
+    .privilegio-personagem {
+        width: 90%;
+    }
+
+    .privilegio-personagem h2 {
+        font-size: 27px;
+    }
+
+    .privilegio-personagem > p,
+    .privilegio-ano p {
+        font-size: 18px;
+        line-height: 1.55;
+        text-indent: 3ch;
+    }
+
+    .privilegio-ano h3 {
+        font-size: 17px;
+    }
+
+    .privilegio-atributo {
+        flex-wrap: wrap;
+        gap: 8px;
+
+        font-size: 19px;
+    }
+
+}
+
+</style>
+
+<main class="bully-status-page gang-preppies privilegios-preppies-page">
+
+    <section class="bully-status-box">
+
+        <!-- =================================================
+             PLAYER
+        ================================================== -->
+
+        <div class="bully-music-display gang-music-display">
+
+            <button
+                type="button"
+                id="gang-music-toggle"
+                aria-label="Tocar ou pausar a música"
+            >
+                &gt;
+            </button>
+
+            <div>
+                <strong>PREPPIES THEME : PAUSED</strong>
+                <span>AQUABERRY BOUTIQUE</span>
+            </div>
+
+        </div>
+
+        <audio
+            id="gang-music"
+            src="/audio/preppies-theme.mp3"
+            preload="auto"
+            loop
+        ></audio>
+
+        <!-- =================================================
+             TÍTULO
+        ================================================== -->
+
+        <h1>MAURICINHOS</h1>
+
+        <!-- =================================================
+             NAVEGAÇÃO
+        ================================================== -->
+
+        <nav class="gang-file-nav privilegio-file-nav">
+
+            <a href="/privilegios" class="privilegio-home">
+                HOME
+            </a>
+
+            <span>:</span>
+
+            <a href="#harrington">
+                HARRINGTON
+            </a>
+
+            <span>:</span>
+
+            <a href="#taylor">
+                TAYLOR
+            </a>
+
+            <span>:</span>
+
+            <a href="#morris">
+                MORRIS
+            </a>
+
+        </nav>
+
+        <div class="camarilhas-bully-line"></div>
+
+        <!-- =================================================
+             SANGUE HARRINGTON
+        ================================================== -->
+
+        <section
+            id="harrington"
+            class="privilegio-personagem gang-section"
+        >
+
+            <h2>SANGUE HARRINGTON</h2>
+
+            <p>
+                Acima das dezenas de novos ricos que hospedam-se nos aposentos
+                luxuosos do internato, existe um herdeiro da família pioneira na
+                criação dos mauricinhos de Bullworth. Mesmo entre outros da alta
+                sociedade, o Harrington é especial, havendo uma fragmentação que
+                os coloca num pedestal mesmo diante de outros jovens herdeiros.
+                Ostenta um prestígio inalcançável em comparação àqueles que, assim
+                como ele próprio, desfrutam de todos os bens materiais que têm por
+                direito. Seu renome enquanto sucessor de diversas gerações
+                bem-sucedidas, por outro, nunca esteve à venda, diferenciando-o
+                dos demais. O abismo entre um “novo rico” e alguém da herança
+                aristocrática é evidenciado por alguns privilégios que nem todos
+                têm.
+            </p>
+
+            <article class="privilegio-ano">
+
+                <h3>FRESHMAN YEAR</h3>
+
+                <p>
+                    <strong>CHOUFFER MAURICE:</strong>
+                    Ao ser concebido ao mundo, o pequeno herdeiro desde sempre
+                    desfrutou de incontáveis mordomias relacionadas à sua condição
+                    financeira abastada, sempre tendo qualquer aporte necessário
+                    para a aquisição de bens materiais e derivados. Equipado com
+                    um uniforme impecável da Aquaberry e adornado por acessórios
+                    de grife dela e outras marcas, o mauricinho destaca-se
+                    imediatamente como um ícone de elegância entre os seus, muitas
+                    vezes tendo acesso a peças raras que novos ricos sequer têm
+                    conhecimento sobre. Seu veículo de luxo, um elegante sedan
+                    clássico de sua preferência, torna-se uma verdadeira extensão
+                    de seu elevado status, contando com um motorista particular
+                    que atende aos seus caprichos durante o horário comercial.
+                </p>
+
+            </article>
+
+            <article class="privilegio-ano">
+
+                <h3>SOPHOMORE YEAR</h3>
+
+                <p>
+                    <strong>RICHIE RICH:</strong>
+                    Fazendo parte da linhagem mais benquista de toda Nova
+                    Inglaterra, o jovem aristocrata é, entre tantos adjetivos,
+                    muitíssimo influente em Bullworth, sendo conhecido pelo excesso
+                    de bens materiais e infindáveis recursos financeiros. É mais
+                    difícil castigá-lo com punições rigorosas, obrigando seus
+                    acusadores a reunirem provas incontestáveis para que seu
+                    sobrenome seja invalidado em julgamentos. Ainda assim, como
+                    último recurso, consegue subornar qualquer indivíduo de índole
+                    duvidosa sem grandes dificuldades, incluindo monitores,
+                    docentes e autoridades fora do internato, através de algumas
+                    cédulas de dólares americanos e palavras assertivas. Aliados
+                    e inimigos também podem ser tão compráveis quanto um produto
+                    de grife em uma vitrine, bastando um palavreado assertivo e
+                    uma boa compensação financeira para que dancem conforme a
+                    música entoada por sua proposta.
+                </p>
+
+            </article>
+
+            <article class="privilegio-ano">
+
+                <h3>JUNIOR YEAR</h3>
+
+                <p>
+                    <strong>SOQUEIRA:</strong>
+                    Conquistando a confiança dos pais após suprir suas expectativas,
+                    o herdeiro é presenteado com um soco inglês dourado que se
+                    acopla perfeitamente aos dedos de sua mão, servindo como uma
+                    arma ideal para defesa pessoal ou, em alguns casos, resolver
+                    pendências por conta própria. Quando usada, a soqueira inflige
+                    o dano equivalente a uma estrela a mais na força de quem o
+                    empunha, rompendo defesas e causando lacerações graves a quem
+                    lidar com sua rigidez. Há, no entanto, uma ressalva: o item só
+                    é válido por duas pancadas bem-sucedidas — bloqueadas na guarda
+                    ou aplicadas na área desejada da vítima — e escorrega da mão do
+                    portador após o segundo golpe, tornando-se inutilizável até o
+                    fim do combate.
+                </p>
+
+            </article>
+
+            <article class="privilegio-ano">
+
+                <h3>SENIOR YEAR</h3>
+
+                <p>
+                    <strong>DERBY HARRINGTON:</strong>
+                    Ao se tornar unânime dentro da camarilha como o indivíduo que
+                    detém mais poder dentro dela, passa a ser capaz de ditar ordens
+                    a qualquer um dos funcionários a serviço dos mauricinhos,
+                    demitindo e contratando quem bem entende e comandando-os como
+                    se fossem sua legião pessoal, uma segunda camarilha dentro do
+                    internato. Destinados a seguirem suas orientações de forma
+                    irrevogável dentro dos limites da residência luxuosa — das
+                    faxineiras aos mordomos —, são tão responsáveis quanto um amigo
+                    fiel na repressão de conspirações, garantindo que sua liderança
+                    dentre os mauricinhos seja incontestável a partir de então.
+                    Além disso, tem direito a um segurança particular que o
+                    acompanha da mesma forma em áreas urbanas, estando desarmado
+                    e equivalendo a um monitor em porte físico, de modo que consiga
+                    enfrentar até dois calouros ao mesmo tempo de mãos nuas. Em
+                    ambos casos, não é possível utilizar quaisquer NPCs em questão
+                    em outras áreas do internato, sendo restritos à Mansão
+                    Harrington ou ao cenário externo à escola.
+                </p>
+
+            </article>
+
+        </section>
+
+        <div class="camarilhas-bully-line"></div>
+
+        <!-- =================================================
+             SANGUE TAYLOR
+        ================================================== -->
+
+        <section
+            id="taylor"
+            class="privilegio-personagem gang-section"
+        >
+
+            <h2>SANGUE TAYLOR</h2>
+
+            <p>
+                Superando com muita folga mauricinhos convencionais, um desafiante
+                ao título juvenil do Glass Jaw Boxing Club se destaca entre outros
+                pela disciplina feroz que dedica à modalidade, destoando-se de
+                outros que tratem a nobre arte como um mero hobby aristocrático.
+                Patrocinado por sua excelência dentro do ringue, pavimenta desde
+                cedo o seu caminho no pugilismo, muitas vezes desafiando as
+                expectativas de pais conservadores que priorizam carreiras
+                tradicionais no ramo corporativo em detrimento ao boxe
+                profissional. Com equipamentos da melhor qualidade e instrutores
+                do mais alto nível, ocupa o top cinco de desafiantes da academia
+                de Old Vale, disputando posição com outros boxeadores de seu
+                calibre até que sua tão sonhada oportunidade coloque-o diante do
+                detentor do cinturão em uma luta válida pelo título. Somente um,
+                afinal de contas, é digno de se consagrar como o campeão da
+                categoria juvenil, uma glória sublime que poucos têm a
+                oportunidade de vivenciar na pele e que nenhum dinheiro no mundo
+                é capaz de comprar, exigindo esforço e vocação.
+            </p>
+
+            <article class="privilegio-ano">
+
+                <h3>FRESHMAN YEAR</h3>
+
+                <p>
+                    <strong>FOOTWORK:</strong>
+                    De todas suas valências em combate, poucas são tão evidentes
+                    quanto seu domínio no jogo de pés, capacitando-o a se
+                    movimentar com leveza e precisão. Evitando permanecer estático
+                    em uma luta, alterna direções, controla a distância e circula
+                    o adversário com a maestria de um profissional, conferindo-lhe
+                    um maior tempo de reação em ações defensivas e uma
+                    imprevisibilidade inerente à sua agilidade em ações ofensivas.
+                    Em termos práticos, seu domínio do jogo de pés permite que, uma
+                    vez por combate, realize duas esquivas consecutivas a um metro
+                    de distância perfeitas. Recebe um acréscimo em sua agilidade.
+                </p>
+
+                <div class="privilegio-atributo">
+                    <span>ACRÉSCIMO</span>
+                    <span class="privilegio-estrelas" aria-label="Uma estrela">
+                        <span class="estrela-bully">★</span>
+                    </span>
+                </div>
+
+            </article>
+
+            <article class="privilegio-ano">
+
+                <h3>SOPHOMORE YEAR</h3>
+
+                <p>
+                    <strong>BIF TAYLOR:</strong>
+                    Após incontáveis meses praticando no Glass Jaw Boxing Club,
+                    sua compleição física foi lapidada ao extremo, inalcançável
+                    para grande parte dos pugilistas juvenis que têm dificuldades
+                    de infligi-lo danos em sparrings e lutas oficiais. Adquire,
+                    assim sendo, um acréscimo em seu porte físico.
+                </p>
+
+                <div class="privilegio-atributo">
+                    <span>ACRÉSCIMO</span>
+                    <span class="privilegio-estrelas" aria-label="Uma estrela">
+                        <span class="estrela-bully">★</span>
+                    </span>
+                </div>
+
+            </article>
+
+            <article class="privilegio-ano">
+
+                <h3>JUNIOR YEAR</h3>
+
+                <p>
+                    <strong>PUNHOS DE AÇO:</strong>
+                    Popular entre todo internato e requisitado pelos líderes de
+                    camarilha, o Taylor se tornou detentor de um soco absolutamente
+                    devastador. Seu soco é tão poderoso quanto dizem. Golpes
+                    considerados pesados, como overhands e uppercuts, recebem uma
+                    estrela a mais em porte físico.
+                </p>
+
+            </article>
+
+            <article class="privilegio-ano">
+
+                <h3>SENIOR YEAR</h3>
+
+                <p>
+                    <strong>CAMPEÃO DE BOXE:</strong>
+                    Nomeado como o número um da academia de boxe de Old Vale,
+                    torna-se oficialmente o campeão dos mauricinhos quando assume
+                    a posse do cinturão que é seu por direito, sendo visto como
+                    alguém a ser temido tanto por aliados quanto por inimigos.
+                    Desafiá-lo, a partir de então, exige ponderação pautada na
+                    análise de riscos que virá junto do eventual duelo. Uma vez
+                    por combate, o campeão de boxe alcança o ápice de sua rapidez
+                    ao conseguir golpear duas vezes em um mesmo turno, castigando
+                    o oponente através de uma combinação de socos potente, veloz
+                    e precisa. Seja um gancho seguido de um uppercut, um jab seguido
+                    de um direto ou dois cruzados sequenciais. É quase impossível
+                    acompanhá-lo em seu trunfo, vide a rapidez do pugilista e a
+                    destreza na prática da nobre arte.
+                </p>
+
+            </article>
+
+        </section>
+
+        <div class="camarilhas-bully-line"></div>
+
+        <!-- =================================================
+             SANGUE MORRIS
+        ================================================== -->
+
+        <section
+            id="morris"
+            class="privilegio-personagem gang-section"
+        >
+
+            <h2>SANGUE MORRIS</h2>
+
+            <p>
+                O kickboxer representa uma vertente alternativa dentro da elite
+                marcial dos mauricinhos, destoando-se daqueles que se limitam ao
+                repertório de golpes do pugilismo. Para além de socos e esquivas,
+                escolheu trilhar um caminho mais abrangente ao combinar socos e
+                chutes com precisão e velocidade dignas de qualquer outro lutador
+                do Glass Jaw Boxing Club, havendo treinos específicos para o jovem
+                aristocrata que, apesar de praticar uma arte marcial distinta,
+                também desembolsa uma quantia significativa para estar matriculado
+                na academia de luta do lado mais sofisticado da cidade. Tão
+                dedicado ao combate quanto seus desafiantes, diferencia-se
+                especialmente por ser mais versátil e secundarizar a importância
+                do título de campeão juvenil, uma vez que somente os dedicados ao
+                boxe costumam despontar como favoritos à conquista do cinturão.
+                Não há um torneio que recompense o melhor lutador de kickboxing,
+                embora existam comparações sobre qual o mais efetivo dentro dos
+                limites do internato.
+            </p>
+
+            <article class="privilegio-ano">
+
+                <h3>FOOTWORK</h3>
+
+                <p>
+                    <strong>FOOTWORK:</strong>
+                    De todas suas valências em combate, poucas são tão evidentes
+                    quanto seu domínio no jogo de pés, capacitando-o a se
+                    movimentar com leveza e precisão. Evitando permanecer estático
+                    em uma luta, alterna direções, controla a distância e circula
+                    o adversário com a maestria de um profissional, conferindo-lhe
+                    um maior tempo de reação em ações defensivas e uma
+                    imprevisibilidade inerente à sua agilidade em ações ofensivas.
+                    Em termos práticos, seu domínio do jogo de pés permite que, uma
+                    vez por combate, realize duas esquivas consecutivas a um metro
+                    de distância perfeitas. Recebe um acréscimo em sua agilidade.
+                </p>
+
+                <div class="privilegio-atributo">
+                    <span>ACRÉSCIMO</span>
+                    <span class="privilegio-estrelas" aria-label="Uma estrela">
+                        <span class="estrela-bully">★</span>
+                    </span>
+                </div>
+
+            </article>
+
+            <article class="privilegio-ano">
+
+                <h3>K1</h3>
+
+                <p>
+                    <strong>K1:</strong>
+                    Com o passar do tempo e das inúmeras experiências entre
+                    treinos, sparrings e brigas pelo internato, Morris levou tempo
+                    o bastante para aprimorar sua leitura de combate, tornando-se
+                    um verdadeiro estrategista. Observando padrões de movimento
+                    com atenção e tendo plena ciência de como reagir, é questão de
+                    tempo até que se adapte. Graças à percepção aguçada em questão,
+                    consegue realizar uma antecipação de movimento uma vez por
+                    luta, quebrando a regra de turnos e atingindo o adversário com
+                    um soco ou chute antes que o golpe direcionado a si consiga ser
+                    efetuado da maneira planejada. Essa dádiva, no entanto, é
+                    limitada ao striking, descartando ações ofensivas que envolvam
+                    grappling ou trapaça.
+                </p>
+
+            </article>
+
+        </section>
+
+        <div class="camarilhas-bully-line"></div>
+
+        <a href="/privilegios" class="return-to-gangs">
+            RETURN TO PRIVILEGES
+        </a>
+
+    </section>
+
+</main>
+
+<%- include("../../partials/footer") %>

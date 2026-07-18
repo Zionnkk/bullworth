@@ -1797,3 +1797,72 @@ Elas já devem utilizar o CSS das páginas de camarilhas.
     }
 
 }
+.privilegio-estrelas{
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+
+    font-size: 28px;
+    line-height: 1;
+    letter-spacing: 2px;
+
+    color: #f7c948;
+
+    text-shadow:
+        0 0 2px #fff3a0,
+        0 0 8px rgba(255, 200, 0, .55),
+        1px 1px 0 #8c5a00,
+        2px 2px 0 rgba(0,0,0,.8);
+
+    filter: drop-shadow(0 0 5px rgba(255,210,74,.35));
+}
+
+.privilegio-estrelas .estrela-bully{
+    transition: .2s ease;
+}
+
+.privilegio-estrelas:hover .estrela-bully{
+    transform: scale(1.12) rotate(-8deg);
+    color: #ffe37a;
+}
+.privilegio-estrelas{
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+
+    font-size: 28px;
+    line-height: 1;
+}
+
+.privilegio-estrelas .estrela-bully{
+    display: inline-block;
+
+    color: #f7c948;
+
+    text-shadow:
+        0 0 2px #fff7b3,
+        0 0 8px rgba(255,200,0,.45),
+        1px 1px 0 #8c5a00,
+        2px 2px 0 rgba(0,0,0,.85);
+
+    transition:
+        transform .18s cubic-bezier(.2,.8,.2,1),
+        color .18s ease,
+        text-shadow .18s ease,
+        filter .18s ease;
+}
+
+.privilegio-atributo:hover .estrela-bully{
+    color: #ffe96b;
+
+    transform: scale(1.22);
+
+    text-shadow:
+        0 0 4px #fff9c4,
+        0 0 12px rgba(255,230,100,.95),
+        0 0 22px rgba(255,208,0,.8),
+        1px 1px 0 #8c5a00,
+        2px 2px 0 rgba(0,0,0,.85);
+
+    filter: brightness(1.2);
+}
